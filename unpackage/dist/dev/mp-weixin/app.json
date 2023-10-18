@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/home/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#13227a",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "iconfontSrc": "static/iconfont.ttf",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "读诗",
+        "iconPath": "static/book.png",
+        "selectedIconPath": "static/selectbook.png"
+      },
+      {
+        "pagePath": "pages/home/index",
+        "selectedIconPath": "static/selectme.png",
+        "text": "主页",
+        "iconPath": "static/me.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

@@ -1,0 +1,7 @@
+{
+  "name": "poem",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}
