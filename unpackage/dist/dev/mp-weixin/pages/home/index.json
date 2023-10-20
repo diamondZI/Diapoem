@@ -1,6 +1,6 @@
 {
-  "navigationBarTitleText": "uni-app",
+  "navigationBarTitleText": "个人主页",
   "usingComponents": {
-    "a": "../../components/FunButton/index"
+    "loding": "../../components/Loding/index"
   }
 }

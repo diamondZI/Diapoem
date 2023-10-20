@@ -6,21 +6,21 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  transition: 0.3s all linear;
+  transition: 0.7s all linear;
   box-shadow: 0 0 3px 0 black;
 }
-.FUNBUTTON.data-v-ab3ed6fc:hover {
+.FUNBUTTON.data-v-ab3ed6fc:active {
   box-shadow: 0 0 1px 0 black;
 }
-.FUNBUTTON:hover .A.data-v-ab3ed6fc {
+.FUNBUTTON:active .A.data-v-ab3ed6fc {
   transform: translateY(-150%);
   opacity: 1;
 }
-.FUNBUTTON:hover .B.data-v-ab3ed6fc {
+.FUNBUTTON:active .B.data-v-ab3ed6fc {
   transform: translateY(-300%);
   opacity: 1;
 }
-.FUNBUTTON:hover .C.data-v-ab3ed6fc {
+.FUNBUTTON:active .C.data-v-ab3ed6fc {
   transform: translateY(-450%);
   opacity: 1;
 }
@@ -43,6 +43,16 @@
   transition: 0.7s all linear;
 }
 .A.data-v-ab3ed6fc {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: aqua;
+  /* display: none; */
+  opacity: 0;
+  transition: 0.7s all linear;
+}
+.F.data-v-ab3ed6fc {
   position: absolute;
   width: 40px;
   height: 40px;

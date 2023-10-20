@@ -1,0 +1,18 @@
+.POEM {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 13rpx;
+}
+.POEM .h1 {
+  margin-bottom: 10px;
+  font-size: 35px;
+  font-style: unset;
+}
+.POEM .paragraphs {
+  margin-top: 10px;
+  display: flex;
+  font-size: 20px;
+  gap: 12rpx;
+  flex-direction: column;
+}

@@ -3,22 +3,32 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "每天一篇"
 			}
 		},
 		{
 			"path": "pages/home/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "个人主页"
 			}
 		}
-
+        ,{
+            "path" : "pages/collect/index",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "收藏",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
+		"enablePullDownRefresh": true,
 		"backgroundColor": "#F8F8F8"
+		
 	},
 	"tabBar": {
 			"color": "#7A7E83",

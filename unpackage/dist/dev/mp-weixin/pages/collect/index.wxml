@@ -1,0 +1,1 @@
+<uni-easyinput wx:if="{{a}}" class="data-v-cb2cf245" u-i="cb2cf245-0" bind:__l="__l" u-p="{{a}}"></uni-easyinput><text class="data-v-cb2cf245">您的收藏</text><view class="collect data-v-cb2cf245"><view wx:for="{{b}}" wx:for-item="item" wx:key="c" class="collect_poem data-v-cb2cf245">{{item.a}} {{item.b}}</view></view>

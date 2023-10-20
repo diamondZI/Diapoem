@@ -1,14 +1,21 @@
 <template>
-	<view class="FUNBUTTON">
-	    <view class="A">1</view>
-	    <view class="B">2</view>
-	    <view class="C">3</view>
+	<view class="FUNBUTTON" ref="FunButton">
+		<view class="F" style="z-index: 100;">
+			
+		</view>
+	    <view class="A" @click="aclick">
+			
+		</view>
+	    <view class="B" @click="aclick">2</view>
+	    <view class="C" @click="aclick">3</view>
 	</view>
 </template>
 
 <script setup>
-	// import { } from "vant"
-
+import { onMounted,ref } from "vue";
+const aclick=()=>{
+	console.log("nihao1");
+}
 </script>
 
 <style scoped lang="less">
@@ -20,10 +27,10 @@
 		width: 40px;
 		height: 40px;
 		border-radius: 50%;
-		transition: .3s all linear;
+		transition: .7s all linear;
 		box-shadow: 0 0 3px 0 black;
 	}
-	.FUNBUTTON:hover{
+	.FUNBUTTON:active{
 		box-shadow: 0 0 1px 0 black;;
 		.A{
 			transform: translateY(-150%);
@@ -59,6 +66,17 @@
 			transition: .7s all linear;
 	}
     .A{
+		position: absolute;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		background-color: aqua;
+	    /* display: none; */
+	     opacity: 0;
+	 	transition: .7s all linear;
+	 
+	}	
+	 .F{
 		position: absolute;
 		width: 40px;
 		height: 40px;

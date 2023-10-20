@@ -1,0 +1,1 @@
+<view class="POEM" id="POEM"><view><text selectable class="h1" bindtap="{{b}}">{{a}}</text><text selectable="true"> ___{{c}}</text></view><view class="paragraphs"><text wx:for="{{d}}" wx:for-item="el" wx:key="b" selectable="true" id="text">{{el.a}}</text></view></view>

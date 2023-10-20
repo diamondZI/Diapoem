@@ -1,6 +1,8 @@
 {
-  "navigationBarTitleText": "uni-app",
+  "navigationBarTitleText": "每天一篇",
   "usingComponents": {
-    "loding": "../../components/Loding/index"
+    "poem": "../../components/Poem/index",
+    "loding": "../../components/Loding/index",
+    "fun-button": "../../components/FunButton/index"
   }
 }

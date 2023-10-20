@@ -1,0 +1,19 @@
+text.data-v-cb2cf245 {
+  font-size: 50rpx;
+  margin: 10vw;
+}
+.collect.data-v-cb2cf245 {
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.collect .collect_poem.data-v-cb2cf245 {
+  width: 20vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 25vw;
+  background-color: antiquewhite;
+}
