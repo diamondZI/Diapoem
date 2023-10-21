@@ -11,14 +11,25 @@
 </template>
 
 <script setup>	
-import { onMounted,ref } from "vue";
- const list=[{
+import { onMounted,reactive,ref } from "vue";
+import { onLoad} from "@dcloudio/uni-app"
+ 
+ const list=reactive([{
 	 title:"你好"
  },{
 	 title:"你好"
  },	{
 	 title:"你好"
- }]
+ }])
+ const getCollect=async (A)=>{
+	 const D=uniCloud.importObject('User') 
+        console.log(  await D.GetUser_collect(A)
+);
+ }
+ 
+ onLoad((Option)=>{
+    getCollect(JSON.parse(Option.data))
+ })
 </script>
 
 <style scoped lang="less">

@@ -28,9 +28,9 @@ $uni-text-color-placeholder: #808080;
 $uni-text-color-disable:#c0c0c0;
 
 /* 背景颜色 */
-$uni-bg-color:#C7EDCC;
+$uni-bg-color:rgb(241, 229, 201);
 $uni-bg-color-grey:#FFFFFF;
-$uni-bg-color-hover:#C7EDCC;//点击状态颜色
+$uni-bg-color-hover:rgb(241, 229, 201,.2);;//点击状态颜色
 $uni-bg-color-mask:rgba(0, 0, 0, 0.4);//遮罩颜色
 
 /* 边框颜色 */

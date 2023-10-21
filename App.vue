@@ -12,11 +12,13 @@
 	}
 </script>
 
-<style>
-	body{
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
+<style lang="scss">
+ 
+	page{
+		margin: 0;		
+		padding: 0 ;
+		box-sizing:content-box;
+		 background-color: $uni-bg-color;
 	}
 	/*每个页面公共css */
 </style>

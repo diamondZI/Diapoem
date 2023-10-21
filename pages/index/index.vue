@@ -33,7 +33,7 @@ onPullDownRefresh(()=>{
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 	.content{
 		padding: 20px;
 	}

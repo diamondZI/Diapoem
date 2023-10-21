@@ -1,19 +1,32 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 if (!Array) {
-  const _component_uni_easyinput = common_vendor.resolveComponent("uni-easyinput");
-  _component_uni_easyinput();
+  const _easycom_uni_easyinput2 = common_vendor.resolveComponent("uni-easyinput");
+  _easycom_uni_easyinput2();
+}
+const _easycom_uni_easyinput = () => "../../uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.js";
+if (!Math) {
+  _easycom_uni_easyinput();
 }
 const _sfc_main = {
   __name: "index",
   setup(__props) {
-    const list = [{
+    const list = common_vendor.reactive([{
       title: "你好"
     }, {
       title: "你好"
     }, {
       title: "你好"
-    }];
+    }]);
+    const getCollect = async (A) => {
+      const D = common_vendor.Ds.importObject("User");
+      console.log(
+        await D.GetUser_collect(A)
+      );
+    };
+    common_vendor.onLoad((Option) => {
+      getCollect(JSON.parse(Option.data));
+    });
     return (_ctx, _cache) => {
       return {
         a: common_vendor.p({

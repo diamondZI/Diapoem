@@ -1,12 +1,37 @@
 <template>
 	<Loding v-if="!User"></Loding>
 	<view class="userIorf" v-else>
-		{{User}}
-        {{User.user_name}}
-		<span @click='go()'>收藏 {{User.collect.length}}</span>
-		<span>创作 {{User.create.length}}</span>
+		
+        <view class="User">
+			<view class="avatar">
+			</view>
+            <view class="name">
+               <text>{{User.user_name}}</text>            	
+               <text>{{User.region}}</text>            	
+               <text>{{User.slogan}}</text>            	
+            </view>
+			<view  style="position: absolute;  right: 20rpx;">
+				<uni-icons  type="info-filled" size="30"></uni-icons>
+			</view>
+        </view>
+		<view class="UserButton">
+			<view @click='go()' class="A">
+				<span style="z-index: 1;">收藏 {{User.collect.length}}</span>
+			</view>
+			<view >
+				<span style="z-index: 1;">个人介绍 {{User.collect.length}}</span>
+			</view>
+			<view id="a">创作 {{User.create.length}}</view>
+			<view id="a">主题 {{User.create.length}}</view>
+		</view>
+		<view class="UserButton" >
+			<view @click='go()'>AI创作 {{User.collect.length}}</view>
+			<view @click='go()'>附近的诗人 {{User.collect.length}}</view>
+			<view id="a">废弃草稿 {{User.create.length}}</view>
+			<view id="a">赞助我们 {{User.create.length}}</view>
+		</view>
 	</view>
-</template>
+	</template>
 
 <script setup>	
 	import A from "@/components/FunButton/index.vue"
@@ -18,14 +43,14 @@ import { onMounted,ref } from "vue";
 	  User.value =await	todo.GetUser().then(res=>{
 		  return res.data[0]
 	  })
-
+    
 	}
 	
 	const go=()=>{
 		console.log("跳转");
 		uni.navigateTo({
-			'url':'/pages/collect/index'
-					})
+			'url':'/pages/collect/index?data=' +JSON.stringify(User.value.collect), 
+		})
 	}
 	onMounted(()=>{
 		a()
@@ -34,14 +59,77 @@ import { onMounted,ref } from "vue";
 	
 </script>
 
-<style scoped lang="less">
-	.A{
-		position: absolute;
-		width: 100px;
-		border-radius: 50%;
-		height: 100px;
-		border: 1px black solid;
-		background-size: 100% 100%;
-        background-image: url('../../static/logo.svg');
-	}
+<style scoped lang="scss">
+
+
+  .userIorf{
+	  padding: 20rpx;
+	  display: flex;
+	  gap: 60rpx;
+	  flex-direction: column;
+	  .User{
+		  display: flex;
+		  gap: 40rpx;
+		.avatar{
+			border: black 1px solid;
+			width: 160rpx;
+			height: 160rpx;
+			border-radius: 50%;
+		}
+		.name{
+			display: flex;
+			row-gap: 3px;
+            flex-direction: column;
+		   text{
+			   text-align: center;
+			   border-radius: 5px;
+			   padding: 5rpx;
+              	border: black 1px solid;
+			}
+		}
+	  }
+	  .UserButton{
+		  
+		 display: grid;
+        grid-template-columns: 1fr 1fr;
+		align-self: center;
+		 gap: 20rpx;
+		  view{
+			  position: relative;
+			  box-sizing: content-box;
+			  width: 300rpx;
+			  border-radius: 10rpx;
+			  border: 1px black solid;
+			  display: flex;
+			
+			  height: 200rpx;
+		  }
+		  view:active::after{
+			  
+			  width: 100%;
+				animation: after .3s linear;
+			  }
+		  
+			 
+		 view:after{
+			 
+			 border-radius: 10rpx;
+            content:"";		
+			 width: 0%;
+			
+			 position: absolute;
+			 background-color: $uni-bg-color-hover;	
+			 // transition: .1s all linear;
+			 height: 100%;
+		 }
+	  }
+  }
+  @keyframes after {
+  	 0%{
+		      width: 0%;
+	 }
+	 100%{
+		      width: 100%;
+	 }
+  }
 </style>

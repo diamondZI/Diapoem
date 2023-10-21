@@ -5,21 +5,24 @@ module.exports = {
 	_before: function () { // 通用预处理器
 	},
 	GetUser(){
-         const db=uniCloud.database()
-			// const dbCmd=db.command
+         const db=uniCloud.database()		
 			let res =db.collection("users").get()
-		// 	}).end()
 		return res
 	},
-	GetUser_collect( A){
+	GetUser_collect(A){
 		const a=[]
 		const db=uniCloud.database()
-	    a.forEach(el=>{
-			let res =db.collection("poem").where({
-				"_id":"_id"
-			})
-			
-		})			
+        const dbCmd=db.command()
+			console.log(el);
+			let res =db.collection("poem").where(
+			{
+				_Id:dbCmd.in(A)
+			}
+			).get()
+			// a.push(res)
+		// })
+		// console.log(a,"年后");
+		return res 			
 					// const dbCmd=db.command
 	},
 	
