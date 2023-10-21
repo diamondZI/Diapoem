@@ -14,38 +14,6 @@ function makeMap(str, expectsLowerCase) {
   }
   return expectsLowerCase ? (val) => !!map[val.toLowerCase()] : (val) => !!map[val];
 }
-function normalizeStyle(value) {
-  if (isArray(value)) {
-    const res = {};
-    for (let i2 = 0; i2 < value.length; i2++) {
-      const item = value[i2];
-      const normalized = isString(item) ? parseStringStyle(item) : normalizeStyle(item);
-      if (normalized) {
-        for (const key in normalized) {
-          res[key] = normalized[key];
-        }
-      }
-    }
-    return res;
-  } else if (isString(value)) {
-    return value;
-  } else if (isObject$1(value)) {
-    return value;
-  }
-}
-const listDelimiterRE = /;(?![^(]*\))/g;
-const propertyDelimiterRE = /:([^]+)/;
-const styleCommentRE = /\/\*.*?\*\//gs;
-function parseStringStyle(cssText) {
-  const ret = {};
-  cssText.replace(styleCommentRE, "").split(listDelimiterRE).forEach((item) => {
-    if (item) {
-      const tmp = item.split(propertyDelimiterRE);
-      tmp.length > 1 && (ret[tmp[0].trim()] = tmp[1].trim());
-    }
-  });
-  return ret;
-}
 function normalizeClass(value) {
   let res = "";
   if (isString(value)) {
@@ -6222,25 +6190,8 @@ function vFor(source, renderItem) {
   }
   return ret;
 }
-function stringifyStyle(value) {
-  if (isString(value)) {
-    return value;
-  }
-  return stringify(normalizeStyle(value));
-}
-function stringify(styles) {
-  let ret = "";
-  if (!styles || isString(styles)) {
-    return ret;
-  }
-  for (const key in styles) {
-    ret += `${key.startsWith(`--`) ? key : hyphenate(key)}:${styles[key]};`;
-  }
-  return ret;
-}
 const o$1 = (value, key) => vOn(value, key);
 const f$1 = (source, renderItem) => vFor(source, renderItem);
-const s$1 = (value) => stringifyStyle(value);
 const e = (target, ...sources) => extend(target, ...sources);
 const n$1 = (value) => normalizeClass(value);
 const t$1 = (val) => toDisplayString(val);
@@ -7087,6 +7038,13 @@ const pages = [
       navigationBarTitleText: "收藏",
       enablePullDownRefresh: false
     }
+  },
+  {
+    path: "pages/Personal/index",
+    style: {
+      navigationBarTitleText: "个人信息",
+      enablePullDownRefresh: false
+    }
   }
 ];
 const globalStyle = {
@@ -7414,7 +7372,7 @@ class I {
 function S(e2) {
   return e2 && "string" == typeof e2 ? JSON.parse(e2) : e2;
 }
-const b = true, k = "mp-weixin", T = S([]), P = k, A = S('{\n    "address": [\n        "127.0.0.1",\n        "192.168.1.102",\n        "172.30.16.1",\n        "172.27.48.1"\n    ],\n    "debugPort": 9000,\n    "initialLaunchType": "local",\n    "servePort": 7000,\n    "skipFiles": [\n        "<node_internals>/**",\n        "D:/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), E = S('[{"provider":"aliyun","spaceName":"poem","spaceId":"mp-e233ef62-9c0e-4622-a1aa-7115f4048c07","clientSecret":"BTuQBJeDn2aTX/XTVWVu5w==","endpoint":"https://api.next.bspapp.com"}]') || [];
+const b = true, k = "mp-weixin", T = S([]), P = k, A = S('{\n    "address": [\n        "127.0.0.1",\n        "192.168.1.102",\n        "172.17.16.1",\n        "172.31.208.1"\n    ],\n    "debugPort": 9000,\n    "initialLaunchType": "local",\n    "servePort": 7000,\n    "skipFiles": [\n        "<node_internals>/**",\n        "D:/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), E = S('[{"provider":"aliyun","spaceName":"poem","spaceId":"mp-e233ef62-9c0e-4622-a1aa-7115f4048c07","clientSecret":"BTuQBJeDn2aTX/XTVWVu5w==","endpoint":"https://api.next.bspapp.com"}]') || [];
 let x = "";
 try {
   x = "__UNI__D060515";
@@ -9656,8 +9614,6 @@ exports.onLoad = onLoad;
 exports.onMounted = onMounted;
 exports.onPullDownRefresh = onPullDownRefresh;
 exports.p = p$1;
-exports.reactive = reactive;
 exports.ref = ref;
 exports.resolveComponent = resolveComponent;
-exports.s = s$1;
 exports.t = t$1;

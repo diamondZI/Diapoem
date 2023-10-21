@@ -1,46 +1,38 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
-if (!Array) {
-  const _easycom_uni_easyinput2 = common_vendor.resolveComponent("uni-easyinput");
-  _easycom_uni_easyinput2();
-}
-const _easycom_uni_easyinput = () => "../../uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.js";
-if (!Math) {
-  _easycom_uni_easyinput();
-}
 const _sfc_main = {
   __name: "index",
   setup(__props) {
-    const list = common_vendor.reactive([{
-      title: "你好"
-    }, {
-      title: "你好"
-    }, {
-      title: "你好"
-    }]);
-    const getCollect = async (A) => {
-      const D = common_vendor.Ds.importObject("User");
-      console.log(
-        await D.GetUser_collect(A)
-      );
-    };
+    const sort = common_vendor.ref(false);
+    const list = common_vendor.ref();
     common_vendor.onLoad((Option) => {
-      getCollect(JSON.parse(Option.data));
+      list.value = JSON.parse(Option.data).map((el) => {
+        return {
+          title: el.title,
+          author: el.author
+        };
+      });
     });
     return (_ctx, _cache) => {
       return {
-        a: common_vendor.p({
-          ["prefix-icon"]: "search",
-          placeholder: "请输入",
-          ["input-border"]: false
-        }),
-        b: common_vendor.f(list, (item, index, i0) => {
+        a: common_vendor.o(($event) => sort.value = !sort.value),
+        b: sort.value ? 1 : "",
+        c: common_vendor.f(list.value, (item, index, i0) => {
           return {
             a: common_vendor.t(item.title),
-            b: common_vendor.t(item.title),
+            b: common_vendor.t(item.author),
             c: index
           };
-        })
+        }),
+        d: sort.value ? 1 : "",
+        e: common_vendor.f(list.value, (item, index, i0) => {
+          return {
+            a: common_vendor.t(item.title),
+            b: common_vendor.t(item.author),
+            c: index
+          };
+        }),
+        f: sort.value ? 1 : ""
       };
     };
   }

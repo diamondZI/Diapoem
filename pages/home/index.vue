@@ -15,7 +15,7 @@
 			</view>
         </view>
 		<view class="UserButton">
-			<view @click='go()' class="A">
+			<view @click='GoNavigateTo('collect',User.collect)' class="A">
 				<span style="z-index: 1;">收藏 {{User.collect.length}}</span>
 			</view>
 			<view >
@@ -25,8 +25,8 @@
 			<view id="a">主题 {{User.create.length}}</view>
 		</view>
 		<view class="UserButton" >
-			<view @click='go()'>AI创作 {{User.collect.length}}</view>
-			<view @click='go()'>附近的诗人 {{User.collect.length}}</view>
+			<view >AI创作 {{User.collect.length}}</view>
+			<view>附近的诗人 {{User.collect.length}}</view>
 			<view id="a">废弃草稿 {{User.create.length}}</view>
 			<view id="a">赞助我们 {{User.create.length}}</view>
 		</view>
@@ -43,13 +43,12 @@ import { onMounted,ref } from "vue";
 	  User.value =await	todo.GetUser().then(res=>{
 		  return res.data[0]
 	  })
-    
 	}
 	
-	const go=()=>{
+	const GoNavigateTo=(Url,value)=>{
 		console.log("跳转");
 		uni.navigateTo({
-			'url':'/pages/collect/index?data=' +JSON.stringify(User.value.collect), 
+			'url':`/pages/${Url}/index?data=` +JSON.stringify(value), 
 		})
 	}
 	onMounted(()=>{
@@ -104,7 +103,7 @@ import { onMounted,ref } from "vue";
 			
 			  height: 200rpx;
 		  }
-		  view:active::after{
+		  view:hover:after{
 			  
 			  width: 100%;
 				animation: after .3s linear;
@@ -118,18 +117,11 @@ import { onMounted,ref } from "vue";
 			 width: 0%;
 			
 			 position: absolute;
-			 background-color: $uni-bg-color-hover;	
+			 background-color:$uni-bg-color-mask;	
 			 // transition: .1s all linear;
 			 height: 100%;
 		 }
 	  }
   }
-  @keyframes after {
-  	 0%{
-		      width: 0%;
-	 }
-	 100%{
-		      width: 100%;
-	 }
-  }
+  
 </style>

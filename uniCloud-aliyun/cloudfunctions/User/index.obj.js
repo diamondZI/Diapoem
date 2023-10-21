@@ -10,18 +10,12 @@ module.exports = {
 		return res
 	},
 	GetUser_collect(A){
-		const a=[]
+		
 		const db=uniCloud.database()
-        const dbCmd=db.command()
-			console.log(el);
-			let res =db.collection("poem").where(
-			{
-				_Id:dbCmd.in(A)
-			}
-			).get()
-			// a.push(res)
-		// })
-		// console.log(a,"年后");
+        // const dbCmd=db.command
+		// const /
+			let res =db.collection("poem").get()
+	
 		return res 			
 					// const dbCmd=db.command
 	},

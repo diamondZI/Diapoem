@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/home/index",
-    "pages/collect/index"
+    "pages/collect/index",
+    "pages/Personal/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

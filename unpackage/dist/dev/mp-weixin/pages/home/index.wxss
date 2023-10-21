@@ -65,23 +65,15 @@
   display: flex;
   height: 200rpx;
 }
-.userIorf .UserButton view.data-v-4978fed5:active::after {
+.userIorf .UserButton view.data-v-4978fed5:hover:after {
   width: 100%;
-  animation: after-4978fed5 0.3s linear;
+  animation: after 0.3s linear;
 }
 .userIorf .UserButton view.data-v-4978fed5:after {
   border-radius: 10rpx;
   content: "";
   width: 0%;
   position: absolute;
-  background-color: rgba(241, 129, 201, 0.2);
+  background-color: rgba(0, 0, 0, 0.4);
   height: 100%;
-}
-@keyframes after-4978fed5 {
-0% {
-    width: 0%;
-}
-100% {
-    width: 100%;
-}
 }
