@@ -1,0 +1,1 @@
+<view><view class="ReadBox" style="{{'--background:' + b}}"><poem wx:if="{{a}}" u-i="783cfd7e-0" bind:__l="__l" u-p="{{a}}"></poem></view><view class="A"></view><view class="BCOLOR"><view wx:for="{{c}}" wx:for-item="item" wx:key="c" class="colorbox" bindtap="{{item.a}}" style="{{'background:' + item.b}}"></view></view></view>

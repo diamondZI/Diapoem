@@ -67,7 +67,7 @@
 }
 .userIorf .UserButton view.data-v-4978fed5:hover:after {
   width: 100%;
-  animation: after 0.3s linear;
+  animation: after 0.1s linear;
 }
 .userIorf .UserButton view.data-v-4978fed5:after {
   border-radius: 10rpx;

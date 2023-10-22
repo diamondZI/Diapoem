@@ -1,26 +1,29 @@
 "use strict";
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 const common_vendor = require("./common/vendor.js");
+const store_theme = require("./store/theme.js");
 if (!Math) {
   "./pages/index/index.js";
   "./pages/home/index.js";
   "./pages/collect/index.js";
   "./pages/Personal/index.js";
+  "./pages/My_write/index.js";
+  "./pages/theme/index.js";
 }
 const _sfc_main = {
-  onLaunch: function() {
-    console.log("App Launch");
-  },
-  onShow: function() {
-    console.log("App Show");
-  },
-  onHide: function() {
-    console.log("App Hide");
+  __name: "App",
+  setup(__props) {
+    const a = store_theme.useCounterStore();
+    console.log(a.$state.count);
+    return () => {
+    };
   }
 };
 const App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/koajs/DiaPoem/App.vue"]]);
+const pinia = common_vendor.createPinia();
 function createApp() {
   const app = common_vendor.createSSRApp(App);
+  app.use(pinia);
   return {
     app
   };

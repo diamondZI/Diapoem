@@ -15,14 +15,14 @@
 			</view>
         </view>
 		<view class="UserButton">
-			<view @click='GoNavigateTo('collect',User.collect)' class="A">
+			<view @click='GoNavigateTo("collect",User.collect)' class="A">
 				<span style="z-index: 1;">收藏 {{User.collect.length}}</span>
 			</view>
-			<view >
+			<view @click='GoNavigateTo("Personal",User.collect)'>
 				<span style="z-index: 1;">个人介绍 {{User.collect.length}}</span>
 			</view>
-			<view id="a">创作 {{User.create.length}}</view>
-			<view id="a">主题 {{User.create.length}}</view>
+			<view id="a" @click='GoNavigateTo("My_write",User.collect)'>创作 {{User.create.length}}</view>
+			<view id="a" @click='GoNavigateTo("theme",User.collect)'>主题 {{User.create.length}}</view>
 		</view>
 		<view class="UserButton" >
 			<view >AI创作 {{User.collect.length}}</view>
@@ -106,7 +106,7 @@ import { onMounted,ref } from "vue";
 		  view:hover:after{
 			  
 			  width: 100%;
-				animation: after .3s linear;
+				animation: after .1s linear;
 			  }
 		  
 			 

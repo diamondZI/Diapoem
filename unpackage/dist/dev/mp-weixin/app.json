@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/home/index",
     "pages/collect/index",
-    "pages/Personal/index"
+    "pages/Personal/index",
+    "pages/My_write/index",
+    "pages/theme/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

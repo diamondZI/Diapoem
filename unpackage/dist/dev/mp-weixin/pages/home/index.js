@@ -19,10 +19,10 @@ const _sfc_main = {
         return res.data[0];
       });
     };
-    const go = () => {
+    const GoNavigateTo = (Url, value) => {
       console.log("跳转");
       common_vendor.index.navigateTo({
-        "url": "/pages/collect/index?data=" + JSON.stringify(User.value.collect)
+        "url": `/pages/${Url}/index?data=` + JSON.stringify(value)
       });
     };
     common_vendor.onMounted(() => {
@@ -40,16 +40,17 @@ const _sfc_main = {
           size: "30"
         }),
         f: common_vendor.t(User.value.collect.length),
-        g: common_vendor.o(($event) => go()),
+        g: common_vendor.o(($event) => GoNavigateTo("collect", User.value.collect)),
         h: common_vendor.t(User.value.collect.length),
-        i: common_vendor.t(User.value.create.length),
+        i: common_vendor.o(($event) => GoNavigateTo("Personal", User.value.collect)),
         j: common_vendor.t(User.value.create.length),
-        k: common_vendor.t(User.value.collect.length),
-        l: common_vendor.o(($event) => go()),
-        m: common_vendor.t(User.value.collect.length),
-        n: common_vendor.o(($event) => go()),
-        o: common_vendor.t(User.value.create.length),
-        p: common_vendor.t(User.value.create.length)
+        k: common_vendor.o(($event) => GoNavigateTo("My_write", User.value.collect)),
+        l: common_vendor.t(User.value.create.length),
+        m: common_vendor.o(($event) => GoNavigateTo("theme", User.value.collect)),
+        n: common_vendor.t(User.value.collect.length),
+        o: common_vendor.t(User.value.collect.length),
+        p: common_vendor.t(User.value.create.length),
+        q: common_vendor.t(User.value.create.length)
       });
     };
   }

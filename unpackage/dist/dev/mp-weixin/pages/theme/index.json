@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "更改主题",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "poem": "../../components/Poem/index"
+  }
+}

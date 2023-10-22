@@ -1,15 +1,7 @@
-<script>
-	export default {
-		onLaunch: function() {
-			console.log('App Launch')
-		},
-		onShow: function() {
-			console.log('App Show')
-		},
-		onHide: function() {
-			console.log('App Hide')
-		}
-	}
+<script setup>
+	import {useCounterStore} from "@/store/theme.js"
+	const a=useCounterStore()
+	console.log(a.$state.count);
 </script>
 
 <style lang="scss">
@@ -20,6 +12,9 @@
     font-weight: normal;
     font-style: normal;
 }
+:root{
+	--backround-color:'rgb(255,250,240)'
+}
 @keyframes after {
   	 0%{
 		      width: 0%;
@@ -28,10 +23,7 @@
 		      width: 100%;
 	 }
   }
-  view:active:after{
-  			  width: 100%;
-  				animation: after .3s linear;
-	}
+  
 	page{
 		margin: 0;		
 		padding: 0 ;

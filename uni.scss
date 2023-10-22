@@ -30,7 +30,7 @@ $uni-text-color-disable:#c0c0c0;
 
 /* 背景颜色 */
 $uni-bg-color-one:rgb(27,59,100);
-$uni-bg-color:rgb(241, 229, 201);
+$uni-bg-color:var(--backround-color);
 $uni-bg-color-grey:#FFFFFF;
 $uni-bg-color-hover:rgb(241, 229, 201,.2);;//点击状态颜色
 $uni-bg-color-mask:rgba(0, 0, 0, 0.4);//遮罩颜色

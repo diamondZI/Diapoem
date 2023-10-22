@@ -30,6 +30,24 @@
             }
             
         }
+        ,{
+            "path" : "pages/My_write/index",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的创作",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/theme/index",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "更改主题",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

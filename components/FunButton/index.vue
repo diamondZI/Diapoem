@@ -1,13 +1,16 @@
 <template>
 	<view class="FUNBUTTON" ref="FunButton">
-		<view class="F" style="z-index: 100;">
-			
+		<view class="F" style="z-index: 100">
 		</view>
 	    <view class="A" @click="aclick">
-			
+			收藏
 		</view>
-	    <view class="B" @click="aclick">2</view>
-	    <view class="C" @click="aclick">3</view>
+	    <view class="B" @click="aclick">
+			查看作者
+		</view>
+	    <view class="C" @click="aclick">
+			关注作者
+		</view>
 	</view>
 </template>
 
