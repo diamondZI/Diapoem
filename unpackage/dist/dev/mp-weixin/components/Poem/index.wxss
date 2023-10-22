@@ -10,9 +10,10 @@
   font-style: unset;
 }
 .POEM .paragraphs {
-  margin-top: 10px;
+  letter-spacing: 20rpx;
+  line-height: 3rem;
   display: flex;
-  font-size: 20px;
+  font-size: 40px;
   gap: 12rpx;
   flex-direction: column;
 }

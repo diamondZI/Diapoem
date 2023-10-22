@@ -31,7 +31,7 @@
   font-style: normal;
 }
 :root {
-  --backround-color:"rgb(255,250,240)" ;
+  --backround-color:var(theme.backroundcolor) ;
 }
 @keyframes after {
 0% {

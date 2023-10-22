@@ -1,7 +1,8 @@
-<script setup>
-	import {useCounterStore} from "@/store/theme.js"
-	const a=useCounterStore()
-	console.log(a.$state.count);
+<script  setup>
+ 	import { useThemeterStor } from "@/store/theme.js"
+    const theme=useThemeterStor()
+	
+
 </script>
 
 <style lang="scss">
@@ -13,7 +14,7 @@
     font-style: normal;
 }
 :root{
-	--backround-color:'rgb(255,250,240)'
+	--backround-color:var(theme.backroundcolor)
 }
 @keyframes after {
   	 0%{

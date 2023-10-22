@@ -4,8 +4,6 @@ const _sfc_main = {
   __name: "index",
   props: ["poem"],
   setup(__props) {
-    const { poem } = __props;
-    console.log("zi1", poem);
     return (_ctx, _cache) => {
       return {
         a: common_vendor.t(__props.poem.title),

@@ -1,23 +1,28 @@
 <template>
 	<view>
-    <view class="ReadBox" :style="{'--background':BG}">
+    <view class="ReadBox" :style="{'--background':Theme.theme.backroundcolor}">
     	<Poem  :poem='content'></Poem>
+		
     </view>
-     <view class="A">
-     	
-     </view>
+
    <view class="BCOLOR">
           <view class="colorbox" v-for="(item,index) in bgroundColor" 
 		   @click="changeColor(item)"
 		   :style="{background:item}" :key="index">
           </view>   	
    </view>
+   <view class="A">
+   	{{Theme.theme}}
+   </view>
 	</view>
 </template>
 
 <script setup>
-	import Poem from "@/components/Poem/index.vue"
-import { ref } from "vue";
+	import Poem from "@/components/Poem/index.vue";
+	import { useThemeterStor } from "@/store/theme.js"
+import { computed, ref,onMounted } from "vue";
+    const Theme=useThemeterStor()	
+
 	const content={
 		title:"大海",
 		author:"博尔赫斯",		
@@ -39,12 +44,15 @@ import { ref } from "vue";
 		]
 	}
     const BG=ref('rgb(255,250,240)')
-	const BG1='rgb(255,250,240)'
+	
+	// const BG1='rgb(255,250,240)'
     const bgroundColor=['rgb(27,59,100)','rgb(255,250,240)','rgb(226,203,173)','rgb(199, 237, 204)','rgb(220, 226, 241)']
 	function changeColor(color){
-		console.log(color);
+		// console.log(color);
+		Theme.onChangeBackroundcolor(color)
            BG.value=color
 	}
+	// console.log(Theme.a);
 </script>
 
 <style lang="scss">

@@ -18,10 +18,6 @@ import Loding from "@/components/Loding/index.vue"
 import { onLoad,onPullDownRefresh } from "@dcloudio/uni-app"
 import {ref, onMounted } from "vue";
 	const {poem}=defineProps(['poem'])
-
-console.log("zi1",poem);
-
-
 </script>
 
 <style lang="less" >
@@ -39,9 +35,10 @@ console.log("zi1",poem);
 		font-style: unset;
 	}
 	.paragraphs{
-		margin-top: 10px;
+        letter-spacing: 20rpx; 
+		line-height: 3rem;
 		display: flex;
-		font-size: 20px;
+		font-size: 40px;
 		gap: 12rpx;
 		flex-direction: column;
 	}

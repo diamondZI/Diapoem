@@ -1,5 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const store_theme = require("../../store/theme.js");
 if (!Math) {
   Poem();
 }
@@ -7,6 +8,7 @@ const Poem = () => "../../components/Poem/index.js";
 const _sfc_main = {
   __name: "index",
   setup(__props) {
+    const Theme = store_theme.useThemeterStor();
     const content = {
       title: "大海",
       author: "博尔赫斯",
@@ -30,7 +32,7 @@ const _sfc_main = {
     const BG = common_vendor.ref("rgb(255,250,240)");
     const bgroundColor = ["rgb(27,59,100)", "rgb(255,250,240)", "rgb(226,203,173)", "rgb(199, 237, 204)", "rgb(220, 226, 241)"];
     function changeColor(color) {
-      console.log(color);
+      Theme.onChangeBackroundcolor(color);
       BG.value = color;
     }
     return (_ctx, _cache) => {
@@ -38,14 +40,15 @@ const _sfc_main = {
         a: common_vendor.p({
           poem: content
         }),
-        b: BG.value,
+        b: common_vendor.unref(Theme).theme.backroundcolor,
         c: common_vendor.f(bgroundColor, (item, index, i0) => {
           return {
             a: common_vendor.o(($event) => changeColor(item), index),
             b: item,
             c: index
           };
-        })
+        }),
+        d: common_vendor.t(common_vendor.unref(Theme).theme)
       };
     };
   }

@@ -13,8 +13,7 @@ if (!Math) {
 const _sfc_main = {
   __name: "App",
   setup(__props) {
-    const a = store_theme.useCounterStore();
-    console.log(a.$state.count);
+    store_theme.useThemeterStor();
     return () => {
     };
   }
