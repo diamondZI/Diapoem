@@ -28,7 +28,7 @@
 			<view >AI创作 {{User.collect.length}}</view>
 			<view>附近的诗人 {{User.collect.length}}</view>
 			<view id="a">废弃草稿 {{User.create.length}}</view>
-			<view id="a">赞助我们 {{User.create.length}}</view>
+			<view id="a"  @click='GoNavigateTo("Aboutme",)'>赞助我们 {{User.create.length}}</view>
 		</view>
 	</view>
 	</template>

@@ -1,0 +1,20 @@
+
+.content.data-v-e7ac45b4 {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+}
+.logo.data-v-e7ac45b4 {
+		height: 200rpx;
+		width: 200rpx;
+		margin-top: 200rpx;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 50rpx;
+}
+.text-area.data-v-e7ac45b4 {
+		display: flex;
+		justify-content: center;
+		color: #00aa7f;
+}

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 const common_vendor = require("./common/vendor.js");
-const store_theme = require("./store/theme.js");
+require("./store/theme.js");
 if (!Math) {
   "./pages/index/index.js";
   "./pages/home/index.js";
@@ -9,11 +9,11 @@ if (!Math) {
   "./pages/Personal/index.js";
   "./pages/My_write/index.js";
   "./pages/theme/index.js";
+  "./pages/Aboutme/index.js";
 }
 const _sfc_main = {
   __name: "App",
   setup(__props) {
-    store_theme.useThemeterStor();
     return () => {
     };
   }

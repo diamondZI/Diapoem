@@ -1,7 +1,6 @@
+
 <script  setup>
  	import { useThemeterStor } from "@/store/theme.js"
-    const theme=useThemeterStor()
-	
 
 </script>
 
@@ -13,9 +12,7 @@
     font-weight: normal;
     font-style: normal;
 }
-:root{
-	--backround-color:var(theme.backroundcolor)
-}
+
 @keyframes after {
   	 0%{
 		      width: 0%;
@@ -30,7 +27,7 @@
 		padding: 0 ;
 		box-sizing:content-box;
 		font-family: "得意黑 斜体";
-		 background-color: $uni-bg-color;
+		 
 	}
 	/*每个页面公共css */
 </style>

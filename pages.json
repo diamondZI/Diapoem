@@ -48,6 +48,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/Aboutme/index",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

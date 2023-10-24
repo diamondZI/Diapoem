@@ -30,9 +30,6 @@
   font-weight: normal;
   font-style: normal;
 }
-:root {
-  --backround-color:var(theme.backroundcolor) ;
-}
 @keyframes after {
 0% {
     width: 0%;
@@ -46,7 +43,6 @@ page {
   padding: 0;
   box-sizing: content-box;
   font-family: "得意黑 斜体";
-  background-color: var(--backround-color);
 }
 
 /*每个页面公共css */page{--status-bar-height:25px;--top-window-height:0px;--window-top:0px;--window-bottom:0px;--window-left:0px;--window-right:0px;--window-magin:0px}[data-c-h="true"]{display: none !important;}

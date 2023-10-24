@@ -1,6 +1,6 @@
 <template>
 	<Loding v-if="!poem"></Loding>
-	 <view class="content" v-else >
+	 <view class="content" v-else  :style="[Theme.theme]" >
 		  <Poem :poem='poem'></Poem>
 		  <FunButton></FunButton>
 	</view>
@@ -13,6 +13,8 @@ import { onPullDownRefresh } from "@dcloudio/uni-app"
 import Poem from "@/components/Poem/index.vue"
 import Loding from "@/components/Loding/index.vue"
 import FunButton from "@/components/FunButton/index.vue"
+import { useThemeterStor } from "@/store/theme.js"
+const Theme=useThemeterStor()
 const poem=ref()
 const todo = uniCloud.importObject('poem')
 async function  C(){
@@ -28,13 +30,14 @@ async function  C(){
 onMounted(()=>{
 	C()
 })
-onPullDownRefresh(()=>{
-	C()
-})
+
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
+	
 	.content{
-		padding: 20px;
+	 padding: 20px;
+		background-color: var(--backroundcolor);
+	
 	}
 </style>

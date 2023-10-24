@@ -1,5 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const store_theme = require("../../store/theme.js");
 if (!Math) {
   (Loding + Poem + FunButton)();
 }
@@ -9,6 +10,7 @@ const FunButton = () => "../../components/FunButton/index.js";
 const _sfc_main = {
   __name: "index",
   setup(__props) {
+    const Theme = store_theme.useThemeterStor();
     const poem = common_vendor.ref();
     const todo = common_vendor.Ds.importObject("poem");
     async function C() {
@@ -24,16 +26,14 @@ const _sfc_main = {
     common_vendor.onMounted(() => {
       C();
     });
-    common_vendor.onPullDownRefresh(() => {
-      C();
-    });
     return (_ctx, _cache) => {
       return common_vendor.e({
         a: !poem.value
       }, !poem.value ? {} : {
         b: common_vendor.p({
           poem: poem.value
-        })
+        }),
+        c: common_vendor.s(common_vendor.unref(Theme).theme)
       });
     };
   }

@@ -4,7 +4,12 @@ const _sfc_main = {
   __name: "index",
   setup(__props) {
     const aclick = () => {
-      console.log("nihao1");
+      common_vendor.index.login({
+        provider: "weixin",
+        success(event) {
+          console.log(event);
+        }
+      });
     };
     return (_ctx, _cache) => {
       return {

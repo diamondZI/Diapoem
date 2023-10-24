@@ -1,9 +1,11 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const store_theme = require("../../store/theme.js");
 const _sfc_main = {
   __name: "index",
   props: ["poem"],
   setup(__props) {
+    const theme = store_theme.useThemeterStor();
     return (_ctx, _cache) => {
       return {
         a: common_vendor.t(__props.poem.title),
@@ -14,7 +16,8 @@ const _sfc_main = {
             a: common_vendor.t(el),
             b: el
           };
-        })
+        }),
+        e: common_vendor.s(common_vendor.unref(theme).theme)
       };
     };
   }

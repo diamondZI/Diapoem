@@ -1,9 +1,8 @@
 <template>
-	
-	<view class="POEM" id="POEM" >
+	<view class="POEM" id="POEM" :style="[theme.theme]">
          <view>
 			 <text selectable class="h1" @click="clie()">{{poem.title}}</text>
-			 <text selectable='true' > ___{{poem.author}}</text>
+			 <text selectable='true' style="letter-spacing: normal;"> ___{{poem.author}}</text>
 		 </view>
 		 <view class="paragraphs">
 		 	 <text selectable='true' v-for="(el,index) in poem.paragraphs"  :key="el"  id="text">
@@ -17,28 +16,34 @@
 import Loding from "@/components/Loding/index.vue"
 import { onLoad,onPullDownRefresh } from "@dcloudio/uni-app"
 import {ref, onMounted } from "vue";
-	const {poem}=defineProps(['poem'])
+import {useThemeterStor} from "@/store/theme.js"
+
+const theme=useThemeterStor()
+const {poem}=defineProps(['poem'])
 </script>
 
 <style lang="less" >
 
 .POEM{
-	
+	background-color: var(--backroundcolor);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	// align-items: center;
-	padding: 13rpx;
+   
+
+	font-size: var(--size);
 	.h1{
-		margin-bottom: 10px;
-		font-size: 35px;
+	
+		font-size: calc(var(--size)*1.5) !important;
 		font-style: unset;
 	}
 	.paragraphs{
-        letter-spacing: 20rpx; 
-		line-height: 3rem;
+		letter-spacing: var(--letter_spacing);
+		
+			line-height: var(--line_height);
+		// line-height: var(--);
 		display: flex;
-		font-size: 40px;
+		
 		gap: 12rpx;
 		flex-direction: column;
 	}

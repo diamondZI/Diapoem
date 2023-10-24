@@ -1,19 +1,18 @@
 .POEM {
+  background-color: var(--backroundcolor);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 13rpx;
+  font-size: var(--size);
 }
 .POEM .h1 {
-  margin-bottom: 10px;
-  font-size: 35px;
+  font-size: calc(var(--size)*1.5) !important;
   font-style: unset;
 }
 .POEM .paragraphs {
-  letter-spacing: 20rpx;
-  line-height: 3rem;
+  letter-spacing: var(--letter_spacing);
+  line-height: var(--line_height);
   display: flex;
-  font-size: 40px;
   gap: 12rpx;
   flex-direction: column;
 }

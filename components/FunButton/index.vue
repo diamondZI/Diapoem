@@ -6,7 +6,7 @@
 			收藏
 		</view>
 	    <view class="B" @click="aclick">
-			查看作者
+		      复制
 		</view>
 	    <view class="C" @click="aclick">
 			关注作者
@@ -17,7 +17,13 @@
 <script setup>
 import { onMounted,ref } from "vue";
 const aclick=()=>{
-	console.log("nihao1");
+ uni.login({
+	 provider:"weixin",
+    success(event) {
+    	const {code}=event
+    console.log(event);
+     }
+ })
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
 	<view>
-    <view class="ReadBox" :style="{'--background':Theme.theme.backroundcolor}">
-    	<Poem  :poem='content'></Poem>
+    <view class="ReadBox" >
+    	<Poem  style="width: 100vw;" :poem='content'></Poem>
 		
     </view>
 
@@ -12,8 +12,13 @@
           </view>   	
    </view>
    <view class="A">
-   	{{Theme.theme}}
-   </view>
+	   字体大小 {{duration}}
+ 	<slider @change="(e)=>changeSize(e)" style="width: 90vw;" activeColor="rgb(27,59,100)" :value="duration" min="13" max="46" />
+ 	<slider
+	 class="letter"
+	 @change="(e)=>changeletter(e)" style="width: 90vw;" activeColor="rgb(27,59,100)" :value="duration2" min="0" max="15" />
+ 	<slider @change="(e)=>changeheight(e)" style="width: 90vw;" activeColor="rgb(27,59,100)" :value="duration3" min="32" max="48" />
+  </view>
 	</view>
 </template>
 
@@ -22,7 +27,9 @@
 	import { useThemeterStor } from "@/store/theme.js"
 import { computed, ref,onMounted } from "vue";
     const Theme=useThemeterStor()	
-
+	const duration=ref(20)
+	const duration2=ref(0)
+	const duration3=ref(0)
 	const content={
 		title:"大海",
 		author:"博尔赫斯",		
@@ -44,33 +51,36 @@ import { computed, ref,onMounted } from "vue";
 		]
 	}
     const BG=ref('rgb(255,250,240)')
-	
-	// const BG1='rgb(255,250,240)'
     const bgroundColor=['rgb(27,59,100)','rgb(255,250,240)','rgb(226,203,173)','rgb(199, 237, 204)','rgb(220, 226, 241)']
 	function changeColor(color){
-		// console.log(color);
 		Theme.onChangeBackroundcolor(color)
            BG.value=color
 	}
-	// console.log(Theme.a);
+	const changeSize=(e)=>{
+		Theme.onChangesize(e.detail.value)
+	}
+	const changeletter=(e)=>{
+		Theme.onChangeletter(e.detail.value)
+	}
+	const changeheight=(e)=>{
+		Theme.onChangeheight(e.detail.value)
+	}
 </script>
 
 <style lang="scss">
+
  .ReadBox{
 	 width: 100vw;
 	 height: 100vw;
 	 display: flex;
 	 justify-content: center;
-	 // background-color: rgb(241,209,201);
-	 background-color: var(--background);
-
-
+	 background-color: var(--backroundcolor);
 	 overflow-y: auto;
  }
  .A{
-	 width: 100px;
-	 height: 100px;
-	 background-color: var(BG1);
+	
+		background-color: var(BG1);
+	
  }
  .BCOLOR{
 	 padding: 20px;

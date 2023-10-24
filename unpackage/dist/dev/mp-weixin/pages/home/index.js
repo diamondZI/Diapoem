@@ -50,7 +50,8 @@ const _sfc_main = {
         n: common_vendor.t(User.value.collect.length),
         o: common_vendor.t(User.value.collect.length),
         p: common_vendor.t(User.value.create.length),
-        q: common_vendor.t(User.value.create.length)
+        q: common_vendor.t(User.value.create.length),
+        r: common_vendor.o(($event) => GoNavigateTo("Aboutme"))
       });
     };
   }

@@ -28,12 +28,10 @@
   height: 100vw;
   display: flex;
   justify-content: center;
-  background-color: var(--background);
+  background-color: var(--backroundcolor);
   overflow-y: auto;
 }
 .A {
-  width: 100px;
-  height: 100px;
   background-color: var(BG1);
 }
 .BCOLOR {

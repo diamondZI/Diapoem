@@ -9,6 +9,9 @@ const _sfc_main = {
   __name: "index",
   setup(__props) {
     const Theme = store_theme.useThemeterStor();
+    const duration = common_vendor.ref(20);
+    const duration2 = common_vendor.ref(0);
+    const duration3 = common_vendor.ref(0);
     const content = {
       title: "大海",
       author: "博尔赫斯",
@@ -35,20 +38,34 @@ const _sfc_main = {
       Theme.onChangeBackroundcolor(color);
       BG.value = color;
     }
+    const changeSize = (e) => {
+      Theme.onChangesize(e.detail.value);
+    };
+    const changeletter = (e) => {
+      Theme.onChangeletter(e.detail.value);
+    };
+    const changeheight = (e) => {
+      Theme.onChangeheight(e.detail.value);
+    };
     return (_ctx, _cache) => {
       return {
         a: common_vendor.p({
           poem: content
         }),
-        b: common_vendor.unref(Theme).theme.backroundcolor,
-        c: common_vendor.f(bgroundColor, (item, index, i0) => {
+        b: common_vendor.f(bgroundColor, (item, index, i0) => {
           return {
             a: common_vendor.o(($event) => changeColor(item), index),
             b: item,
             c: index
           };
         }),
-        d: common_vendor.t(common_vendor.unref(Theme).theme)
+        c: common_vendor.t(duration.value),
+        d: common_vendor.o((e) => changeSize(e)),
+        e: duration.value,
+        f: common_vendor.o((e) => changeletter(e)),
+        g: duration2.value,
+        h: common_vendor.o((e) => changeheight(e)),
+        i: duration3.value
       };
     };
   }
