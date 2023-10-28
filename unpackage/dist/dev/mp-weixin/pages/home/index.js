@@ -13,9 +13,10 @@ const _sfc_main = {
   __name: "index",
   setup(__props) {
     const User = common_vendor.ref();
-    const todo = common_vendor.Ds.importObject("User");
+    const todo = common_vendor.$s.importObject("User");
     const a = async () => {
       User.value = await todo.GetUser().then((res) => {
+        console.log(res);
         return res.data[0];
       });
     };

@@ -6,7 +6,9 @@ module.exports = {
 	},
 	GetUser(){
          const db=uniCloud.database()		
-			let res =db.collection("users").get()
+			let res =db.collection("users").where({
+				user_name:"西川"
+			}).get()
 		return res
 	},
 	GetUser_collect(A){

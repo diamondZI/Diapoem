@@ -12,7 +12,7 @@ const _sfc_main = {
   setup(__props) {
     const Theme = store_theme.useThemeterStor();
     const poem = common_vendor.ref();
-    const todo = common_vendor.Ds.importObject("poem");
+    const todo = common_vendor.$s.importObject("poem");
     async function C() {
       poem.value = [];
       poem.value = await todo.get().then((res) => {

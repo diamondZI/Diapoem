@@ -41,6 +41,7 @@ import { onMounted,ref } from "vue";
 	const todo = uniCloud.importObject('User')
 	const a= async ()=>{
 	  User.value =await	todo.GetUser().then(res=>{
+		  console.log(res);
 		  return res.data[0]
 	  })
 	}

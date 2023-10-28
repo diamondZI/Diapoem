@@ -63,7 +63,12 @@
         "setting" : {
             "urlCheck" : false
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : "附近的同好诗人.提供交流平台"
+            }
+        }
     },
     "mp-alipay" : {
         "usingComponents" : true
