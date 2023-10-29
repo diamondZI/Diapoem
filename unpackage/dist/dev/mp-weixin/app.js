@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 const common_vendor = require("./common/vendor.js");
-require("./store/theme.js");
+const store_user = require("./store/user.js");
+require("./utility/login.js");
 if (!Math) {
   "./pages/index/index.js";
   "./pages/home/index.js";
@@ -14,6 +15,11 @@ if (!Math) {
 const _sfc_main = {
   __name: "App",
   setup(__props) {
+    const A = store_user.useUserstore();
+    const p = () => {
+      A.GetUser();
+    };
+    p();
     return () => {
     };
   }

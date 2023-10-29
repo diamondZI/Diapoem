@@ -20,6 +20,7 @@
 		"collect":{
 			"bsonType": "array",
 			"description": "诗篇收藏",
+			"foreignKey": "poem",
 			"enum":[
 				{
 				    "id": "653096f699c6248d808d9c53",

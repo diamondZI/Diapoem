@@ -1,7 +1,11 @@
 
 <script  setup>
- 	import { useThemeterStor } from "@/store/theme.js"
-
+ 	import { useUserstore } from "@/store/user.js"
+const A=useUserstore()
+const p=()=>{
+	A.GetUser()
+}
+p()
 </script>
 
 <style lang="scss">

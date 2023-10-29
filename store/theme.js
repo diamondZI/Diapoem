@@ -11,7 +11,7 @@ export const  useThemeterStor=defineStore('Theme',()=>{
 		  // color:''
 	})
 	    const   onChangeBackroundcolor=(value)=>{
-		console.log("niagh1");
+	
 		   theme.value['--backroundcolor']=value
 	   }
 	   const   onChangesize=(value)=>{

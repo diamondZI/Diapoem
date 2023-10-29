@@ -6,7 +6,6 @@
 	</view>
 
 </template>
-
 <script setup>
 import { onMounted, ref } from "vue";
 import { onPullDownRefresh } from "@dcloudio/uni-app"
