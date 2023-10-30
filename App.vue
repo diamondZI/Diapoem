@@ -1,9 +1,13 @@
 
 <script  setup>
  	import { useUserstore } from "@/store/user.js"
+import { onMounted } from "vue";
 const A=useUserstore()
-const p=()=>{
-	A.GetUser()
+const p=async ()=>{
+	await A.GetUser()
+	setTimeout(()=>{
+		console.log(A.UserData);
+	},6000)
 }
 p()
 </script>

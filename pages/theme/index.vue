@@ -2,7 +2,7 @@
 	<view>
     <view class="ReadBox" >
     	<Poem  style="width: 100vw;" :poem='content'></Poem>
-		
+		{{Theme.theme}}
     </view>
 
    <view class="BCOLOR">

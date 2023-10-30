@@ -1,16 +1,16 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const store_user = require("../../store/user.js");
 const _sfc_main = {
   __name: "index",
   setup(__props) {
-    const User = common_vendor.ref({
-      User_name: "西川",
-      avt: "../../static/diamond.jpeg"
-    });
+    const Users = store_user.useUserstore();
     return (_ctx, _cache) => {
       return {
-        a: User.value.avt,
-        b: common_vendor.t(User.value.User_name)
+        a: common_vendor.unref(Users).UserData.avatar,
+        b: common_vendor.t(common_vendor.unref(Users).UserData.user_name),
+        c: common_vendor.t(common_vendor.unref(Users).UserData.slogan),
+        d: common_vendor.t(common_vendor.unref(Users).UserData.self_introduction)
       };
     };
   }

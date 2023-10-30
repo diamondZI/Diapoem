@@ -1,9 +1,9 @@
 <template>
 	<view >
 		<view class="img">
-        <image :src="User.avt" mode=""></image>
-		 <text class="name" >{{User.User_name}}</text>
-		 <text  class="solng">你好世界!</text>
+        <image :src="Users.UserData.avatar" mode=""></image>
+		 <text class="name" >{{Users.UserData.user_name}}</text>
+		 <text  class="solng">{{Users.UserData.slogan}}</text>
 		</view>
 		<view class="fans">
 			<view class="">
@@ -37,20 +37,16 @@
 			</view>
 		</view>
 			<view style="padding: 40px;">
-				&COPY; 一个及其闲散的流浪诗人,向往创作一些让人解闷的同时知晓我境遇的诗
+				&COPY; {{Users.UserData.self_introduction}}
 			</view>
-			
-		
 	</view>
 </template>
 
 <script setup>
 import { ref } from "vue"
- const User=ref({
-	 User_name:"西川",
-	 avt:'../../static/diamond.jpeg',
-	 
- })
+import {useUserstore} from "@/store/user.js"
+const Users=useUserstore()
+ // const User=ref(Users.UserData)
 </script>
 
 <style lang="scss" scoped>

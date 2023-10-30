@@ -1,41 +1,98 @@
 "use strict";
 const common_vendor = require("../common/vendor.js");
-const utility_login = require("../utility/login.js");
 const useUserstore = common_vendor.defineStore("User", () => {
-  const UserData = common_vendor.ref({
-    user_name: "未知名",
-    collect: [
-      // {
-      //     id: '653096f699c6248d808d9c53',
-      //     title: '红花草',
-      //     author: '阿裴',
-      //     date: '2022-12-22'
-      // }
-    ],
-    integral: 1,
-    create: [],
-    theme: {
-      dark: true,
-      color: 0,
-      size: "16px"
-    },
-    PoemNumber: 1,
-    avatar: "",
-    region: "中国",
-    self_introduction: "自东向西",
-    slogan: "你好,世界!"
-  });
+  const UserData = common_vendor.ref();
   const token = common_vendor.ref(null);
   const GetUser = async () => {
-    token.value = false;
+    token.value = await Gettoken();
     if (token.value) {
-      let res = await utility_login.wxLogin(token.value);
-      console.log(res);
+      await wxLogin(token.value);
     } else {
-      let res = await utility_login.wxRegistered(UserData.value);
-      console.log(res);
+      console.log("2");
+      await wxRegistered({
+        user_name: "未知名",
+        collect: [],
+        integral: 1,
+        create: [],
+        theme: {
+          dark: true,
+          color: 0,
+          size: "16px"
+        },
+        PoemNumber: 1,
+        avatar: "",
+        region: "中国",
+        self_introduction: "自东向西",
+        slogan: "你好,世界!"
+      });
     }
   };
-  return { GetUser };
+  const wxLogin = (token2) => {
+    common_vendor.index.login({
+      provider: "weixin",
+      success: (res) => {
+        common_vendor.$s.callFunction({
+          name: "wxLogin",
+          data: {
+            code: res.code,
+            token: token2
+          },
+          success: (res2) => {
+            console.log(res2);
+            UserData.value = res2.result.Userdata.data[0];
+          }
+        });
+      },
+      fail: (err) => {
+        console.log(err);
+      }
+    });
+  };
+  const wxRegistered = (Data) => {
+    console.log("注册");
+    common_vendor.index.login({
+      provider: "weixin",
+      success: (res) => {
+        common_vendor.$s.callFunction({
+          name: "wxRegistered",
+          data: {
+            code: res.code,
+            UserData: Data
+          },
+          success: (res2) => {
+            const {
+              ok,
+              token: token2,
+              msg
+            } = res2.result;
+            if (ok === 200) {
+              console.log("1", res2.result.Userdata.data[0]);
+              UserData.value = res2.result.Userdata.data[0];
+              common_vendor.index.setStorage({
+                data: token2,
+                key: "token"
+              });
+            } else {
+              console.log("失败", ok, msg);
+            }
+          }
+        });
+      }
+    });
+  };
+  const Gettoken = async () => {
+    try {
+      let res = await common_vendor.index.getStorage({
+        key: "token"
+      });
+      return res.data;
+    } catch (e) {
+      return false;
+    }
+  };
+  return {
+    UserData,
+    GetUser
+  };
 });
 exports.useUserstore = useUserstore;

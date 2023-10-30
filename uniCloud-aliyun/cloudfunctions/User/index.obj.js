@@ -12,15 +12,20 @@ module.exports = {
 		return res
 	},
 	GetUser_collect(A){
-		
 		const db=uniCloud.database()
-        // const dbCmd=db.command
-		// const /
-			let res =db.collection("poem").get()
-	
+			let res =db.collection("poem").get()	
 		return res 			
-					// const dbCmd=db.command
 	},
+	SetUser_creat(A){
+		const db=uniCloud.database()
+		db.collection("poem").add(A)
+		db.collection("users").where("create").add({
+			id:A._id,
+			title:A.title,
+			author:A.author
+		})
+		
+	}
 	
 	/**
 	 * method1方法描述

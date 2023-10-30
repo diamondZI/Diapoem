@@ -12,14 +12,24 @@ exports.main = async (event, context) => {
 				dataType:'json',
 			} 
     )
-	const {session_key,openid}=res.data
+	   const {session_key,openid}=res.data
+	   const tokensession=getToken(openid)
+	   const db=uniCloud.database()
+	   let data = await db.collection("users").where({
+	   			 		openid:openid
+	   }).get()
 	   try{
-
-         const tokensession=getToken(openid)
-		 const db=uniCloud.database()
-	      let a=  await db.collection("users").add({...UserData,"openid":openid})
-		return {ok:1,token:tokensession,msg:"注册成功"}
-	   }  catch(e){
+		 if (data.data) {
+		 	return {ok:200,token:tokensession,Userdata:data,msg:"返回数据"}
+		 }
+		  else{
+		 	 await db.collection("users").add({...UserData,"openid":openid})
+			let User = await db.collection("users").where({
+						 		openid:openid
+			}).get()
+		 	return {ok:200,token:tokensession,Userdata:User,msg:"注册成功"}
+		 }
+	     }  catch(e){
 		   	return {ok:400,msg:"请完善数据"}
-	   }
+	     }
 };

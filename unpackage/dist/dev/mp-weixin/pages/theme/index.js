@@ -52,20 +52,21 @@ const _sfc_main = {
         a: common_vendor.p({
           poem: content
         }),
-        b: common_vendor.f(bgroundColor, (item, index, i0) => {
+        b: common_vendor.t(common_vendor.unref(Theme).theme),
+        c: common_vendor.f(bgroundColor, (item, index, i0) => {
           return {
             a: common_vendor.o(($event) => changeColor(item), index),
             b: item,
             c: index
           };
         }),
-        c: common_vendor.t(duration.value),
-        d: common_vendor.o((e) => changeSize(e)),
-        e: duration.value,
-        f: common_vendor.o((e) => changeletter(e)),
-        g: duration2.value,
-        h: common_vendor.o((e) => changeheight(e)),
-        i: duration3.value
+        d: common_vendor.t(duration.value),
+        e: common_vendor.o((e) => changeSize(e)),
+        f: duration.value,
+        g: common_vendor.o((e) => changeletter(e)),
+        h: duration2.value,
+        i: common_vendor.o((e) => changeheight(e)),
+        j: duration3.value
       };
     };
   }
