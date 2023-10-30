@@ -80,6 +80,22 @@ const useUserstore = common_vendor.defineStore("User", () => {
       }
     });
   };
+  const SetAvatarUrl = async (avatar) => {
+    const result = await common_vendor.$s.uploadFile({
+      filePath: avatar,
+      cloudPath: "a.jpg",
+      onUploadProgress: function(progressEvent) {
+        var percentCompleted = Math.round(
+          progressEvent.loaded * 100 / progressEvent.total
+        );
+        console.log(percentCompleted);
+      }
+    });
+    UserData.value.avatar = result.fileID;
+  };
+  const SetText = (key, value) => {
+    UserData.value[`${key}`] = value;
+  };
   const Gettoken = async () => {
     try {
       let res = await common_vendor.index.getStorage({
@@ -92,7 +108,9 @@ const useUserstore = common_vendor.defineStore("User", () => {
   };
   return {
     UserData,
-    GetUser
+    GetUser,
+    SetAvatarUrl,
+    SetText
   };
 });
 exports.useUserstore = useUserstore;

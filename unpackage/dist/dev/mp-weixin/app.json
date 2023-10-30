@@ -6,7 +6,8 @@
     "pages/Personal/index",
     "pages/My_write/index",
     "pages/theme/index",
-    "pages/Aboutme/index"
+    "pages/Aboutme/index",
+    "pages/PersonalEdit/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

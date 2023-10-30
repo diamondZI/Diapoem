@@ -20,16 +20,7 @@
 		"collect":{
 			"bsonType": "array",
 			"description": "诗篇收藏",
-			"foreignKey": "poem",
-			"enum":[
-				{
-					
-				    "id": "653096f699c6248d808d9c53",
-					"title": "红花草",
-				    "author": "阿裴",
-				    "date": "2022-12-22"
-				}
-			]
+			"foreignKey": "poem"
 		},
 		"create":{
 			"bsonType": "array",
@@ -37,41 +28,36 @@
 		},
 		
 		"avatar":{
-			"bsonType": "file",
+			"bsonType": "string",
 			"title": "头像文件",
 			"description": "用户头像"
 			
 		},
-		"wx_openid":{
-			"bsonType": "string",
-			"description": "微信各个平台的openid",
-			"properties":{
-				 "mp":{
-					 "bsonType": "string",
-					 "description": "微信小程序平台openid"
-				 }
-			}
-		},
 		"theme":{
-		     "bsonType": "object",
-			 "enum":{
-				  "dark":true,
-				  "color":'',
-				  "size":"17px"
-			 },
+		     "bsonType": "object", 
 			 "description": "主题"
 		},
 		"region":{
 			"bsonType": "string",
 			"description": "用户的地理位置"
 		},
-		"self-introduction":{
+		"self_introduction":{
 			"bsonType": "string",
 			"description": "个性签名"
 		},
 		"slogan":{
 			"bsonType": "string",
 			"description": "用户的SLOGAN"
+		},
+		"openid":{
+			"bsonType": "string"
+		},
+		"integral":{
+			"bsonType": "int"
+		},
+		"PoemNumber":{
+			"bsonType": "int"
 		}
+		
 	}
 }

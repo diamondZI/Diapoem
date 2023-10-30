@@ -19,7 +19,7 @@ exports.main = async (event, context) => {
 	   			 		openid:openid
 	   }).get()
 	   try{
-		 if (data.data) {
+		 if (data.data.length) {
 		 	return {ok:200,token:tokensession,Userdata:data,msg:"返回数据"}
 		 }
 		  else{
@@ -27,6 +27,7 @@ exports.main = async (event, context) => {
 			let User = await db.collection("users").where({
 						 		openid:openid
 			}).get()
+			console.log("击");
 		 	return {ok:200,token:tokensession,Userdata:User,msg:"注册成功"}
 		 }
 	     }  catch(e){

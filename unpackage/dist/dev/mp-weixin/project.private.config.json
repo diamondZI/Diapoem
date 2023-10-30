@@ -10,7 +10,7 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/home/index",
+          "pathName": "pages/PersonalEdit/index",
           "query": "",
           "launchMode": "default",
           "scene": null

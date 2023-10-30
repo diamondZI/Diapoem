@@ -52,11 +52,19 @@
             "path" : "pages/Aboutme/index",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "关于我",
                 "enablePullDownRefresh": false
             }
-            
-        }
+        },
+		{
+		    "path" : "pages/PersonalEdit/index",
+		    "style" :                                                                                
+		    {
+		        "navigationBarTitleText": "编辑信息",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

@@ -88,6 +88,36 @@ const wxRegistered = (Data) => {
 	})
 
 }
+const SetAvatarUrl= async (avatar)=>{
+	 const result = await uniCloud.uploadFile({
+	        filePath: avatar,
+	        cloudPath: 'a.jpg',
+	        onUploadProgress: function(progressEvent) {
+	          // console.log(progressEvent);
+	          var percentCompleted = Math.round(
+	            (progressEvent.loaded * 100) / progressEvent.total
+	          );
+			  console.log(percentCompleted);
+	        }
+	      });
+	   UserData.value.avatar=result.fileID
+}
+const SetText= (key,value)=>{
+	// console.log(UserData.value[`${ke/y}`]);
+	// console.log(value);
+	UserData.value[`${key}`]=value
+}
+
+const SetUser=async ()=>{
+	const {avatar,user_name,slogan,self_introduction} =UserData.value
+	 const db=await uniCloud.database()
+	await  db.collection('users').doc(UserData.value._id).update({
+		avatar,
+		user_name,
+		slogan,self_introduction
+	})
+	
+}
 const Gettoken = async () => {
 	try{
 		let res = await uni.getStorage({
@@ -100,6 +130,8 @@ const Gettoken = async () => {
 }
 return {
 	UserData,
-	GetUser
-}
+	GetUser,
+	SetAvatarUrl,
+	SetText
+	}
 })
