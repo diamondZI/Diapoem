@@ -7,8 +7,9 @@ if (!Array) {
 }
 const _easycom_uni_icons = () => "../../uni_modules/uni-icons/components/uni-icons/uni-icons.js";
 if (!Math) {
-  _easycom_uni_icons();
+  (Loding + _easycom_uni_icons)();
 }
+const Loding = () => "../../components/Loding/index.js";
 const _sfc_main = {
   __name: "index",
   setup(__props) {
@@ -21,29 +22,31 @@ const _sfc_main = {
       });
     };
     return (_ctx, _cache) => {
-      return {
-        a: common_vendor.unref(U).UserData.avatar,
-        b: common_vendor.t(common_vendor.unref(U).UserData.user_name),
-        c: common_vendor.t(common_vendor.unref(U).UserData.region),
-        d: common_vendor.t(common_vendor.unref(U).UserData.slogan),
-        e: common_vendor.p({
+      return common_vendor.e({
+        a: !common_vendor.unref(U).UserData
+      }, !common_vendor.unref(U).UserData ? {} : {
+        b: common_vendor.unref(U).UserData.avatar,
+        c: common_vendor.t(common_vendor.unref(U).UserData.user_name),
+        d: common_vendor.t(common_vendor.unref(U).UserData.region),
+        e: common_vendor.t(common_vendor.unref(U).UserData.slogan),
+        f: common_vendor.p({
           type: "info-filled",
           size: "30"
         }),
-        f: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
-        g: common_vendor.o(($event) => GoNavigateTo("collect", common_vendor.unref(U).UserData.collect)),
-        h: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
-        i: common_vendor.o(($event) => GoNavigateTo("Personal", common_vendor.unref(U).UserData.collect)),
-        j: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
-        k: common_vendor.o(($event) => GoNavigateTo("My_write", common_vendor.unref(U).UserData.collect)),
-        l: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
-        m: common_vendor.o(($event) => GoNavigateTo("theme", common_vendor.unref(U).UserData.collect)),
-        n: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
+        g: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
+        h: common_vendor.o(($event) => GoNavigateTo("collect", common_vendor.unref(U).UserData.collect)),
+        i: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
+        j: common_vendor.o(($event) => GoNavigateTo("Personal", common_vendor.unref(U).UserData.collect)),
+        k: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
+        l: common_vendor.o(($event) => GoNavigateTo("My_write", common_vendor.unref(U).UserData.collect)),
+        m: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
+        n: common_vendor.o(($event) => GoNavigateTo("theme", common_vendor.unref(U).UserData.collect)),
         o: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
         p: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
         q: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
-        r: common_vendor.o(($event) => GoNavigateTo("Aboutme"))
-      };
+        r: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
+        s: common_vendor.o(($event) => GoNavigateTo("Aboutme"))
+      });
     };
   }
 };

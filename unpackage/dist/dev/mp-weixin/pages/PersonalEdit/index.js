@@ -30,6 +30,9 @@ const _sfc_main = {
       User.SetText(Key.value, Value.value);
       popupCoupon.value.close();
     };
+    common_vendor.onBeforeUnmount(() => {
+      User.SetUser();
+    });
     return (_ctx, _cache) => {
       return {
         a: common_vendor.unref(User).UserData.avatar,

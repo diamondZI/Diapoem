@@ -1,64 +1,50 @@
-.FUNBUTTON.data-v-ab3ed6fc {
+.Box.data-v-ab3ed6fc {
   position: fixed;
-  display: inline-block;
   bottom: 100px;
+  overflow: hidden;
   right: 10px;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  transition: 0.7s all linear;
-  box-shadow: 0 0 3px 0 black;
+  border-radius: 20px;
+  display: flex;
+  box-shadow: 0 0 5px 0 black;
+  transition: 0.2s all linear;
+  flex-direction: column;
+  row-gap: 30px;
+}
+.Boxopen.data-v-ab3ed6fc {
+  width: 40px;
+  height: 260px;
+  border-radius: 20px;
+}
+.ICONBOX.data-v-ab3ed6fc {
+  margin-top: 10px;
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  position: relative;
+  transition: 0.6s all linear;
+  box-shadow: 0 0 2px 0 black;
+}
+.ICONBOX.data-v-ab3ed6fc:active {
+  box-shadow: inset 0 0 5px 0 black;
+}
+.ICONBOX_Active.data-v-ab3ed6fc {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.FUNBUTTON.data-v-ab3ed6fc {
+  bottom: 0px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  position: absolute;
+  transition: 0.2s all linear;
+  box-shadow: 0 0 5px 0 black;
 }
 .FUNBUTTON.data-v-ab3ed6fc:active {
-  box-shadow: 0 0 1px 0 black;
-}
-.FUNBUTTON:active .A.data-v-ab3ed6fc {
-  transform: translateY(-150%);
-  opacity: 1;
-}
-.FUNBUTTON:active .B.data-v-ab3ed6fc {
-  transform: translateY(-300%);
-  opacity: 1;
-}
-.FUNBUTTON:active .C.data-v-ab3ed6fc {
-  transform: translateY(-450%);
-  opacity: 1;
-}
-.B.data-v-ab3ed6fc {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: aqua;
-  opacity: 0;
-  transition: 0.7s all linear;
-}
-.C.data-v-ab3ed6fc {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: aqua;
-  opacity: 0;
-  transition: 0.7s all linear;
-}
-.A.data-v-ab3ed6fc {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: aqua;
-  /* display: none; */
-  opacity: 0;
-  transition: 0.7s all linear;
-}
-.F.data-v-ab3ed6fc {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: aqua;
-  /* display: none; */
-  opacity: 0;
-  transition: 0.7s all linear;
+  background-color: #646464;
+  Box-shadow: 0 0 3px 0 black;
 }

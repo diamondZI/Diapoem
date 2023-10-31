@@ -96,6 +96,28 @@ const useUserstore = common_vendor.defineStore("User", () => {
   const SetText = (key, value) => {
     UserData.value[`${key}`] = value;
   };
+  const SetUser = async () => {
+    const { avatar, user_name, slogan, self_introduction } = UserData.value;
+    const db = await common_vendor.$s.database();
+    await db.collection("users").doc(UserData.value._id).update({
+      avatar,
+      user_name,
+      slogan,
+      self_introduction
+    });
+  };
+  const SetCollect = async (id) => {
+    UserData.value.collect.push(id);
+    const { collect } = UserData.value;
+    try {
+      const db = await common_vendor.$s.database();
+      await db.collection("users").doc(UserData.value._id).update({
+        collect
+      });
+    } catch (e) {
+      console.log(e, "添加失败");
+    }
+  };
   const Gettoken = async () => {
     try {
       let res = await common_vendor.index.getStorage({
@@ -110,7 +132,9 @@ const useUserstore = common_vendor.defineStore("User", () => {
     UserData,
     GetUser,
     SetAvatarUrl,
-    SetText
+    SetUser,
+    SetText,
+    SetCollect
   };
 });
 exports.useUserstore = useUserstore;

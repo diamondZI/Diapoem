@@ -35,7 +35,7 @@
 
 <script setup>
 	import {useUserstore} from "@/store/user.js"
-import { ref } from "vue";
+import { ref ,onBeforeUnmount} from "vue";
     const Value=ref('空白')
 	const Key =ref('')
 	const popupCoupon=ref(null)
@@ -54,7 +54,9 @@ const close=()=>{
 	User.SetText(Key.value,Value.value)
 	popupCoupon.value.close()
 }
-
+onBeforeUnmount(()=>{
+	User.SetUser()
+})
 </script>
 
 <style lang="scss" scoped>

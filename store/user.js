@@ -103,8 +103,6 @@ const SetAvatarUrl= async (avatar)=>{
 	   UserData.value.avatar=result.fileID
 }
 const SetText= (key,value)=>{
-	// console.log(UserData.value[`${ke/y}`]);
-	// console.log(value);
 	UserData.value[`${key}`]=value
 }
 
@@ -116,7 +114,18 @@ const SetUser=async ()=>{
 		user_name,
 		slogan,self_introduction
 	})
-	
+}
+const SetCollect=async (id)=>{
+   UserData.value.collect.push(id)
+   const {collect}=UserData.value
+   try{
+   	const db=await uniCloud.database()
+   	await  db.collection('users').doc(UserData.value._id).update({
+   		collect
+   	})
+   }catch(e){
+          console.log(e,"添加失败");
+   }
 }
 const Gettoken = async () => {
 	try{
@@ -128,10 +137,13 @@ const Gettoken = async () => {
          return false
 	}
 }
+
 return {
 	UserData,
 	GetUser,
 	SetAvatarUrl,
-	SetText
+	SetUser,
+	SetText,
+	SetCollect
 	}
 })

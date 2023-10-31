@@ -84,3 +84,14 @@
   background-color: rgba(100, 100, 100, 0);
   border-bottom: 2px solid #1b3b64;
 }
+.Box.data-v-aad8b7e9 {
+  position: fixed;
+  bottom: 100px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px 0 black;
+  right: 10px;
+  transition: 1s linear all;
+}
+.Box.data-v-aad8b7e9:active {
+  box-shadow: inset 0 0 5px 0 black;
+}

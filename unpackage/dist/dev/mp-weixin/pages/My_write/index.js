@@ -1,9 +1,17 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+if (!Array) {
+  const _easycom_uni_icons2 = common_vendor.resolveComponent("uni-icons");
+  _easycom_uni_icons2();
+}
+const _easycom_uni_icons = () => "../../uni_modules/uni-icons/components/uni-icons/uni-icons.js";
+if (!Math) {
+  _easycom_uni_icons();
+}
 const _sfc_main = {
   __name: "index",
   setup(__props) {
-    const sort = common_vendor.ref(false);
+    common_vendor.ref(false);
     const list = common_vendor.ref();
     common_vendor.onLoad((Option) => {
       list.value = JSON.parse(Option.data).map((el) => {
@@ -15,24 +23,10 @@ const _sfc_main = {
     });
     return (_ctx, _cache) => {
       return {
-        a: common_vendor.o(($event) => sort.value = !sort.value),
-        b: sort.value ? 1 : "",
-        c: common_vendor.f(list.value, (item, index, i0) => {
-          return {
-            a: common_vendor.t(item.title),
-            b: common_vendor.t(item.author),
-            c: index
-          };
-        }),
-        d: sort.value ? 1 : "",
-        e: common_vendor.f(list.value, (item, index, i0) => {
-          return {
-            a: common_vendor.t(item.title),
-            b: common_vendor.t(item.author),
-            c: index
-          };
-        }),
-        f: sort.value ? 1 : ""
+        a: common_vendor.p({
+          type: "plusempty",
+          size: "40"
+        })
       };
     };
   }

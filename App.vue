@@ -5,9 +5,6 @@ import { onMounted } from "vue";
 const A=useUserstore()
 const p=async ()=>{
 	await A.GetUser()
-	setTimeout(()=>{
-		console.log(A.UserData);
-	},6000)
 }
 p()
 </script>

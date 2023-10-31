@@ -11,6 +11,7 @@ if (!Math) {
   "./pages/theme/index.js";
   "./pages/Aboutme/index.js";
   "./pages/PersonalEdit/index.js";
+  "./pages/Write/index.js";
 }
 const _sfc_main = {
   __name: "App",
@@ -18,9 +19,6 @@ const _sfc_main = {
     const A = store_user.useUserstore();
     const p = async () => {
       await A.GetUser();
-      setTimeout(() => {
-        console.log(A.UserData);
-      }, 6e3);
     };
     p();
     return () => {

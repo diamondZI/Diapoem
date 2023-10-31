@@ -64,6 +64,15 @@
 		        "enablePullDownRefresh": false
 		    }
 		    
+		},
+		{
+		    "path" : "pages/Write/index",
+		    "style" :                                                                                
+		    {
+		        "navigationBarTitleText": "创作",
+		        "enablePullDownRefresh": false
+		    }
+		    
 		}
     ],
 	"globalStyle": {

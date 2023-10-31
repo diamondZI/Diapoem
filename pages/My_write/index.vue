@@ -2,20 +2,11 @@
 	<!-- <uni-easyinput  prefix-icon="search" placeholder="请输入" :input-border="false"></uni-easyinput> -->
 <view class="CollectBox">
 	<view class="header">
-			<text>我的创作</text>
-			<view @click="sort=!sort" :class="{'Icon':true,'Iconsort':sort}" ></view>
+		
 	</view>
-		<view class="collect" >
-	     <view :class="{'collect_poem':true,'collect_poem_active':sort}" v-for="(item,index) in list" :key="index">
-			   {{item.title}}
-			 <text class="author" > {{item.author}}</text>
-			 
-		   </view>    <view :class="{'collect_poem':true,'collect_poem_active':sort}" v-for="(item,index) in list" :key="index">
-			   {{item.title}}
-			 <text class="author" > {{item.author}}</text>
-			 
-		   </view>   
-		</view>
+     <view class="Box">
+     		<uni-icons type='plusempty' size='40'></uni-icons>
+     </view>
 </view>
 </template>
 
@@ -113,6 +104,18 @@ import { onLoad} from "@dcloudio/uni-app"
 			  }
 			  
 		}
+	}
+	.Box{
+		
+		position:fixed;
+        bottom: 100px;
+		border-radius: 50%;
+		box-shadow: 0 0 5px 0 black;
+		right: 10px;	
+		transition: 1s linear  all;
+	}
+	.Box:active{
+		box-shadow:inset 0 0 5px 0 black;
 	}
 
 </style>

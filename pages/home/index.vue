@@ -1,6 +1,6 @@
 <template>
-	<!-- <Loding v-if="!U.UserData"></Loding> -->
-	<view class="userIorf" >
+	<Loding v-if="!U.UserData"></Loding>
+	<view class="userIorf" v-else>
         <view class="User">
 			<view class="avatar">
 				<image :src="U.UserData.avatar" mode=""></image>
