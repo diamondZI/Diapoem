@@ -16,15 +16,20 @@ const _sfc_main = {
     const Key = common_vendor.ref("");
     const popupCoupon = common_vendor.ref(null);
     const User = store_user.useUserstore();
+    const KeyNumber = common_vendor.ref(10);
+    const keyWord = common_vendor.computed(() => {
+      return KeyNumber.value - Value.value.length;
+    });
     const onChooseAvatar = (e) => {
       const { avatarUrl } = e.detail;
       User.SetAvatarUrl(avatarUrl);
       console.log(User.UserData.avatar);
     };
-    const open = (value, key) => {
+    const open = (value, key, num) => {
       popupCoupon.value.open();
       Value.value = value;
       Key.value = key;
+      KeyNumber.value = num;
     };
     const close = () => {
       User.SetText(Key.value, Value.value);
@@ -38,18 +43,20 @@ const _sfc_main = {
         a: common_vendor.unref(User).UserData.avatar,
         b: common_vendor.o(onChooseAvatar),
         c: common_vendor.t(common_vendor.unref(User).UserData.user_name),
-        d: common_vendor.o(($event) => open(common_vendor.unref(User).UserData.user_name, "user_name")),
+        d: common_vendor.o(($event) => open(common_vendor.unref(User).UserData.user_name, "user_name", 5)),
         e: common_vendor.t(common_vendor.unref(User).UserData.slogan),
-        f: common_vendor.o(($event) => open(common_vendor.unref(User).UserData.slogan, "slogan")),
+        f: common_vendor.o(($event) => open(common_vendor.unref(User).UserData.slogan, "slogan", 7)),
         g: common_vendor.t(common_vendor.unref(User).UserData.self_introduction),
-        h: common_vendor.o(($event) => open(common_vendor.unref(User).UserData.self_introduction, "self_introduction")),
-        i: Value.value,
-        j: common_vendor.o(($event) => Value.value = $event.detail.value),
-        k: common_vendor.o(close),
-        l: common_vendor.sr(popupCoupon, "1b420d36-0", {
+        h: common_vendor.o(($event) => open(common_vendor.unref(User).UserData.self_introduction, "self_introduction", 20)),
+        i: KeyNumber.value,
+        j: Value.value,
+        k: common_vendor.o(($event) => Value.value = $event.detail.value),
+        l: common_vendor.t(common_vendor.unref(keyWord)),
+        m: common_vendor.o(close),
+        n: common_vendor.sr(popupCoupon, "1b420d36-0", {
           "k": "popupCoupon"
         }),
-        m: common_vendor.p({
+        o: common_vendor.p({
           type: "bottom"
         })
       };

@@ -6,19 +6,19 @@
 		    <image class="avatar" :src="User.UserData.avatar"></image>
 		  </button> 
 		</view>	
-		<view @click="open(User.UserData.user_name,'user_name')"  class="Edit">
+		<view @click="open(User.UserData.user_name,'user_name',5)"  class="Edit">
           <text>笔名</text>
 	     <text >
            {{User.UserData.user_name}}
 		 </text> 
 		</view>	
-		<view @click="open(User.UserData.slogan,'slogan')"  class="Edit">
+		<view @click="open(User.UserData.slogan,'slogan',7)"  class="Edit">
           <text>个签</text>
         <text style="width: 70%; text-align: end;">
         			  {{User.UserData.slogan}}
         </text>   
 		</view>	
-		<view @click="open(User.UserData.self_introduction,'self_introduction')"  class="Edit">
+		<view @click="open(User.UserData.self_introduction,'self_introduction',20)"  class="Edit">
           <text>签名</text>
           <text style="width: 70%; text-align: end;">
                 {{User.UserData.self_introduction}}
@@ -27,7 +27,13 @@
 	</view>
 	<uni-popup ref="popupCoupon" type="bottom">
 			<view title="基础卡片" sub-title="副标题" extra="额外信息" class="popupCoupon">
-                <input type="text"  v-model="Value"/>
+               <view class="input">
+               	 <input type="text" :maxlength="KeyNumber"   v-model="Value"/>
+                 <!-- {{限定字数减去已有字数}} -->
+				  <view class="text">
+				  	{{keyWord}}
+				  </view> 
+			   </view>
 				<button @click="close">关闭</button>
 			</view>
 	</uni-popup>
@@ -35,20 +41,25 @@
 
 <script setup>
 	import {useUserstore} from "@/store/user.js"
-import { ref ,onBeforeUnmount} from "vue";
+import { ref ,onBeforeUnmount, computed, watch} from "vue";
     const Value=ref('空白')
 	const Key =ref('')
 	const popupCoupon=ref(null)
     const User=useUserstore()
+	const KeyNumber=ref(10)
+	const keyWord=computed(()=>{
+		return   (KeyNumber.value - Value.value.length)
+	})
 const onChooseAvatar=(e)=>{
 	const { avatarUrl } = e.detail
 	User.SetAvatarUrl(avatarUrl)
 	console.log(User.UserData.avatar);	
 }
-const open=(value,key)=>{
+const open=(value,key,num)=>{
 	popupCoupon.value.open()
-	  Value.value=value
+	Value.value=value
 	Key.value=key
+	KeyNumber.value=num
 }
 const close=()=>{
 	User.SetText(Key.value,Value.value)
@@ -57,6 +68,7 @@ const close=()=>{
 onBeforeUnmount(()=>{
 	User.SetUser()
 })
+
 </script>
 
 <style lang="scss" scoped>
@@ -85,7 +97,19 @@ onBeforeUnmount(()=>{
 	.popupCoupon{
 		width: 100vw;
 		height: 30vh;
-		background-color: rebeccapurple;
+		background-color:rgb(1,1,1,0.4);
+		.input{
+			position: relative;
+			margin: 20px;
+			input{
+				font-size: 20px;
+				background-color: $uni-bg-color;
+			}
+			.text{
+				position: absolute;
+			     right: 0;
+			}
+		}
 		
 	}
 	

@@ -46,5 +46,17 @@
 .popupCoupon.data-v-1b420d36 {
   width: 100vw;
   height: 30vh;
-  background-color: rebeccapurple;
+  background-color: rgba(1, 1, 1, 0.4);
+}
+.popupCoupon .input.data-v-1b420d36 {
+  position: relative;
+  margin: 20px;
+}
+.popupCoupon .input input.data-v-1b420d36 {
+  font-size: 20px;
+  background-color: var(--backround-color);
+}
+.popupCoupon .input .text.data-v-1b420d36 {
+  position: absolute;
+  right: 0;
 }

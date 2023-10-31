@@ -36,11 +36,20 @@
   font-size: 40px;
   color: #1b3b64;
 }
+.Write .coverView.data-v-e9a32d65 {
+  display: flex;
+  padding: 20px;
+  justify-content: space-around;
+  background-color: rgba(0, 0, 0, 0.2);
+}
 .long.data-v-e9a32d65 {
   position: fixed;
   bottom: 0px;
   background-color: rgba(0, 0, 0, 0.2);
-  filter: blur(30px);
+  display: flex;
+  font-size: 20px;
+  justify-content: space-around;
+  align-items: center;
   height: 40px;
   width: 100vw;
 }

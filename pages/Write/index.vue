@@ -1,9 +1,34 @@
 <template>
     <view class="Write">
-    	<textarea class="title" auto-height="true" auto-focus="true" type="text"  placeholder="标题"/>
+    	<textarea class="title" auto-height="true" auto-focus="true" type="text"  placeholder="标题">
+		<keyboard-accessory class="container" style="height: 50px;">
+		    <cover-view bindtap="tap" style="flex: 1" class="coverView">
+				 <view class="box">
+				 	AI改写
+				 </view>
+				 <view class="box">
+				 	AI接句
+				 </view>
+				 <view class="box">
+				 	另起
+				 </view>
+			</cover-view>
+		  </keyboard-accessory>	
+			
+		</textarea>
+		<textarea placeholder="内容" style="font-size: 20px; margin-top: 10px;">
+			
+		</textarea>
     </view>
 	<view class="long">
-		1212
+		  <view class="box">
+		  	   发表 
+		  </view><view class="box">
+		  	   废弃
+		  </view><view class="box">
+		  	   <!-- 哦!看来你有一个很好的idea -->
+			   放入草稿 
+		  </view>
 	</view>
 </template>
 <script setup>
@@ -22,12 +47,22 @@
 			font-size: 40px;
 			color: $uni-bg-color-one;
 		}
+		.coverView{
+			display: flex;
+           padding: 20px;
+		   justify-content: space-around;
+			background-color:rgb(0,0,0,0.2);
+		}
+		
 	}
 	.long{
 		position: fixed;
        bottom: 0px;
 		background-color:rgb(0,0,0,0.2);
-		filter:blur(30px);
+		display: flex; 
+		font-size: 20px;
+		justify-content: space-around;
+       align-items: center;
 		height: 40px;
 		width: 100vw;
 	}

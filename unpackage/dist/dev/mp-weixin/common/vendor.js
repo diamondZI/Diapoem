@@ -10267,6 +10267,7 @@ const createHook = (lifecycle) => (hook, target = getCurrentInstance()) => {
 const onLoad = /* @__PURE__ */ createHook(ON_LOAD);
 exports.$s = $s;
 exports._export_sfc = _export_sfc;
+exports.computed = computed;
 exports.createPinia = createPinia;
 exports.createSSRApp = createSSRApp;
 exports.defineStore = defineStore;

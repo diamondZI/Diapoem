@@ -1,1 +1,18 @@
-<view class="Write data-v-e9a32d65"><textarea class="title data-v-e9a32d65" auto-height="true" auto-focus="true" type="text" placeholder="标题"/></view><view class="long data-v-e9a32d65"> 1212 </view>
+<view class="Write data-v-e9a32d65"><textarea class="title data-v-e9a32d65" auto-height="true" auto-focus="true" type="text" placeholder="标题">
+		<keyboard-accessory class="container" style="height: 50px;">
+		    <cover-view bindtap="tap" style="flex: 1" class="coverView">
+				 <view class="box">
+				 	AI改写
+				 </view>
+				 <view class="box">
+				 	AI接句
+				 </view>
+				 <view class="box">
+				 	另起
+				 </view>
+			</cover-view>
+		  </keyboard-accessory>	
+			
+		</textarea><textarea class="data-v-e9a32d65" placeholder="内容" style="font-size:20px;margin-top:10px">
+			
+		</textarea></view><view class="long data-v-e9a32d65"><view class="box data-v-e9a32d65"> 发表 </view><view class="box data-v-e9a32d65"> 废弃 </view><view class="box data-v-e9a32d65"> 放入草稿 </view></view>
