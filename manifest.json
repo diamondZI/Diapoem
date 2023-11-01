@@ -68,6 +68,9 @@
             "scope.userLocation" : {
                 "desc" : "附近的同好诗人.提供交流平台"
             }
+        },
+        "uniStatistics" : {
+            "enable" : true
         }
     },
     "mp-alipay" : {
@@ -80,7 +83,8 @@
         "usingComponents" : true
     },
     "uniStatistics" : {
-        "enable" : false
+        "enable" : false,
+        "version" : "2"
     },
     "vueVersion" : "3"
 }

@@ -1,27 +1,15 @@
 <template>
     <view class="Write">
-    	<textarea class="title" auto-height="true" auto-focus="true" type="text"  placeholder="标题">
-		<keyboard-accessory class="container" style="height: 50px;">
-		    <cover-view bindtap="tap" style="flex: 1" class="coverView">
-				 <view class="box">
-				 	AI改写
-				 </view>
-				 <view class="box">
-				 	AI接句
-				 </view>
-				 <view class="box">
-				 	另起
-				 </view>
-			</cover-view>
-		  </keyboard-accessory>	
+    	<textarea @input="callback"  ref="TextTitle" class="title" auto-height="true" :auto-focus="!Auto" type="text"  placeholder="标题">
+
 			
 		</textarea>
-		<textarea placeholder="内容" style="font-size: 20px; margin-top: 10px;">
+		<textarea placeholder="内容"  ref="TextConet"  :auto-focus="Auto" auto-height="true" style="font-size: 20px; margin-top: 10px;">
 			
 		</textarea>
     </view>
 	<view class="long">
-		  <view class="box">
+		  <view class="box" @click="Get()">
 		  	   发表 
 		  </view><view class="box">
 		  	   废弃
@@ -32,7 +20,49 @@
 	</view>
 </template>
 <script setup>
+	import {onMounted,ref} from "vue"
+	import CryptoJs from "crypto-js"
+	import {Base64} from "js-base64"
+	const socketOpen=false;
+	const TextConet=ref(null)
+	const Auto=ref(false)
+	const socketMsgQueue=[];
+	const TextTittle=ref(null)
+   const getWebsocketUrl = () => {
+	   
+      return new Promise((resovle, reject) => {
+          let url = "wss://spark-api.xf-yun.com/v3.1/chat";
+          let host = "spark-api.xf-yun.com";
+          let apiKeyName = "api_key";
+          let date = new Date().toGMTString();
+          let algorithm = "hmac-sha256"
+          let headers = "host date request-line";
+          let signatureOrigin = `host: ${host}\ndate: ${date}\nGET /v1.1/chat HTTP/1.1`;
+          let signatureSha = CryptoJs.HmacSHA256(signatureOrigin, requestObj.APISecret);
+          let signature = CryptoJs.enc.Base64.stringify(signatureSha);
+   
+          let authorizationOrigin = `${apiKeyName}="${requestObj.APIKey}", algorithm="${algorithm}", headers="${headers}", signature="${signature}"`;
+   
+          let authorization = Base64.encode(authorizationOrigin);
+          // 将空格编码
+          url = `${url}?authorization=${authorization}&date=${encodeURI(date)}&host=${host}`;
+          resovle(url)
+      })
+	  }
+    const callback=(e)=>{
+      console.log(e.detail.value);
+	  // console.log(e.detail);
+	  // if (e.detail.value[e.detail.cursor]==='') {
+	  	
+	  // } else{
+	  	
+	  // }
+	}
+	
+	
 </script>
+
+ 
 
 <style scoped lang="scss">
 	.Write{

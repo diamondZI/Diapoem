@@ -1,18 +1,6 @@
-<view class="Write data-v-e9a32d65"><textarea class="title data-v-e9a32d65" auto-height="true" auto-focus="true" type="text" placeholder="标题">
-		<keyboard-accessory class="container" style="height: 50px;">
-		    <cover-view bindtap="tap" style="flex: 1" class="coverView">
-				 <view class="box">
-				 	AI改写
-				 </view>
-				 <view class="box">
-				 	AI接句
-				 </view>
-				 <view class="box">
-				 	另起
-				 </view>
-			</cover-view>
-		  </keyboard-accessory>	
+<view class="Write data-v-e9a32d65"><block wx:if="{{r0}}"><textarea bindinput="{{a}}" ref="TextTitle" class="title data-v-e9a32d65" auto-height="true" auto-focus="{{b}}" type="text" placeholder="标题">
+
 			
-		</textarea><textarea class="data-v-e9a32d65" placeholder="内容" style="font-size:20px;margin-top:10px">
+		</textarea></block><textarea class="data-v-e9a32d65" placeholder="内容" ref="TextConet" auto-focus="{{c}}" auto-height="true" style="font-size:20px;margin-top:10px">
 			
-		</textarea></view><view class="long data-v-e9a32d65"><view class="box data-v-e9a32d65"> 发表 </view><view class="box data-v-e9a32d65"> 废弃 </view><view class="box data-v-e9a32d65"> 放入草稿 </view></view>
+		</textarea></view><view class="long data-v-e9a32d65"><view class="box data-v-e9a32d65" bindtap="{{d}}"> 发表 </view><view class="box data-v-e9a32d65"> 废弃 </view><view class="box data-v-e9a32d65"> 放入草稿 </view></view>
