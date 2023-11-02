@@ -1,8 +1,9 @@
 .POEM {
+  padding: 10rpx;
   background-color: var(--backroundcolor);
   display: flex;
+  min-height: 100%;
   flex-direction: column;
-  justify-content: center;
   font-size: var(--size);
 }
 .POEM .h1 {

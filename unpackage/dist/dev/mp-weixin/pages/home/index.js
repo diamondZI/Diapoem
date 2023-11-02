@@ -1,6 +1,7 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 const store_user = require("../../store/user.js");
+const store_draft = require("../../store/draft.js");
 if (!Array) {
   const _easycom_uni_icons2 = common_vendor.resolveComponent("uni-icons");
   _easycom_uni_icons2();
@@ -14,6 +15,7 @@ const _sfc_main = {
   __name: "index",
   setup(__props) {
     const U = store_user.useUserstore();
+    const Darft = store_draft.useDarftStore();
     common_vendor.$s.importObject("User");
     const GoNavigateTo = (Url, value) => {
       console.log("跳转");
@@ -43,7 +45,7 @@ const _sfc_main = {
         n: common_vendor.o(($event) => GoNavigateTo("theme", common_vendor.unref(U).UserData.collect)),
         o: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
         p: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
-        q: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
+        q: common_vendor.t(common_vendor.unref(Darft).Darft.length),
         r: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
         s: common_vendor.o(($event) => GoNavigateTo("Aboutme"))
       });

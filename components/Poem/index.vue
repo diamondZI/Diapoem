@@ -25,12 +25,12 @@ const {poem}=defineProps(['poem'])
 <style lang="less" >
 
 .POEM{
+	padding: 10rpx;
 	background-color: var(--backroundcolor);
 	display: flex;
+	min-height: 100%;
 	flex-direction: column;
-	justify-content: center;
-   
-
+	// justify-content: center;
 	font-size: var(--size);
 	.h1{
 	

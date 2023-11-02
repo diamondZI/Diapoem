@@ -1,0 +1,1 @@
+<view class="Opspringers data-v-ced272ff" style="{{'display:' + c}}"><view class="TopPoem data-v-ced272ff"><slot></slot></view><view class="Button data-v-ced272ff"><button class="data-v-ced272ff" type="default" bindtap="{{a}}"> 确定 </button><button class="data-v-ced272ff" type="default" bindtap="{{b}}"> 取消 </button></view></view>

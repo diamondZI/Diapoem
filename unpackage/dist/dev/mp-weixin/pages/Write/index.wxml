@@ -1,6 +1,3 @@
-<view class="Write data-v-e9a32d65"><block wx:if="{{r0}}"><textarea bindinput="{{a}}" ref="TextTitle" class="title data-v-e9a32d65" auto-height="true" auto-focus="{{b}}" type="text" placeholder="标题">
-
-			
-		</textarea></block><textarea class="data-v-e9a32d65" placeholder="内容" ref="TextConet" auto-focus="{{c}}" auto-height="true" style="font-size:20px;margin-top:10px">
-			
-		</textarea></view><view class="long data-v-e9a32d65"><view class="box data-v-e9a32d65" bindtap="{{d}}"> 发表 </view><view class="box data-v-e9a32d65"> 废弃 </view><view class="box data-v-e9a32d65"> 放入草稿 </view></view>
+<opspringers wx:if="{{a}}" class="data-v-e9a32d65" u-s="{{['d']}}" u-i="e9a32d65-0" bind:__l="__l" u-p="{{c}}"><poem wx:if="{{b}}" class="data-v-e9a32d65" style="width:100%;border-radius:40rpx;tion:relative;height:100%" u-i="e9a32d65-1,e9a32d65-0" bind:__l="__l" u-p="{{b}}"></poem></opspringers><uni-popup wx:if="{{f}}" class="r data-v-e9a32d65" u-s="{{['d']}}" u-r="message" u-i="e9a32d65-2" bind:__l="__l" u-p="{{f}}"><uni-popup-message wx:if="{{d}}" class="data-v-e9a32d65" u-i="e9a32d65-3,e9a32d65-2" bind:__l="__l" u-p="{{d}}"></uni-popup-message></uni-popup><view class="Write data-v-e9a32d65"><block wx:if="{{r0}}"><textarea bindkeyboardheightchange="{{g}}" class="title data-v-e9a32d65" auto-height="true" auto-focus="{{h}}" type="text" placeholder="标题" value="{{i}}" bindinput="{{j}}">
+		</textarea></block><block wx:if="{{r0}}"><textarea class="data-v-e9a32d65" placeholder="内容" auto-focus="true" auto-height="true" style="font-size:20px;margin-top:10px" value="{{k}}" bindinput="{{l}}">
+		</textarea></block></view><view class="long data-v-e9a32d65" style="{{'bottom:' + p}}"><view class="box data-v-e9a32d65" bindtap="{{m}}"> 发表 </view><view class="box two data-v-e9a32d65" bindtap="{{n}}"> 废弃 </view><view class="box data-v-e9a32d65" bindtap="{{o}}"> 放入草稿 </view></view>

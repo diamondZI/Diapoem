@@ -6,7 +6,6 @@ const useThemeterStor = common_vendor.defineStore("Theme", () => {
     "--size": "24px",
     "--letter_spacing": "10px",
     "--line_height": "26px"
-    // color:''
   });
   const onChangeBackroundcolor = (value) => {
     theme.value["--backroundcolor"] = value;

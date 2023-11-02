@@ -28,7 +28,7 @@
 		<view class="UserButton" >
 			<view >AI创作 {{U.UserData.collect.length}}</view>
 			<view>附近的诗人 {{U.UserData.collect.length}}</view>
-			<view id="a">废弃草稿 {{U.UserData.collect.length}}</view>
+			<view id="a">我的草稿 {{Darft.Darft.length}}</view>
 			<view id="a"  @click='GoNavigateTo("Aboutme",)'>赞助我们 {{U.UserData.collect.length}}</view>
 		</view>
 	</view>
@@ -38,8 +38,10 @@
 	import A from "@/components/FunButton/index.vue"
 	import Loding from "@/components/Loding/index.vue"
 	import {useUserstore} from "@/store/user.js"
+	import {useDarftStore} from "@/store/draft.js"
 	import { onMounted,ref } from "vue";
     const U=useUserstore()
+    const Darft=useDarftStore()
 	const todo = uniCloud.importObject('User')
 	const GoNavigateTo=(Url,value)=>{
 		console.log("跳转");

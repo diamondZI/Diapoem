@@ -53,6 +53,9 @@ onMounted(()=>{
 <style lang="scss" scoped>
 	
 	.content{
+		width: 100vw;
+		position: absolute;
+		min-height: 100vh;
 	 padding: 20px;
 		background-color: var(--backroundcolor);
 	
