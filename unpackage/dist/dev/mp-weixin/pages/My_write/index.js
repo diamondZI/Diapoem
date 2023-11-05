@@ -13,6 +13,11 @@ const _sfc_main = {
   setup(__props) {
     common_vendor.ref(false);
     const list = common_vendor.ref();
+    const GoWrite = () => {
+      common_vendor.index.navigateTo({
+        url: "/pages/Write/index"
+      });
+    };
     common_vendor.onLoad((Option) => {
       list.value = JSON.parse(Option.data).map((el) => {
         return {
@@ -26,7 +31,8 @@ const _sfc_main = {
         a: common_vendor.p({
           type: "plusempty",
           size: "40"
-        })
+        }),
+        b: common_vendor.o(($event) => GoWrite())
       };
     };
   }

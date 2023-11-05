@@ -1,6 +1,7 @@
 'use strict';
 const {getToken,verifyToken,Timesetup}=require("wx-common")
 exports.main = async (event, context) => {
+	console.log(event);
 	const {code,UserData}=event;
 	const wxid={
 		appid:'wx9d7e495d6b07dc6c',

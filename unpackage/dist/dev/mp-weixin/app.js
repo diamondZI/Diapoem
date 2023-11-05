@@ -12,17 +12,35 @@ if (!Math) {
   "./pages/Aboutme/index.js";
   "./pages/PersonalEdit/index.js";
   "./pages/Write/index.js";
+  "./pages/neighborhood/index.js";
+  "./pages/Readpoem/index.js";
 }
 const _sfc_main = {
-  __name: "App",
-  setup(__props) {
-    const A = store_user.useUserstore();
-    const p = async () => {
-      await A.GetUser();
-    };
-    p();
-    return () => {
-    };
+  methods: {
+    p() {
+      const A = store_user.useUserstore();
+      A.GetUser();
+      if (!common_vendor.index.getStorageSync("Darft")) {
+        common_vendor.index.setStorageSync("Darft", JSON.stringify({
+          "key": []
+        }));
+      }
+      console.log(A.UserData.value);
+    }
+  },
+  onLaunch: function() {
+    try {
+      this.p();
+    } catch (e) {
+      console.log("失败");
+    }
+    console.log("App Launch");
+  },
+  onShow: function() {
+    console.log("App Show");
+  },
+  onHide: function() {
+    console.log("App Hide");
   }
 };
 const App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/koajs/DiaPoem/App.vue"]]);

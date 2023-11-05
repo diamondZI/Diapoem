@@ -8,7 +8,9 @@
     "pages/theme/index",
     "pages/Aboutme/index",
     "pages/PersonalEdit/index",
-    "pages/Write/index"
+    "pages/Write/index",
+    "pages/neighborhood/index",
+    "pages/Readpoem/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -22,7 +24,6 @@
     "selectedColor": "#13227a",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
-    "iconfontSrc": "static/iconfont.ttf",
     "list": [
       {
         "pagePath": "pages/index/index",

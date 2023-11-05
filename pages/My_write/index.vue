@@ -4,7 +4,7 @@
 	<view class="header">
 		
 	</view>
-     <view class="Box">
+     <view class="Box" @click="GoWrite()">
      		<uni-icons type='plusempty' size='40'></uni-icons>
      </view>
 </view>
@@ -19,6 +19,11 @@ import { onLoad} from "@dcloudio/uni-app"
 	 const D=uniCloud.importObject('User') 
         console.log(  await D.GetUser_collect(A)
 );
+ }
+ const GoWrite=()=>{
+	 uni.navigateTo({
+	 	url:'/pages/Write/index'
+	 })
  }
  
  onLoad((Option)=>{
@@ -114,7 +119,7 @@ import { onLoad} from "@dcloudio/uni-app"
 		right: 10px;	
 		transition: 1s linear  all;
 	}
-	.Box:active{
+	.Box:hover{
 		box-shadow:inset 0 0 5px 0 black;
 	}
 

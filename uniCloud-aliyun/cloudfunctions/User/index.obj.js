@@ -24,8 +24,8 @@ module.exports = {
 			title:A.title,
 			author:A.author
 		})
-		
 	}
+	SetUser_
 	
 	/**
 	 * method1方法描述

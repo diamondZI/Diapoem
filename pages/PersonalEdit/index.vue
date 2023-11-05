@@ -3,7 +3,7 @@
 		<view class="Edit">
           <text>头像</text>
 		  <button class="wrapper" open-type="chooseAvatar" @chooseavatar="onChooseAvatar">
-		    <image class="avatar" :src="User.UserData.avatar"></image>
+		    <image class="avatar" mode="aspectFill" :src="User.UserData.avatar"></image>
 		  </button> 
 		</view>	
 		<view @click="open(User.UserData.user_name,'user_name',5)"  class="Edit">

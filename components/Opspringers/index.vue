@@ -6,8 +6,8 @@
 				</slot>
             </view>
 			<view class="Button">
-				  <button type="default" @click="sure()">
-					   确定
+				  <button :disabled="Buttonlist.letG" type="default" @click="sure()">
+					   {{Buttonlist.text}}
 				  </button>
 				  <button type="default" @click="close()">
 					  取消
@@ -18,14 +18,24 @@
 
 <script setup>
 	import Poem from "@/components/Poem/index.vue"
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 const props=defineProps(['Showclose','AddPoem'])
 const Show=ref(true)
+const Buttonlist=reactive({
+	letG:false,
+	text:"确认发表"
+})
 const close=()=>{
 	props.Showclose()
 }	
 const sure=()=>{
-	props.AddPoem()
+     props.AddPoem()
+     Buttonlist.letG=true
+	 Buttonlist.text="稍后再来吧"
+	 setTimeout(()=>{
+		Buttonlist.letG=false,
+		Buttonlist.text="确认发表"
+	 },3000)
 }	
 </script>
 

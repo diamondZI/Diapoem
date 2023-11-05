@@ -22,7 +22,7 @@ const open=ref(false)
 const aclick=()=>{
     open.value=!open.value
 }
-const props=defineProps(['reload','collect','start'])
+const props=defineProps(['reload','collect','start','remove'])
 const Reload=()=>{
 	props.reload()
 }
@@ -30,13 +30,29 @@ const Collect=()=>{
 	if(!props.start){
 		props.collect()
 	}else{
-        
+       uni.showShareMenu({
+       	complete() {
+       		console.log(2);
+       	}
+       })
 	}
 }
 const theme=()=>{
-	uni.navigateTo({
-		url:'/pages/theme/index'
-	})
+	// uni.navigateTo({
+	// 	url:'/pages/theme/index'
+	// })
+	uni.share({
+		provider: "weixin",
+		scene: "WXSceneSession",
+		type: 1,
+		summary: "我正在使用HBuilderX开发uni-app，赶紧跟我一起来体验！",
+		success: function (res) {
+			console.log("success:" + JSON.stringify(res));
+		},
+		fail: function (err) {
+			console.log("fail:" + JSON.stringify(err));
+		}
+	});
 }
 </script>
 
@@ -70,7 +86,7 @@ const theme=()=>{
 		transition: .6s all linear;
 		box-shadow: 0 0 2px 0 black;
 	}
-	.ICONBOX:active{
+	.ICONBOX:hover{
 		box-shadow:inset 0 0 5px 0 black;
 	}
 	.ICONBOX_Active{
@@ -87,7 +103,7 @@ const theme=()=>{
 		transition: .2s all linear;
 		box-shadow: 0 0 5px 0 black;
 	}
-    .FUNBUTTON:active{
+    .FUNBUTTON:hover{
 		background-color: rgb(100, 100,100);
 		Box-shadow: 0 0 3px 0 black;
 	}

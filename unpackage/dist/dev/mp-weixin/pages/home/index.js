@@ -20,7 +20,9 @@ const _sfc_main = {
     const GoNavigateTo = (Url, value) => {
       console.log("跳转");
       common_vendor.index.navigateTo({
-        "url": `/pages/${Url}/index?data=` + JSON.stringify(value)
+        url: `/pages/${Url}/index?data=` + JSON.stringify(value),
+        animationType: "pop-in",
+        animationDuration: 1e4
       });
     };
     return (_ctx, _cache) => {
@@ -35,19 +37,20 @@ const _sfc_main = {
           type: "info-filled",
           size: "30"
         }),
-        g: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
-        h: common_vendor.o(($event) => GoNavigateTo("collect", common_vendor.unref(U).UserData.collect)),
-        i: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
-        j: common_vendor.o(($event) => GoNavigateTo("Personal", common_vendor.unref(U).UserData.collect)),
-        k: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
-        l: common_vendor.o(($event) => GoNavigateTo("My_write", common_vendor.unref(U).UserData.collect)),
-        m: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
-        n: common_vendor.o(($event) => GoNavigateTo("theme", common_vendor.unref(U).UserData.collect)),
-        o: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
+        g: common_vendor.o(($event) => GoNavigateTo("PersonalEdit")),
+        h: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
+        i: common_vendor.o(($event) => GoNavigateTo("collect", common_vendor.unref(U).UserData.collect)),
+        j: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
+        k: common_vendor.o(($event) => GoNavigateTo("Personal", common_vendor.unref(U).UserData.collect)),
+        l: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
+        m: common_vendor.o(($event) => GoNavigateTo("My_write", common_vendor.unref(U).UserData.collect)),
+        n: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
+        o: common_vendor.o(($event) => GoNavigateTo("theme", common_vendor.unref(U).UserData.collect)),
         p: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
-        q: common_vendor.t(common_vendor.unref(Darft).Darft.length),
-        r: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
-        s: common_vendor.o(($event) => GoNavigateTo("Aboutme"))
+        q: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
+        r: common_vendor.t(common_vendor.unref(Darft).Darft.length),
+        s: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
+        t: common_vendor.o(($event) => GoNavigateTo("Aboutme"))
       });
     };
   }

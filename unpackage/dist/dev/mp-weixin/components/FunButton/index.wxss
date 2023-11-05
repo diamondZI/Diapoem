@@ -27,7 +27,7 @@
   transition: 0.6s all linear;
   box-shadow: 0 0 2px 0 black;
 }
-.ICONBOX.data-v-ab3ed6fc:active {
+.ICONBOX.data-v-ab3ed6fc:hover {
   box-shadow: inset 0 0 5px 0 black;
 }
 .ICONBOX_Active.data-v-ab3ed6fc {
@@ -44,7 +44,7 @@
   transition: 0.2s all linear;
   box-shadow: 0 0 5px 0 black;
 }
-.FUNBUTTON.data-v-ab3ed6fc:active {
+.FUNBUTTON.data-v-ab3ed6fc:hover {
   background-color: #646464;
   Box-shadow: 0 0 3px 0 black;
 }

@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 export const  useDarftStore=defineStore('DRAFT',()=>{
-	const Darft=ref(JSON.parse(uni.getStorageSync('Darft')).key||[])
+	const Darft=ref(JSON.parse(uni.getStorageSync('Darft')).key??[])
 	
 	const PUSHDARFT= (data)=>{
 		Darft.value.push(data)

@@ -6,6 +6,7 @@ const useUserstore = common_vendor.defineStore("User", () => {
   const GetUser = async () => {
     token.value = await Gettoken();
     if (token.value) {
+      console.log(token.value);
       await wxLogin(token.value);
     } else {
       console.log("2");
@@ -38,13 +39,13 @@ const useUserstore = common_vendor.defineStore("User", () => {
             token: token2
           },
           success: (res2) => {
-            console.log(res2);
+            console.log("212", res2);
             UserData.value = res2.result.Userdata.data[0];
           }
         });
       },
       fail: (err) => {
-        console.log(err);
+        console.log("2", err);
       }
     });
   };
@@ -106,14 +107,17 @@ const useUserstore = common_vendor.defineStore("User", () => {
       self_introduction
     });
   };
-  const SetCollect = async (id) => {
-    UserData.value.collect.push(id);
+  const useSetCollect = async () => {
     const { collect } = UserData.value;
+    const db = await common_vendor.$s.database();
+    await db.collection("users").doc(UserData.value._id).update({
+      collect
+    });
+  };
+  const SetCollect = (id) => {
+    UserData.value.collect.push(id);
     try {
-      const db = await common_vendor.$s.database();
-      await db.collection("users").doc(UserData.value._id).update({
-        collect
-      });
+      useSetCollect();
     } catch (e) {
       console.log(e, "添加失败");
     }
@@ -128,13 +132,23 @@ const useUserstore = common_vendor.defineStore("User", () => {
       return false;
     }
   };
+  const removeCollect = (id) => {
+    UserData.value.collect.splice(id, 1);
+    try {
+      useSetCollect();
+      return { msg: "删除成功" };
+    } catch (e) {
+      return { msg: "删除失败" };
+    }
+  };
   return {
     UserData,
     GetUser,
     SetAvatarUrl,
     SetUser,
     SetText,
-    SetCollect
+    SetCollect,
+    removeCollect
   };
 });
 exports.useUserstore = useUserstore;

@@ -4,7 +4,7 @@ const appSecret='4f3208b2ec5e4cf99515b57e88bd68c6'
 function getToken(openid) {
 	// sign(加密数据，加密辅助，过期时间(单位/s))
 	return jwt.sign({
-		openid
+		openid:openid
 	}, appSecret, {
 		expiresIn: 60 * 60 * 24 * 30
 	});

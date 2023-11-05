@@ -1,1 +1,1 @@
-<view class="content data-v-e7ac45b4"><button class="avatar-wrapper data-v-e7ac45b4" open-type="chooseAvatar" bindchooseavatar="{{b}}"><image class="avatar data-v-e7ac45b4" src="{{a}}"></image></button><input type="nickname" class="weui-input data-v-e7ac45b4" placeholder="请输入昵称"/></view>
+<view class="content"> 这诗,折扇,青山,绿水,浮舟 我们充满了希望 </view>

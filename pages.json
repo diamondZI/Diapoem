@@ -73,6 +73,22 @@
 		        "enablePullDownRefresh": false
 		    }
 		    
+		},
+		{
+			"path": "pages/neighborhood/index",
+			"style" :
+			{
+			    "navigationBarTitleText": "",
+			    "enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/Readpoem/index",
+			"style" :
+			{
+			    "navigationBarTitleText": "",
+			    "enablePullDownRefresh": false
+			}
 		}
 		
     ],
@@ -93,7 +109,7 @@
 				"fontSize": "10px",
 				"iconWidth": "24px",
 				"spacing": "3px",
-		    	"iconfontSrc":"static/iconfont.ttf", 
+		    	// "iconfontSrc":"static/iconfont.ttf", 
 		    "list": [
 			{
 				"pagePath": "pages/index/index",

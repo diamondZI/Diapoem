@@ -10,7 +10,7 @@
                <text>{{U.UserData.region}}</text>            	
                <text>{{U.UserData.slogan}}</text>            	
             </view>
-			<view  style="position: absolute;  right: 20rpx;">
+			<view  style="position: absolute;  right: 20rpx;" @click="GoNavigateTo('PersonalEdit')">
 				<uni-icons  type="info-filled" size="30"></uni-icons>
 			</view>
         </view>
@@ -27,7 +27,7 @@
 		</view>
 		<view class="UserButton" >
 			<view >AI创作 {{U.UserData.collect.length}}</view>
-			<view>附近的诗人 {{U.UserData.collect.length}}</view>
+			<view>四方同好 {{U.UserData.collect.length}}</view>
 			<view id="a">我的草稿 {{Darft.Darft.length}}</view>
 			<view id="a"  @click='GoNavigateTo("Aboutme",)'>赞助我们 {{U.UserData.collect.length}}</view>
 		</view>
@@ -46,7 +46,9 @@
 	const GoNavigateTo=(Url,value)=>{
 		console.log("跳转");
 		uni.navigateTo({
-			'url':`/pages/${Url}/index?data=`+JSON.stringify(value), 
+			url:`/pages/${Url}/index?data=`+JSON.stringify(value), 
+			animationType: 'pop-in',
+			animationDuration: 10000
 		})
 	}
 

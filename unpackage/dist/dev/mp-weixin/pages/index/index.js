@@ -17,16 +17,11 @@ const _sfc_main = {
     const todo = common_vendor.$s.importObject("poem");
     const start = common_vendor.ref();
     async function reload() {
-      poem.value = [];
+      poem.value = {};
       poem.value = await todo.get().then((res) => {
         return res.data[0];
       }).catch((err) => {
       });
-      start.value = await (User.UserData.collect.filter(
-        (el) => {
-          return el.id === poem.value._id;
-        }
-      ).length > 0);
     }
     async function collect() {
       User.SetCollect({
@@ -34,6 +29,18 @@ const _sfc_main = {
         title: poem.value.title,
         author: poem.value.author,
         data: (/* @__PURE__ */ new Date()).getTime()
+      });
+      start.value = await (User.UserData.collect.filter(
+        (el) => {
+          return el.id === poem.value._id;
+        }
+      ).length > 0);
+    }
+    async function remove() {
+      User.UserData.collect.map((el, index) => {
+        if (el.id === poem.value._id) {
+          User.removeCollect(index);
+        }
       });
       start.value = await (User.UserData.collect.filter(
         (el) => {
@@ -53,6 +60,7 @@ const _sfc_main = {
         }),
         c: common_vendor.p({
           reload,
+          remove,
           collect,
           start: start.value
         }),

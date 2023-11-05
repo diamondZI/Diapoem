@@ -12,6 +12,7 @@ const token = ref(null)
 const GetUser = async () => {
 	token.value = await Gettoken()
 	if (token.value) {
+		console.log(token.value);
 		await wxLogin(token.value)
 	} else {
 		console.log("2");
@@ -45,13 +46,15 @@ const wxLogin = (token) => {
 					token: token,
 				},
 				success: (res) => {
-					console.log(res);
+					console.log("212",res);
 					UserData.value = res.result.Userdata.data[0]
-				}
+				},
+			
+				
 			})
 		},
 		fail: (err) => {
-			console.log(err);
+			console.log("2",err);
 		}
 	})
 }
@@ -115,14 +118,17 @@ const SetUser=async ()=>{
 		slogan,self_introduction
 	})
 }
-const SetCollect=async (id)=>{
+const useSetCollect=async ()=>{
+	 const {collect}=UserData.value
+	const db=await uniCloud.database()
+	await  db.collection('users').doc(UserData.value._id).update({
+		collect
+	})
+}
+const SetCollect= (id)=>{
    UserData.value.collect.push(id)
-   const {collect}=UserData.value
    try{
-   	const db=await uniCloud.database()
-   	await  db.collection('users').doc(UserData.value._id).update({
-   		collect
-   	})
+   	   useSetCollect()
    }catch(e){
           console.log(e,"添加失败");
    }
@@ -137,6 +143,16 @@ const Gettoken = async () => {
          return false
 	}
 }
+const removeCollect=(id)=>{
+    UserData.value.collect.splice(id,1)
+	try{
+		   useSetCollect()
+           return {msg:"删除成功"}
+	}catch(e){
+	       return {msg:"删除失败"}
+	     
+	}
+}
 
 return {
 	UserData,
@@ -144,6 +160,7 @@ return {
 	SetAvatarUrl,
 	SetUser,
 	SetText,
-	SetCollect
+	SetCollect,
+	removeCollect
 	}
 })

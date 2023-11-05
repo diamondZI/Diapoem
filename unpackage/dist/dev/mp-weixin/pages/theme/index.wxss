@@ -30,6 +30,7 @@
   justify-content: center;
   background-color: var(--backroundcolor);
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .A {
   background-color: var(BG1);

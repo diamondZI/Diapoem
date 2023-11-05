@@ -77,6 +77,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
+  text-shadow: 0 -2px 10px #8a979b;
   flex-direction: column;
   height: 42vw;
   background-color: #1b3b64;

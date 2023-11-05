@@ -62,16 +62,19 @@
   align-items: center;
   height: 25vw;
   padding: 15px;
-  transition: 1s all linear;
+  transition: 0.3s all linear;
   color: #FFFFFF;
   background-color: #1b3b64;
   position: relative;
   border: 1px black solid;
 }
 .CollectBox .collect .collect_poem .author.data-v-cb2cf245 {
+  background-color: white;
+  flex: 1;
+  text-orientation: sideways;
   color: #8a979b;
 }
-.CollectBox .collect .collect_poem.data-v-cb2cf245:active {
+.CollectBox .collect .collect_poem.data-v-cb2cf245:hover {
   border-radius: 40rpx;
   box-shadow: 0 0 10rpx 0 black;
 }

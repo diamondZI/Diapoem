@@ -6,15 +6,12 @@
 			<view @click="sort=!sort" :class="{'Icon':true,'Iconsort':sort}" ></view>
 	</view>
 		<view class="collect" >
-	     <view :class="{'collect_poem':true,'collect_poem_active':sort}" v-for="(item,index) in list" :key="index">
+	     <view  :class="{'collect_poem':true,'collect_poem_active':sort}" v-for="(item,index) in User.UserData.collect" :key="index"
+		 @touchend="GoRead(index)"
+		 >
 			   {{item.title}}
 			 <text class="author" > {{item.author}}</text>
-			 
-		   </view>    <view :class="{'collect_poem':true,'collect_poem_active':sort}" v-for="(item,index) in list" :key="index">
-			   {{item.title}}
-			 <text class="author" > {{item.author}}</text>
-			 
-		   </view>   
+		</view>
 		</view>
 </view>
 </template>
@@ -22,22 +19,26 @@
 <script setup>	
 import { onMounted,reactive,ref } from "vue";
 import { onLoad} from "@dcloudio/uni-app"
+import {useUserstore} from "@/store/user.js"
+const User=useUserstore()
  const sort=ref(false)
- const list=ref()
- const getCollect=async (A)=>{
-	 const D=uniCloud.importObject('User') 
-        console.log(  await D.GetUser_collect(A)
-);
- }
- 
+ const list=ref() 
  onLoad((Option)=>{
 	 list.value= JSON.parse(Option.data).map(el=>{
 		 return {
+			 id:el.id,
 			 title:el.title,
 			 author:el.author
 		 }
 	 })
-
+ })
+ const GoRead=(id)=>{
+	 uni.navigateTo({
+	 	url:`/pages/neighborhood/index?data=${JSON.stringify(list.value)}&key=${JSON.stringify(id)}`
+	 })
+ }
+ onLoad(()=>{
+	 
  })
 </script>
 
@@ -85,20 +86,25 @@ import { onLoad} from "@dcloudio/uni-app"
 		        align-items: center;
 				  height: 25vw;
 				  padding: 15px;
-				  transition: 1s all linear;
-			color: $uni-bg-color-grey;
-						  			background-color: $uni-bg-color-one;
+				  transition: .3s all linear;
+			     color: $uni-bg-color-grey;
+			      background-color: $uni-bg-color-one;
 				  position: relative;
 				  border: 1px  black solid;
+				 
 		     .author{
-			   
+			   background-color: white;
+			  
+			   flex: 1;
+                text-orientation:sideways;
 			   color: $uni-text-color-one;
 		        }
 			  }
 		
-			  .collect_poem:active{
+			  .collect_poem:hover{
 				  border-radius: 40rpx;
 				box-shadow: 0 0 10rpx 0 black;
+				 
 			  		}
 			  
 			  .collect_poem_active{
@@ -107,7 +113,6 @@ import { onLoad} from "@dcloudio/uni-app"
                  font-size: 24px;
 				  border: none;
 				  color: black;
-				  
 				  background-color: rgb(100, 100, 100,0);
 				  border-bottom: 2px solid $uni-bg-color-one;
 			  }

@@ -79,7 +79,8 @@
 	}
 	const AddPoem=async ()=>{
 	   let res=await Poemtodo.Set(poem.value)
-	 messageToggle("success","成功发表了您的作品")
+	   console.log(res);   
+	 messageToggle(res.ok===200?"success":'error',res.msg)
 	}
 	const DarftP=()=>{
 		Darft.PUSHDARFT(poem.value)
@@ -118,7 +119,7 @@
        align-items: center;
 		height: 40px;
 		width: 100vw;
-		.box:active {
+		.box:hover {
 			 transform: translateY(-10rpx);
 		}
 	}

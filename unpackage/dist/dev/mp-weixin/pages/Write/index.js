@@ -62,8 +62,9 @@ const _sfc_main = {
       Show.value = false;
     };
     const AddPoem = async () => {
-      await Poemtodo.Set(poem.value);
-      messageToggle("success", "成功发表了您的作品");
+      let res = await Poemtodo.Set(poem.value);
+      console.log(res);
+      messageToggle(res.ok === 200 ? "success" : "error", res.msg);
     };
     const DarftP = () => {
       Darft.PUSHDARFT(poem.value);

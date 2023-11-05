@@ -10,7 +10,7 @@ if (!Math) {
 }
 const _sfc_main = {
   __name: "index",
-  props: ["reload", "collect", "start"],
+  props: ["reload", "collect", "start", "remove"],
   setup(__props) {
     const props = __props;
     const open = common_vendor.ref(false);
@@ -23,11 +23,26 @@ const _sfc_main = {
     const Collect = () => {
       if (!props.start) {
         props.collect();
+      } else {
+        common_vendor.index.showShareMenu({
+          complete() {
+            console.log(2);
+          }
+        });
       }
     };
     const theme = () => {
-      common_vendor.index.navigateTo({
-        url: "/pages/theme/index"
+      common_vendor.index.share({
+        provider: "weixin",
+        scene: "WXSceneSession",
+        type: 1,
+        summary: "我正在使用HBuilderX开发uni-app，赶紧跟我一起来体验！",
+        success: function(res) {
+          console.log("success:" + JSON.stringify(res));
+        },
+        fail: function(err) {
+          console.log("fail:" + JSON.stringify(err));
+        }
       });
     };
     return (_ctx, _cache) => {

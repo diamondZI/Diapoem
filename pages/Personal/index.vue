@@ -1,7 +1,7 @@
 <template>
 	<view >
 		<view class="img">
-        <image :src="Users.UserData.avatar" mode=""></image>
+        <image :src="Users.UserData.avatar" mode="aspectFit"></image>
 		 <text class="name" >{{Users.UserData.user_name}}</text>
 		 <text  class="solng">{{Users.UserData.slogan}}</text>
 		</view>
@@ -31,8 +31,7 @@
 			  	<text>2022-12-22</text>
 			  </view>
 			   <view class="Box NOBox">
-			  	<text>过山</text>
-			  	<text>2022-12-22</text>
+			  
 			  </view>
 			</view>
 		</view>
@@ -106,6 +105,8 @@ const Users=useUserstore()
 			display: flex;
             justify-content: center;
 			align-items: center;
+			color: white;
+            text-shadow:  0 -2px 10px $uni-text-color-one;
 			flex-direction: column;
 	 		height: 42vw;
 	 		background-color: $uni-bg-color-one;

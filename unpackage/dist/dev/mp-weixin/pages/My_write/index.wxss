@@ -92,6 +92,6 @@
   right: 10px;
   transition: 1s linear all;
 }
-.Box.data-v-aad8b7e9:active {
+.Box.data-v-aad8b7e9:hover {
   box-shadow: inset 0 0 5px 0 black;
 }

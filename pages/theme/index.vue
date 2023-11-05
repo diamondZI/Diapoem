@@ -76,6 +76,7 @@ import { computed, ref,onMounted } from "vue";
 	 justify-content: center;
 	 background-color: var(--backroundcolor);
 	 overflow-y: auto;
+	 -webkit-overflow-scrolling: touch;
  }
  .A{
 	

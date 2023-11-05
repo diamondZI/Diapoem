@@ -18,7 +18,7 @@
     }
   },
   "compileType": "miniprogram",
-  "libVersion": "3.1.3",
+  "libVersion": "3.1.5",
   "appid": "wx9d7e495d6b07dc6c",
   "projectname": "DiaPoem",
   "condition": {

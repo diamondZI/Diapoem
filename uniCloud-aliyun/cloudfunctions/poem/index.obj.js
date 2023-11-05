@@ -12,24 +12,28 @@ module.exports = {
 		}).end()
 	return res
 	},
+	async getone(id){
+		const db=uniCloud.database()
+			let res =await db.collection('poem').where({
+				_id:id
+			}).get()
+		return res	
+	},
 	async Set(data){
         try{
-			// title":"","author":"西川","paragraphs
-			if(!data.title||data.paragraphs.length>=0){
-							return {ok:200,msg:"请完善您的诗作"}
+			if(!data.title||!(data.paragraphs.length>=0)){
+							return {ok:401,msg:"请完善您的诗作"}
 			}else{
-			console.log(data);
 				 const db=uniCloud.database()
 				   let res= await db.collection('poem').where({
 				 	  paragraphs:data.paragraphs
 				   }).get()  
 				  if(res.affectedDocs!==0){
-				   return {ok:200,msg:"请不要重复提交或该作品已经发表过",res}
+				   return {ok:400,msg:"请不要重复提交或该作品已经发表过",res}
 				  }	  	
 				 await db.collection('poem').add(data)
 				 return {ok:200,msg:"恭喜您发表新作"}
 			}	
-			
 		}catch(err){
 			return {ok:400,msg:err}
 		}
