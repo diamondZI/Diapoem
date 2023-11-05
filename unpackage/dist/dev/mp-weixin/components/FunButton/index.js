@@ -24,27 +24,18 @@ const _sfc_main = {
       if (!props.start) {
         props.collect();
       } else {
-        common_vendor.index.showShareMenu({
-          complete() {
-            console.log(2);
-          }
-        });
+        props.remove();
       }
     };
-    const theme = () => {
-      common_vendor.index.share({
-        provider: "weixin",
-        scene: "WXSceneSession",
-        type: 1,
-        summary: "我正在使用HBuilderX开发uni-app，赶紧跟我一起来体验！",
-        success: function(res) {
-          console.log("success:" + JSON.stringify(res));
-        },
-        fail: function(err) {
-          console.log("fail:" + JSON.stringify(err));
-        }
-      });
-    };
+    common_vendor.onShareAppMessage((res) => {
+      if (res.from === "button") {
+        console.log(res.target);
+      }
+      return {
+        title: "在这里分享你的诗",
+        path: "/pages/index/index?id=123"
+      };
+    });
     return (_ctx, _cache) => {
       return common_vendor.e({
         a: common_vendor.o(($event) => aclick()),
@@ -69,12 +60,11 @@ const _sfc_main = {
         h: common_vendor.o(($event) => Collect()),
         i: open.value ? 1 : "",
         j: common_vendor.p({
-          type: "color-filled",
+          type: "redo",
           size: "30"
         }),
-        k: common_vendor.o(($event) => theme()),
-        l: open.value ? 1 : "",
-        m: open.value ? 1 : ""
+        k: open.value ? 1 : "",
+        l: open.value ? 1 : ""
       });
     };
   }

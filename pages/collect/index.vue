@@ -34,7 +34,7 @@ const User=useUserstore()
  })
  const GoRead=(id)=>{
 	 uni.navigateTo({
-	 	url:`/pages/neighborhood/index?data=${JSON.stringify(list.value)}&key=${JSON.stringify(id)}`
+	 	url:`/pages/Readpoem/index?data=${JSON.stringify(list.value)}&key=${JSON.stringify(id)}`
 	 })
  }
  onLoad(()=>{

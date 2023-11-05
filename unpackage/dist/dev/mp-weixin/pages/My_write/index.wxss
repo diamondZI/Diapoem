@@ -23,35 +23,73 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.Iconsort.data-v-aad8b7e9 {
+.My_write.data-v-aad8b7e9 {
+  transition: 1.3s linear all;
+  padding: 20px;
+  height: 100vh;
+  background-color: floralwhite;
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
+  gap: 10px;
+}
+.My_write .os.data-v-aad8b7e9 {
+  border-radius: 30px;
+  position: relative;
+  transition: 0.3s linear all;
+}
+.My_write .lists.data-v-aad8b7e9 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+}
+.My_write .lists .listbox.data-v-aad8b7e9 {
+  position: relative;
+  width: 40vw;
+  height: 45vw;
+  background-color: #1b3b64;
+}
+.My_write .lists .listbox .ICONBOX.data-v-aad8b7e9 {
+  padding: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30rpx;
+  height: 30rpx;
+  border: 1px solid #8a979b;
+  border-radius: 50%;
+  position: relative;
+}
+.My_write .Iconsort.data-v-aad8b7e9 {
   transform: rotateX(320deg);
   border: 2px solid black;
   border-left: none !important;
   border-right: none !important;
 }
-.CollectBox.data-v-aad8b7e9 {
+.My_write .CollectBox.data-v-aad8b7e9 {
   padding: 20px;
 }
-.CollectBox .header.data-v-aad8b7e9 {
+.My_write .CollectBox .header.data-v-aad8b7e9 {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.CollectBox .header text.data-v-aad8b7e9 {
+.My_write .CollectBox .header text.data-v-aad8b7e9 {
   font-size: 50rpx;
 }
-.CollectBox .header .Icon.data-v-aad8b7e9 {
+.My_write .CollectBox .header .Icon.data-v-aad8b7e9 {
   width: 40rpx;
   height: 40rpx;
   border: 1px solid black;
   transition: 0.6s linear all;
 }
-.CollectBox .collect.data-v-aad8b7e9 {
+.My_write .CollectBox .collect.data-v-aad8b7e9 {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
-.CollectBox .collect .collect_poem.data-v-aad8b7e9 {
+.My_write .CollectBox .collect .collect_poem.data-v-aad8b7e9 {
   margin: 10px;
   text-align: center;
   gap: 40rpx;
@@ -68,14 +106,14 @@
   position: relative;
   border: 1px black solid;
 }
-.CollectBox .collect .collect_poem .author.data-v-aad8b7e9 {
+.My_write .CollectBox .collect .collect_poem .author.data-v-aad8b7e9 {
   color: #8a979b;
 }
-.CollectBox .collect .collect_poem.data-v-aad8b7e9:active {
+.My_write .CollectBox .collect .collect_poem.data-v-aad8b7e9:active {
   border-radius: 40rpx;
   box-shadow: 0 0 10rpx 0 black;
 }
-.CollectBox .collect .collect_poem_active.data-v-aad8b7e9 {
+.My_write .CollectBox .collect .collect_poem_active.data-v-aad8b7e9 {
   width: 100vw;
   height: 10px;
   font-size: 24px;
@@ -84,7 +122,7 @@
   background-color: rgba(100, 100, 100, 0);
   border-bottom: 2px solid #1b3b64;
 }
-.Box.data-v-aad8b7e9 {
+.My_write .Box.data-v-aad8b7e9 {
   position: fixed;
   bottom: 100px;
   border-radius: 50%;
@@ -92,6 +130,6 @@
   right: 10px;
   transition: 1s linear all;
 }
-.Box.data-v-aad8b7e9:hover {
+.My_write .Box.data-v-aad8b7e9:hover {
   box-shadow: inset 0 0 5px 0 black;
 }

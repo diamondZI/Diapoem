@@ -48,6 +48,18 @@ const _sfc_main = {
         }
       ).length > 0);
     }
+    common_vendor.onLoad((Option) => {
+      console.log(Option.value);
+    });
+    common_vendor.onShareAppMessage((res) => {
+      if (res.from === "button") {
+        console.log(res.target);
+      }
+      return {
+        title: "在这里分享你的诗",
+        path: "/pages/index/index"
+      };
+    });
     common_vendor.onMounted(() => {
       reload();
     });
@@ -70,4 +82,5 @@ const _sfc_main = {
   }
 };
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-1cf27b2a"], ["__file", "D:/koajs/DiaPoem/pages/index/index.vue"]]);
+_sfc_main.__runtimeHooks = 2;
 wx.createPage(MiniProgramPage);

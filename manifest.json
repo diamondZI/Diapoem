@@ -45,21 +45,30 @@
                 ]
             },
             /* ios打包配置 */
-            "ios" : {},
+            "ios" : {
+                "capabilities" : {
+                    "entitlements" : {
+                        "com.apple.developer.associated-domains" : [
+                            "applinks:static-mp-e233ef62-9c0e-4622-a1aa-7115f4048c07.next.bspapp.com"
+                        ]
+                    }
+                }
+            },
             /* SDK配置 */
             "sdkConfigs" : {
                 "oauth" : {
                     "weixin" : {
-                        "appid" : "wx3e697a6878b2b523",
-                        "UniversalLinks" : ""
+                        "appid" : "wx9d7e495d6b07dc6c",
+                        "UniversalLinks" : "https://static-mp-e233ef62-9c0e-4622-a1aa-7115f4048c07.next.bspapp.com/uni-universallinks/__UNI__D060515/"
                     }
                 },
                 "share" : {
                     "weixin" : {
-                        "appid" : "wx3e697a6878b2b523",
-                        "UniversalLinks" : ""
+                        "appid" : "wx9d7e495d6b07dc6c",
+                        "UniversalLinks" : "https://static-mp-e233ef62-9c0e-4622-a1aa-7115f4048c07.next.bspapp.com/uni-universallinks/__UNI__D060515/"
                     }
-                }
+                },
+                "maps" : {}
             }
         }
     },
@@ -94,5 +103,6 @@
         "enable" : false,
         "version" : "2"
     },
-    "vueVersion" : "3"
+    "vueVersion" : "3",
+    "_spaceID" : "mp-e233ef62-9c0e-4622-a1aa-7115f4048c07"
 }

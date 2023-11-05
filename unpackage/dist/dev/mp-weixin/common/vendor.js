@@ -7280,7 +7280,7 @@ class v {
 function I(e2) {
   return e2 && "string" == typeof e2 ? JSON.parse(e2) : e2;
 }
-const S = true, b = "mp-weixin", A = I([]), P = b, T = I('{\n    "address": [\n        "127.0.0.1",\n        "192.168.1.107",\n        "172.27.96.1"\n    ],\n    "debugPort": 9000,\n    "initialLaunchType": "local",\n    "servePort": 7000,\n    "skipFiles": [\n        "<node_internals>/**",\n        "D:/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), C = I('[{"provider":"aliyun","spaceName":"poem","spaceId":"mp-e233ef62-9c0e-4622-a1aa-7115f4048c07","clientSecret":"BTuQBJeDn2aTX/XTVWVu5w==","endpoint":"https://api.next.bspapp.com"}]') || [];
+const S = true, b = "mp-weixin", A = I([]), P = b, T = I('{\n    "address": [\n        "127.0.0.1",\n        "192.168.1.107",\n        "172.19.128.1"\n    ],\n    "debugPort": 9000,\n    "initialLaunchType": "local",\n    "servePort": 7000,\n    "skipFiles": [\n        "<node_internals>/**",\n        "D:/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), C = I('[{"provider":"aliyun","spaceName":"poem","spaceId":"mp-e233ef62-9c0e-4622-a1aa-7115f4048c07","clientSecret":"BTuQBJeDn2aTX/XTVWVu5w==","endpoint":"https://api.next.bspapp.com"}]') || [];
 let O = "";
 try {
   O = "__UNI__D060515";
@@ -10278,6 +10278,7 @@ const createHook = (lifecycle) => (hook, target = getCurrentInstance()) => {
   !isInSSRComponentSetup && injectHook(lifecycle, hook, target);
 };
 const onLoad = /* @__PURE__ */ createHook(ON_LOAD);
+const onShareAppMessage = /* @__PURE__ */ createHook(ON_SHARE_APP_MESSAGE);
 const sys = index.getSystemInfoSync();
 const STAT_VERSION = "3.96";
 const STAT_URL = "https://tongji.dcloud.io/uni/stat";
@@ -18295,6 +18296,7 @@ exports.o = o$1;
 exports.onBeforeUnmount = onBeforeUnmount;
 exports.onLoad = onLoad;
 exports.onMounted = onMounted;
+exports.onShareAppMessage = onShareAppMessage;
 exports.p = p$1;
 exports.reactive = reactive;
 exports.ref = ref;

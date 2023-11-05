@@ -8,7 +8,7 @@
 </template>
 <script setup>
 import { onMounted, ref,computed,watch } from "vue";
-import { onPullDownRefresh ,onLoad} from "@dcloudio/uni-app"
+import { onPullDownRefresh ,onLoad,onShareAppMessage} from "@dcloudio/uni-app"
 import Poem from "@/components/Poem/index.vue"
 import Loding from "@/components/Loding/index.vue"
 import FunButton from "@/components/FunButton/index.vue"
@@ -50,6 +50,19 @@ async function remove(){
 	   }
 	 ).length>0)
 }
+onLoad((Option)=>{
+	console.log(Option.value);
+})
+onShareAppMessage((res)=>{
+	    if (res.from === 'button') {// 来自页面内分享按钮
+	      console.log(res.target)
+	    }
+	    return {
+	      title: '在这里分享你的诗',
+	      path: '/pages/index/index'
+	    }
+	
+})	
 onMounted(()=>{
 		reload()
 })

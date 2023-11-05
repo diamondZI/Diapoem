@@ -10,14 +10,16 @@
 			<uni-icons  type="star" size="30" v-if="!props.start"></uni-icons>
 			<uni-icons  type="star-filled" size="30" v-else></uni-icons>
 		</view>
-		<view  @click="theme()"  :class="{'ICONBOX':true,'ICONBOX_Active':open}">
-			<uni-icons   type="color-filled" size="30"></uni-icons>
-		</view>
+		
+		<button  open-type="share" style="background-color: rgb(0, 0, 0,.0);"  :class="{'ICONBOX':true,'ICONBOX_Active':open}">
+				<uni-icons   type="redo" size="30"></uni-icons>
+		</button>
 	</view>
 </template>
 
 <script setup>
 import { onMounted,reactive,ref ,provide} from "vue";
+import { onShareAppMessage} from "@dcloudio/uni-app"
 const open=ref(false)
 const aclick=()=>{
     open.value=!open.value
@@ -30,30 +32,21 @@ const Collect=()=>{
 	if(!props.start){
 		props.collect()
 	}else{
-       uni.showShareMenu({
-       	complete() {
-       		console.log(2);
-       	}
-       })
+      props.remove()
 	}
 }
-const theme=()=>{
-	// uni.navigateTo({
-	// 	url:'/pages/theme/index'
-	// })
-	uni.share({
-		provider: "weixin",
-		scene: "WXSceneSession",
-		type: 1,
-		summary: "我正在使用HBuilderX开发uni-app，赶紧跟我一起来体验！",
-		success: function (res) {
-			console.log("success:" + JSON.stringify(res));
-		},
-		fail: function (err) {
-			console.log("fail:" + JSON.stringify(err));
-		}
-	});
-}
+
+onShareAppMessage((res)=>{
+	    if (res.from === 'button') {// 来自页面内分享按钮
+	      console.log(res.target)
+	    }
+	    return {
+	      title: '在这里分享你的诗',
+	      path: '/pages/index/index?id=123'
+	    }
+	
+})
+
 </script>
 
 <style scoped lang="less">

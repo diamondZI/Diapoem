@@ -18,7 +18,7 @@ const _sfc_main = {
     });
     const GoRead = (id) => {
       common_vendor.index.navigateTo({
-        url: `/pages/neighborhood/index?data=${JSON.stringify(list.value)}&key=${JSON.stringify(id)}`
+        url: `/pages/Readpoem/index?data=${JSON.stringify(list.value)}&key=${JSON.stringify(id)}`
       });
     };
     common_vendor.onLoad(() => {
