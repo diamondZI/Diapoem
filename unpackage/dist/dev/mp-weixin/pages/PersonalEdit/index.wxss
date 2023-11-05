@@ -46,17 +46,31 @@
 .popupCoupon.data-v-1b420d36 {
   width: 100vw;
   height: 30vh;
-  background-color: rgba(1, 1, 1, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1b3b64;
 }
 .popupCoupon .input.data-v-1b420d36 {
+  width: 100vw;
+  display: flex;
+  align-items: center;
   position: relative;
-  margin: 20px;
+  margin: 10px;
 }
 .popupCoupon .input input.data-v-1b420d36 {
-  font-size: 20px;
+  flex: 5;
+  border-bottom: 2px solid beige;
+  padding: 10px;
+  background-color: white;
+  margin: 10px;
+  font-family: "得意黑";
+  font-size: 24px;
   background-color: var(--backround-color);
 }
 .popupCoupon .input .text.data-v-1b420d36 {
-  position: absolute;
-  right: 0;
+  padding: 4px;
+  border: 1px solid blueviolet;
+  font-size: 24px;
 }

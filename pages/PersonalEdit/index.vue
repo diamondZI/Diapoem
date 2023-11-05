@@ -6,13 +6,13 @@
 		    <image class="avatar" mode="aspectFill" :src="User.UserData.avatar"></image>
 		  </button> 
 		</view>	
-		<view @click="open(User.UserData.user_name,'user_name',5)"  class="Edit">
+		<view @click="open(User.UserData.user_name,'user_name',7)"  class="Edit">
           <text>笔名</text>
 	     <text >
            {{User.UserData.user_name}}
 		 </text> 
 		</view>	
-		<view @click="open(User.UserData.slogan,'slogan',7)"  class="Edit">
+		<view @click="open(User.UserData.slogan,'slogan',12)"  class="Edit">
           <text>个签</text>
         <text style="width: 70%; text-align: end;">
         			  {{User.UserData.slogan}}
@@ -28,7 +28,7 @@
 	<uni-popup ref="popupCoupon" type="bottom">
 			<view title="基础卡片" sub-title="副标题" extra="额外信息" class="popupCoupon">
                <view class="input">
-               	 <input type="text" :maxlength="KeyNumber"   v-model="Value"/>
+               	 <input auto-focus type="text" :maxlength="KeyNumber"   v-model="Value"/>
                  <!-- {{限定字数减去已有字数}} -->
 				  <view class="text">
 				  	{{keyWord}}
@@ -75,6 +75,7 @@ onBeforeUnmount(()=>{
 	.Edit{
 		display: flex;
 		padding: 20px;
+		
 		align-items: center;
 		justify-content: space-between;
 		border-bottom: 1px solid black;
@@ -97,18 +98,33 @@ onBeforeUnmount(()=>{
 	.popupCoupon{
 		width: 100vw;
 		height: 30vh;
-		background-color:rgb(1,1,1,0.4);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		 background-color: $uni-bg-color-one;
 		.input{
+			width: 100vw;
+			display: flex;
+			align-items: center;
 			position: relative;
-			margin: 20px;
+			margin: 10px;
 			input{
-				font-size: 20px;
+				flex: 5;
+				border-bottom: 2px solid beige;
+				padding: 10px;
+				background-color: white;
+				margin: 10px;
+				font-family: "得意黑";
+				font-size:24px;
 				background-color: $uni-bg-color;
 			}
 			.text{
-				position: absolute;
-			     right: 0;
+				padding: 4px;
+				border: 1px solid blueviolet;
+				font-size: 24px;
 			}
+			
 		}
 		
 	}
