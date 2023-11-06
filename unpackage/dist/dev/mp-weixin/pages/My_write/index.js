@@ -1,5 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const store_user = require("../../store/user.js");
 if (!Array) {
   const _easycom_uni_easyinput2 = common_vendor.resolveComponent("uni-easyinput");
   const _easycom_uni_icons2 = common_vendor.resolveComponent("uni-icons");
@@ -14,18 +15,16 @@ const _sfc_main = {
   __name: "index",
   setup(__props) {
     common_vendor.ref(false);
-    const list = common_vendor.ref();
+    const User = store_user.useUserstore();
     const value = common_vendor.ref(null);
-    const lists = common_vendor.ref([{
-      title: "你好",
-      autour: "作何"
-    }, {
-      title: "山上",
-      autour: "作何"
-    }, {
-      title: "你好",
-      autour: "作何"
-    }]);
+    const time = (datetime) => {
+      const date = new Date(datetime);
+      let Y = date.getFullYear() + "-";
+      let M = (date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1) + "-";
+      let D = date.getDate() + " ";
+      let h = date.getHours() + ":";
+      return Y + M + D + h;
+    };
     common_vendor.computed(() => {
       return;
     });
@@ -34,13 +33,14 @@ const _sfc_main = {
         url: "/pages/Write/index"
       });
     };
+    const GoRead = (item) => {
+      common_vendor.index.navigateTo(
+        {
+          url: `/pages/Readpoem/index?poem=${JSON.stringify(item)}`
+        }
+      );
+    };
     common_vendor.onLoad((Option) => {
-      list.value = JSON.parse(Option.data).map((el) => {
-        return {
-          title: el.title,
-          author: el.author
-        };
-      });
     });
     return (_ctx, _cache) => {
       return {
@@ -51,18 +51,24 @@ const _sfc_main = {
           ["input-border"]: true,
           modelValue: value.value
         }),
-        c: common_vendor.f(lists.value, (item, index, i0) => {
+        c: common_vendor.f(common_vendor.unref(User).UserData.create, (item, index, i0) => {
           return {
             a: common_vendor.t(item.title),
-            b: "aad8b7e9-1-" + i0,
-            c: index,
-            d: item.title.includes(value.value) | value.value === null
+            b: common_vendor.t(item.title.includes(value.value)),
+            c: common_vendor.t(time(item.data)),
+            d: "aad8b7e9-1-" + i0,
+            e: common_vendor.t(item.author),
+            f: common_vendor.t(item.author),
+            g: common_vendor.t(item.author),
+            h: index,
+            i: item.title.includes(value.value) | value.value === null,
+            j: common_vendor.o(($event) => GoRead(item), index)
           };
         }),
         d: common_vendor.p({
           type: "arrow-up",
           size: "33",
-          color: "$uni-text-color-one"
+          color: "rgb(138,151,155)"
         }),
         e: common_vendor.p({
           type: "plusempty",

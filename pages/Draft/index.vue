@@ -1,13 +1,11 @@
 <template>
-	<!-- <uni-easyinput  prefix-icon="search" placeholder="请输入" :input-border="false"></uni-easyinput> -->
 <view class="CollectBox">
 	<view class="header">
-			<text>您的收藏</text>
+			<text>您的草稿</text>
 			<view @click="sort=!sort" :class="{'Icon':true,'Iconsort':sort}" ></view>
 	</view>
 		<view class="collect" >
-	     <view  :class="{'collect_poem':true,'collect_poem_active':sort}" v-for="(item,index) in User.UserData.collect" :key="index"
-		 @touchend="GoRead(index)"
+	     <view  :class="{'collect_poem':true,'collect_poem_active':sort}" v-for="(item,index) in Draft.Darft" @click="GoWrite(item.title,item.paragraphs)" :key="index"
 		 >
 			   {{item.title}}
 			 <text class="author" > {{item.author}}</text>
@@ -19,27 +17,16 @@
 <script setup>	
 import { onMounted,reactive,ref } from "vue";
 import { onLoad} from "@dcloudio/uni-app"
-import {useUserstore} from "@/store/user.js"
-const User=useUserstore()
+import {useDarftStore} from "@/store/draft.js"
+const Draft= useDarftStore()
  const sort=ref(false)
- const list=ref() 
- onLoad((Option)=>{
-	 list.value= JSON.parse(Option.data).map(el=>{
-		 return {
-			 id:el.id,
-			 title:el.title,
-			 author:el.author
-		 }
-	 })
- })
- const GoRead=(id)=>{
+const GoWrite=(value,list)=>{
 	 uni.navigateTo({
-	 	url:`/pages/Readpoem/index?data=${JSON.stringify(list.value)}&key=${JSON.stringify(id)}`
+	 	url:`/pages/Write/index?value=${JSON.stringify(value)}&list=${
+			JSON.stringify(list)
+		}`
 	 })
  }
- onLoad(()=>{
-	 
- })
 </script>
 
 <style scoped lang="scss">

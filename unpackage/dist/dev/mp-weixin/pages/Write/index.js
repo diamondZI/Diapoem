@@ -1,6 +1,7 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 const store_draft = require("../../store/draft.js");
+const store_user = require("../../store/user.js");
 if (!Array) {
   const _easycom_uni_popup_message2 = common_vendor.resolveComponent("uni-popup-message");
   const _easycom_uni_popup2 = common_vendor.resolveComponent("uni-popup");
@@ -19,6 +20,7 @@ const _sfc_main = {
     const H = common_vendor.ref("0px");
     const TextTitle = common_vendor.ref("");
     const TextConet = common_vendor.ref("");
+    const User = store_user.useUserstore();
     const paragraphs = common_vendor.computed(() => {
       return TextConet.value.split("\n");
     });
@@ -62,14 +64,21 @@ const _sfc_main = {
       Show.value = false;
     };
     const AddPoem = async () => {
-      let res = await Poemtodo.Set(poem.value);
-      console.log(res);
+      const data = (/* @__PURE__ */ new Date()).getTime();
+      let res = await Poemtodo.Set({ ...poem.value, data });
+      if (res.ok) {
+        await User.setcreate({ ...poem.value, data });
+      }
       messageToggle(res.ok === 200 ? "success" : "error", res.msg);
     };
     const DarftP = () => {
       Darft.PUSHDARFT(poem.value);
       messageToggle("success", "成功放入了草稿");
     };
+    common_vendor.onLoad((options) => {
+      TextTitle.value = JSON.parse(options.value);
+      TextConet.value = JSON.parse(options.paragraphs);
+    });
     return (_ctx, _cache) => {
       return common_vendor.e({
         a: Show.value

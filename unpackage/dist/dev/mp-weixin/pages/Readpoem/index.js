@@ -40,10 +40,14 @@ const _sfc_main = {
       });
     }
     common_vendor.onLoad((Options) => {
-      console.log(Options);
-      list.value = JSON.parse(Options.data);
-      key.value = JSON.parse(Options.key);
-      GetPoem(key.value);
+      if (Options.poem) {
+        poem.value = JSON.parse(Options.poem);
+        console.log(poem);
+      } else {
+        list.value = JSON.parse(Options.data);
+        key.value = JSON.parse(Options.key);
+        GetPoem(key.value);
+      }
     });
     return (_ctx, _cache) => {
       return common_vendor.e({

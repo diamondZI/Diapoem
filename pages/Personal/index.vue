@@ -1,13 +1,14 @@
 <template>
 	<view >
 		<view class="img">
-        <image :src="Users.UserData.avatar" mode="aspectFit"></image>
-		 <text class="name" >{{Users.UserData.user_name}}</text>
-		 <text  class="solng">{{Users.UserData.slogan}}</text>
+        <image :src="User.avatar" mode="aspectFit"></image>
+		 <text class="name" >{{User.user_name}}</text>
+		 <text  class="solng">{{User.slogan}}</text>
 		</view>
 		<view class="fans">
 			<view class="">
 				粉丝,关注
+				
 			</view>
 			<view class="">
 				粉丝,关注
@@ -20,32 +21,46 @@
 			</view>
 			<view class="Made">
 			  
-			  <view class="Box">
-			  	<text>过山</text>
-			  	<text>2022-12-22</text>
-			  </view>  <view class="Box">
-			  	<text>过山</text>
-			  	<text>2022-12-22</text>
-			  </view>  <view class="Box">
-			  	<text>过山</text>
-			  	<text>2022-12-22</text>
-			  </view>
-			   <view class="Box NOBox">
-			  
+			  <view @click="GoRead(item)" class="Box" v-for="item in User.create">
+			  	<text>{{item.title}}</text>
+			  	<text>{{time(item.data)}}</text>
+			  </view> 
+			   <view  class="Box NOBox" v-for="item in 4-User.create.length">
+			<text @click="GoWrite">要继续创作吗</text>
 			  </view>
 			</view>
 		</view>
 			<view style="padding: 40px;">
-				&COPY; {{Users.UserData.self_introduction}}
+				&COPY; {{User.self_introduction}}
 			</view>
 	</view>
 </template>
 
 <script setup>
 import { ref } from "vue"
-import {useUserstore} from "@/store/user.js"
-const Users=useUserstore()
- // const User=ref(Users.UserData)
+import {onLoad} from "@dcloudio/uni-app"
+ const User=ref()
+const time=(datetime)=>{
+		const date = new Date(datetime);  
+		let Y = date.getFullYear() + '-';
+	 	let M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+		let D = date.getDate() + ' ';
+	  return Y+M+D
+}
+ const GoRead=(item)=>{
+	 uni.navigateTo({
+	 	url:`/pages/Readpoem/index?poem=${JSON.stringify(item)}`
+	}
+	)
+ }
+const GoWrite=()=>{
+	 uni.navigateTo({
+	 	url:'/pages/Write/index'
+	 })
+ }
+ onLoad((options)=>{
+	 User.value=JSON.parse(options.data)
+ })
 </script>
 
 <style lang="scss" scoped>
@@ -112,9 +127,15 @@ const Users=useUserstore()
 	 		background-color: $uni-bg-color-one;
 	 	}
 	 	.NOBox{
+			color: black;
+			box-shadow: inset 0 0  10px black;
 	        border: 1px black solid;
+			transition: .3s linear ;
 	 		background-color: rgb(0, 0, 0,0);
 	 	}
+		.NOBox:active{
+			box-shadow: inset 0 0  50px black;
+		}
 	 }
  }
  

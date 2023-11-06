@@ -16,20 +16,20 @@
         </view>
 		<view class="UserButton">
 			<view @click='GoNavigateTo("collect",U.UserData.collect)' class="A">
-				<span style="z-index: 1;">收藏 {{U.UserData.collect.length}}</span>
+				<span style="z-index: 1;">收藏 </span>
 			</view>
-			<view @click='GoNavigateTo("Personal",U.UserData.collect)'>
-				<span style="z-index: 1;">个人介绍 {{U.UserData.collect.length}}</span>
+			<view @click='GoNavigateTo("Personal",U.UserData)'>
+				<span style="z-index: 1;">个人介绍 </span>
 			</view>
 			<view id="a" @click='GoNavigateTo("My_write",U.UserData.collect)'>
-				创作 {{U.UserData.collect.length}}</view>
-			<view id="a" @click='GoNavigateTo("theme",U.UserData.collect)'>主题 {{U.UserData.collect.length}}</view>
+				创作 </view>
+			<view id="a" @click='GoNavigateTo("theme",U.UserData.collect)'>主题 </view>
 		</view>
 		<view class="UserButton" >
-			<view >AI创作 {{U.UserData.collect.length}}</view>
-			<view>四方同好 {{U.UserData.collect.length}}</view>
-			<view id="a">我的草稿 {{Darft.Darft.length}}</view>
-			<view id="a"  @click='GoNavigateTo("Aboutme",)'>赞助我们 {{U.UserData.collect.length}}</view>
+			<view >AI创作 </view>
+			<view>四方同好 </view>
+			<view id="a" @click='GoNavigateTo("Draft")'>我的草稿 </view>
+			<view id="a"  @click='GoNavigateTo("Aboutme",)'>赞助我们 </view>
 		</view>
 	</view>
 	</template>

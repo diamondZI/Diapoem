@@ -28,10 +28,13 @@
      import Poem from '@/components/Poem/index.vue'
 	import CryptoJs from "crypto-js"
 	import {Base64} from "js-base64"
+    import { onLoad} from "@dcloudio/uni-app"
 	import {useDarftStore} from "@/store/draft.js"
+	import {useUserstore} from "@/store/user.js"
 	const H=ref('0px')
 	const TextTitle=ref('')
 	const TextConet=ref('')
+	const User=useUserstore()
 	const paragraphs=computed(()=>{
 		return TextConet.value.split('\n')
 	})
@@ -69,7 +72,6 @@
 		msg.msgType=type
 		msg.messageText = TEXT
 		message.value.open()
-		
 	}
 	const Showopen=()=>{
        Show.value=true
@@ -78,14 +80,21 @@
        Show.value=false
 	}
 	const AddPoem=async ()=>{
-	   let res=await Poemtodo.Set(poem.value)
-	   console.log(res);   
+		const data=new Date().getTime()
+	   let res=await Poemtodo.Set({...poem.value,data:data})
+        if (res.ok) {
+        await User.setcreate({...poem.value,data:data})
+        }
 	 messageToggle(res.ok===200?"success":'error',res.msg)
 	}
 	const DarftP=()=>{
-		Darft.PUSHDARFT(poem.value)
+		   Darft.PUSHDARFT(poem.value)
 		 messageToggle("success","成功放入了草稿")
 	}
+	onLoad((options)=>{
+        TextTitle.value=JSON.parse(options.value);
+		TextConet.value=JSON.parse(options.paragraphs);
+	})
 </script>
 <style scoped lang="scss">
 	.Write{

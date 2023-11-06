@@ -10,7 +10,8 @@
     "pages/PersonalEdit/index",
     "pages/Write/index",
     "pages/neighborhood/index",
-    "pages/Readpoem/index"
+    "pages/Readpoem/index",
+    "pages/Draft/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

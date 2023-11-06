@@ -1,1 +1,1 @@
-<view>你好</view>
+<uni-card wx:for="{{a}}" wx:for-item="item" class="r-i-f" u-s="{{['d']}}" bindclick="{{b}}" u-r="card" u-i="{{item.c}}" bind:__l="__l">{{item.a}}</uni-card>

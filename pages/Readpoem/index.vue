@@ -5,7 +5,6 @@
 	<view v-else>
 		<uni-card title="内容已被删除" thumbnail="" extra="作者删除" note="Tips">
             <button type="default" @click="remove()">确认</button>
-           
  		</uni-card>
 	</view>
 	</view>
@@ -44,10 +43,15 @@ async function remove(){
     })
 }
 onLoad((Options)=>{
-	console.log(Options);
-    list.value=JSON.parse(Options.data)  
-    key.value=JSON.parse(Options.key)   
-    GetPoem(key.value) 
+	if(Options.poem){
+		poem.value=JSON.parse(Options.poem)
+		console.log(poem);
+	}else{
+		list.value=JSON.parse(Options.data)
+		key.value=JSON.parse(Options.key)   
+		GetPoem(key.value) 
+	}
+   
 })
 </script>
 

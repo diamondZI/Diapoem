@@ -13,15 +13,13 @@
 		  		  uni.setStorageSync('Darft',JSON.stringify({
 		  		  	"key":[]
 		  		  }))
-		  	}
-			console.log(A.UserData.value);
+		  	    }
 		  }	
 		},
 		onLaunch: function() {
 			try{
 				this.p()
 			}catch(e){
-				//TODO handle the exception
 			 console.log("失败");
 			}
 			console.log('App Launch')

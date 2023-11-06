@@ -15,7 +15,7 @@ const _sfc_main = {
   __name: "index",
   setup(__props) {
     const U = store_user.useUserstore();
-    const Darft = store_draft.useDarftStore();
+    store_draft.useDarftStore();
     common_vendor.$s.importObject("User");
     const GoNavigateTo = (Url, value) => {
       console.log("跳转");
@@ -38,19 +38,12 @@ const _sfc_main = {
           size: "30"
         }),
         g: common_vendor.o(($event) => GoNavigateTo("PersonalEdit")),
-        h: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
-        i: common_vendor.o(($event) => GoNavigateTo("collect", common_vendor.unref(U).UserData.collect)),
-        j: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
-        k: common_vendor.o(($event) => GoNavigateTo("Personal", common_vendor.unref(U).UserData.collect)),
-        l: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
-        m: common_vendor.o(($event) => GoNavigateTo("My_write", common_vendor.unref(U).UserData.collect)),
-        n: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
-        o: common_vendor.o(($event) => GoNavigateTo("theme", common_vendor.unref(U).UserData.collect)),
-        p: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
-        q: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
-        r: common_vendor.t(common_vendor.unref(Darft).Darft.length),
-        s: common_vendor.t(common_vendor.unref(U).UserData.collect.length),
-        t: common_vendor.o(($event) => GoNavigateTo("Aboutme"))
+        h: common_vendor.o(($event) => GoNavigateTo("collect", common_vendor.unref(U).UserData.collect)),
+        i: common_vendor.o(($event) => GoNavigateTo("Personal", common_vendor.unref(U).UserData)),
+        j: common_vendor.o(($event) => GoNavigateTo("My_write", common_vendor.unref(U).UserData.collect)),
+        k: common_vendor.o(($event) => GoNavigateTo("theme", common_vendor.unref(U).UserData.collect)),
+        l: common_vendor.o(($event) => GoNavigateTo("Draft")),
+        m: common_vendor.o(($event) => GoNavigateTo("Aboutme"))
       });
     };
   }

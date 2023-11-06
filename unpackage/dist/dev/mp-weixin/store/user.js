@@ -141,6 +141,14 @@ const useUserstore = common_vendor.defineStore("User", () => {
       return { msg: "删除失败" };
     }
   };
+  const setcreate = async (item) => {
+    const { create } = UserData.value;
+    create.push({ ...item, _id: create.lenght });
+    const db = await common_vendor.$s.database();
+    await db.collection("users").doc(UserData.value._id).update({
+      create
+    });
+  };
   return {
     UserData,
     GetUser,
@@ -148,7 +156,8 @@ const useUserstore = common_vendor.defineStore("User", () => {
     SetUser,
     SetText,
     SetCollect,
-    removeCollect
+    removeCollect,
+    setcreate
   };
 });
 exports.useUserstore = useUserstore;

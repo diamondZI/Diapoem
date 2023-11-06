@@ -6954,6 +6954,13 @@ const pages = [
       navigationBarTitleText: "",
       enablePullDownRefresh: false
     }
+  },
+  {
+    path: "pages/Draft/index",
+    style: {
+      navigationBarTitleText: "草稿",
+      enablePullDownRefresh: false
+    }
   }
 ];
 const globalStyle = {
@@ -7280,7 +7287,7 @@ class v {
 function I(e2) {
   return e2 && "string" == typeof e2 ? JSON.parse(e2) : e2;
 }
-const S = true, b = "mp-weixin", A = I([]), P = b, T = I('{\n    "address": [\n        "127.0.0.1",\n        "192.168.1.107",\n        "172.19.128.1"\n    ],\n    "debugPort": 9000,\n    "initialLaunchType": "local",\n    "servePort": 7000,\n    "skipFiles": [\n        "<node_internals>/**",\n        "D:/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), C = I('[{"provider":"aliyun","spaceName":"poem","spaceId":"mp-e233ef62-9c0e-4622-a1aa-7115f4048c07","clientSecret":"BTuQBJeDn2aTX/XTVWVu5w==","endpoint":"https://api.next.bspapp.com"}]') || [];
+const S = true, b = "mp-weixin", A = I([]), P = b, T = I('{\n    "address": [\n        "127.0.0.1",\n        "192.168.1.107",\n        "172.24.80.1"\n    ],\n    "debugPort": 9000,\n    "initialLaunchType": "local",\n    "servePort": 7000,\n    "skipFiles": [\n        "<node_internals>/**",\n        "D:/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), C = I('[{"provider":"aliyun","spaceName":"poem","spaceId":"mp-e233ef62-9c0e-4622-a1aa-7115f4048c07","clientSecret":"BTuQBJeDn2aTX/XTVWVu5w==","endpoint":"https://api.next.bspapp.com"}]') || [];
 let O = "";
 try {
   O = "__UNI__D060515";
@@ -10328,7 +10335,7 @@ let statConfig = {
   appid: "__UNI__D060515"
 };
 let titleJsons = {};
-titleJsons = { "pages/index/index": "每天一篇", "pages/home/index": "个人主页", "pages/collect/index": "收藏", "pages/Personal/index": "个人信息", "pages/My_write/index": "我的创作", "pages/theme/index": "更改主题", "pages/Aboutme/index": "关于我", "pages/PersonalEdit/index": "编辑信息", "pages/Write/index": "创作" };
+titleJsons = { "pages/index/index": "每天一篇", "pages/home/index": "个人主页", "pages/collect/index": "收藏", "pages/Personal/index": "个人信息", "pages/My_write/index": "我的创作", "pages/theme/index": "更改主题", "pages/Aboutme/index": "关于我", "pages/PersonalEdit/index": "编辑信息", "pages/Write/index": "创作", "pages/Draft/index": "草稿" };
 const UUID_KEY = "__DC_STAT_UUID";
 const UUID_VALUE = "__DC_UUID_VALUE";
 function getUuid() {

@@ -89,6 +89,13 @@
 			    "navigationBarTitleText": "",
 			    "enablePullDownRefresh": false
 			}
+		},{
+			"path": "pages/Draft/index",
+			"style" :
+			{
+			    "navigationBarTitleText": "草稿",
+			    "enablePullDownRefresh": false
+			}
 		}
 		
     ],

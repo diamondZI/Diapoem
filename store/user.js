@@ -108,7 +108,6 @@ const SetAvatarUrl= async (avatar)=>{
 const SetText= (key,value)=>{
 	UserData.value[`${key}`]=value
 }
-
 const SetUser=async ()=>{
 	const {avatar,user_name,slogan,self_introduction} =UserData.value
 	 const db=await uniCloud.database()
@@ -153,7 +152,14 @@ const removeCollect=(id)=>{
 	     
 	}
 }
-
+const setcreate=async (item)=>{
+	const {create}=UserData.value
+	create.push({...item,_id:create.lenght})
+	const db=await uniCloud.database()
+	await  db.collection('users').doc(UserData.value._id).update({
+		create
+	})
+}
 return {
 	UserData,
 	GetUser,
@@ -161,6 +167,7 @@ return {
 	SetUser,
 	SetText,
 	SetCollect,
-	removeCollect
+	removeCollect,
+	setcreate
 	}
 })

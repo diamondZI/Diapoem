@@ -14,6 +14,7 @@ if (!Math) {
   "./pages/Write/index.js";
   "./pages/neighborhood/index.js";
   "./pages/Readpoem/index.js";
+  "./pages/Draft/index.js";
 }
 const _sfc_main = {
   methods: {
@@ -25,7 +26,6 @@ const _sfc_main = {
           "key": []
         }));
       }
-      console.log(A.UserData.value);
     }
   },
   onLaunch: function() {
