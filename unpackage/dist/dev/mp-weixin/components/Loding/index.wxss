@@ -5,7 +5,7 @@
   align-items: center;
   flex-direction: column;
 }
-.Loding image.data-v-ee71c6fb {
+.Loding .image.data-v-ee71c6fb {
   margin: 10px;
   width: 100px;
   height: 100px;

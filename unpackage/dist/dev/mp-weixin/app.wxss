@@ -43,5 +43,15 @@ page {
   box-sizing: content-box;
   font-family: "得意黑 斜体";
 }
+image {
+  will-change: transform;
+  width: auto;
+  height: auto;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+}
 
 /*每个页面公共css */page{--status-bar-height:25px;--top-window-height:0px;--window-top:0px;--window-bottom:0px;--window-left:0px;--window-right:0px;--window-magin:0px}[data-c-h="true"]{display: none !important;}

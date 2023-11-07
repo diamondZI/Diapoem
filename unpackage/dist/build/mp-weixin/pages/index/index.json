@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "每天一篇",
+  "usingComponents": {
+    "poem": "../../components/Poem/index",
+    "loding": "../../components/Loding/index",
+    "fun-button": "../../components/FunButton/index"
+  }
+}

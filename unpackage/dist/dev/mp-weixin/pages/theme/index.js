@@ -9,9 +9,9 @@ const _sfc_main = {
   __name: "index",
   setup(__props) {
     const Theme = store_theme.useThemeterStor();
-    const duration = common_vendor.ref(20);
+    const duration = common_vendor.ref(24);
     const duration2 = common_vendor.ref(0);
-    const duration3 = common_vendor.ref(0);
+    const duration3 = common_vendor.ref(32);
     const content = {
       title: "大海",
       author: "博尔赫斯",
@@ -62,10 +62,12 @@ const _sfc_main = {
         c: common_vendor.t(duration.value),
         d: common_vendor.o((e) => changeSize(e)),
         e: duration.value,
-        f: common_vendor.o((e) => changeletter(e)),
-        g: duration2.value,
-        h: common_vendor.o((e) => changeheight(e)),
-        i: duration3.value
+        f: common_vendor.t(duration2.value),
+        g: common_vendor.o((e) => changeletter(e)),
+        h: duration2.value,
+        i: common_vendor.t(duration3.value),
+        j: common_vendor.o((e) => changeheight(e)),
+        k: duration3.value
       };
     };
   }

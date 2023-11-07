@@ -68,6 +68,9 @@
   border-radius: 10rpx;
   border: 1px black solid;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 38rpx;
   height: 200rpx;
 }
 .userIorf .UserButton view.data-v-4978fed5:hover:after {

@@ -3,7 +3,7 @@
 	 <view :class="{'content':poem, 'REMOVE':!poem}"   :style="[Theme.theme]" >
 	<poem :poem='poem' v-if="poem" ></poem>
 	<view v-else>
-		<uni-card title="内容已被删除" thumbnail="" extra="作者删除" note="Tips">
+		<uni-card title="内容已被删除" thumbnail=""  note="Tips">
             <button type="default" @click="remove()">确认</button>
  		</uni-card>
 	</view>

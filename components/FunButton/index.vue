@@ -98,7 +98,7 @@ onShareAppMessage((res)=>{
 	}
     .FUNBUTTON:hover{
 		background-color: rgb(100, 100,100);
-		Box-shadow: 0 0 3px 0 black;
+		box-shadow: 0 0 3px 0 black;
 	}
     
 </style>

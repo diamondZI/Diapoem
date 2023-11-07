@@ -12,10 +12,10 @@ const token = ref(null)
 const GetUser = async () => {
 	token.value = await Gettoken()
 	if (token.value) {
-		console.log(token.value);
+		
 		await wxLogin(token.value)
 	} else {
-		console.log("2");
+		
 		await wxRegistered({
 			user_name: '未知名',
 			collect: [],
@@ -46,7 +46,7 @@ const wxLogin = (token) => {
 					token: token,
 				},
 				success: (res) => {
-					console.log("212",res);
+				
 					UserData.value = res.result.Userdata.data[0]
 				},
 			
@@ -54,7 +54,7 @@ const wxLogin = (token) => {
 			})
 		},
 		fail: (err) => {
-			console.log("2",err);
+		
 		}
 	})
 }
@@ -83,7 +83,7 @@ const wxRegistered = (Data) => {
 							key: 'token'
 						})
 					} else {
-						console.log('失败', ok, msg);
+						
 					}
 				}
 			})
@@ -95,8 +95,8 @@ const SetAvatarUrl= async (avatar)=>{
 	 const result = await uniCloud.uploadFile({
 	        filePath: avatar,
 	        cloudPath: 'a.jpg',
+			
 	        onUploadProgress: function(progressEvent) {
-	          // console.log(progressEvent);
 	          var percentCompleted = Math.round(
 	            (progressEvent.loaded * 100) / progressEvent.total
 	          );

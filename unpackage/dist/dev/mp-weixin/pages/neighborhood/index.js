@@ -1,39 +1,53 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
-if (!Array) {
-  const _easycom_uni_card2 = common_vendor.resolveComponent("uni-card");
-  _easycom_uni_card2();
-}
-const _easycom_uni_card = () => "../../uni_modules/uni-card/components/uni-card/uni-card.js";
-if (!Math) {
-  _easycom_uni_card();
-}
+const store_user = require("../../store/user.js");
 const _sfc_main = {
   __name: "index",
   setup(__props) {
-    const list = common_vendor.reactive([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-    const card = common_vendor.ref(null);
-    const click = () => {
-      console.log(
-        card.value[0]
-      );
+    common_vendor.reactive([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    common_vendor.ref(null);
+    const User = store_user.useUserstore();
+    const userlist = common_vendor.ref([]);
+    const GetUser = async () => {
+      const db = common_vendor.$s.database();
+      let { result } = await db.collection("users").where(`_id!='${User.UserData._id}'`).field(
+        {
+          "user_name": true,
+          "create": true,
+          "self_introduction": true,
+          "slogan": true,
+          "avatar": true
+        }
+      ).limit(10).get();
+      userlist.value = result.data;
+      console.log(userlist.value);
     };
+    const GoNavigateTo = (Url, value) => {
+      console.log("跳转");
+      common_vendor.index.navigateTo({
+        url: `/pages/${Url}/index?data=` + JSON.stringify(value),
+        animationType: "pop-in",
+        animationDuration: 1e4
+      });
+    };
+    common_vendor.onMounted(() => {
+      GetUser();
+    });
     return (_ctx, _cache) => {
       return {
-        a: common_vendor.f(list, (item, k0, i0) => {
+        a: common_vendor.f(userlist.value, (item, index, i0) => {
           return {
-            a: common_vendor.t(item),
-            b: common_vendor.sr(card, "00aeee6c-0-" + i0, {
-              "k": "card",
-              "f": 1
-            }),
-            c: "00aeee6c-0-" + i0
+            a: item.avatar,
+            b: common_vendor.t(item.user_name),
+            c: common_vendor.t(item.slogan),
+            d: common_vendor.t(item.self_introduction),
+            e: common_vendor.o(($event) => GoNavigateTo("Personal", item), index),
+            f: index
           };
-        }),
-        b: common_vendor.o(($event) => click())
+        })
       };
     };
   }
 };
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/koajs/DiaPoem/pages/neighborhood/index.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-da70f5fc"], ["__file", "D:/koajs/DiaPoem/pages/neighborhood/index.vue"]]);
 wx.createPage(MiniProgramPage);

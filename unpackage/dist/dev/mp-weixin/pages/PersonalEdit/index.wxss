@@ -66,7 +66,7 @@
   background-color: white;
   margin: 10px;
   font-family: "得意黑";
-  font-size: 24px;
+  font-size: 17px;
   background-color: var(--backround-color);
 }
 .popupCoupon .input .text.data-v-1b420d36 {

@@ -21,9 +21,14 @@ const _sfc_main = {
       return KeyNumber.value - Value.value.length;
     });
     const onChooseAvatar = (e) => {
-      const { avatarUrl } = e.detail;
-      User.SetAvatarUrl(avatarUrl);
-      console.log(User.UserData.avatar);
+      common_vendor.index.chooseImage({
+        count: 1,
+        sizeType: ["compressed"],
+        sourceType: ["album", "camera"],
+        success: (res) => {
+          User.SetAvatarUrl(res.tempFilePaths[0]);
+        }
+      });
     };
     const open = (value, key, num) => {
       popupCoupon.value.open();

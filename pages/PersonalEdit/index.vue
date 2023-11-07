@@ -2,7 +2,7 @@
 	<view>
 		<view class="Edit">
           <text>头像</text>
-		  <button class="wrapper" open-type="chooseAvatar" @chooseavatar="onChooseAvatar">
+		  <button class="wrapper"  @click="onChooseAvatar">
 		    <image class="avatar" mode="aspectFill" :src="User.UserData.avatar"></image>
 		  </button> 
 		</view>	
@@ -28,7 +28,7 @@
 	<uni-popup ref="popupCoupon" type="bottom">
 			<view title="基础卡片" sub-title="副标题" extra="额外信息" class="popupCoupon">
                <view class="input">
-               	 <input auto-focus type="text" :maxlength="KeyNumber"   v-model="Value"/>
+               	 <input  type="text" :maxlength="KeyNumber"   v-model="Value"/>
                  <!-- {{限定字数减去已有字数}} -->
 				  <view class="text">
 				  	{{keyWord}}
@@ -50,10 +50,16 @@ import { ref ,onBeforeUnmount, computed, watch} from "vue";
 	const keyWord=computed(()=>{
 		return   (KeyNumber.value - Value.value.length)
 	})
+	// const a=
 const onChooseAvatar=(e)=>{
-	const { avatarUrl } = e.detail
-	User.SetAvatarUrl(avatarUrl)
-	console.log(User.UserData.avatar);	
+	uni.chooseImage({
+		count:1,
+		sizeType: ['compressed'],
+		 sourceType: ['album', 'camera'],
+		success: (res) => {
+			User.SetAvatarUrl(res.tempFilePaths[0])
+		}
+	})
 }
 const open=(value,key,num)=>{
 	popupCoupon.value.open()
@@ -116,7 +122,7 @@ onBeforeUnmount(()=>{
 				background-color: white;
 				margin: 10px;
 				font-family: "得意黑";
-				font-size:24px;
+				font-size:17px;
 				background-color: $uni-bg-color;
 			}
 			.text{

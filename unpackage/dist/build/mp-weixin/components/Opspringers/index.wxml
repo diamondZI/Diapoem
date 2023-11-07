@@ -1,0 +1,1 @@
+<view class="Opspringers data-v-0b2bf6a7" style="{{'display:' + e}}"><view class="TopPoem data-v-0b2bf6a7"><slot></slot></view><view class="Button data-v-0b2bf6a7"><button class="data-v-0b2bf6a7" disabled="{{b}}" type="default" bindtap="{{c}}">{{a}}</button><button class="data-v-0b2bf6a7" type="default" bindtap="{{d}}"> 取消 </button></view></view>

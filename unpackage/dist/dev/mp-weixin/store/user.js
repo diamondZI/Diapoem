@@ -6,10 +6,8 @@ const useUserstore = common_vendor.defineStore("User", () => {
   const GetUser = async () => {
     token.value = await Gettoken();
     if (token.value) {
-      console.log(token.value);
       await wxLogin(token.value);
     } else {
-      console.log("2");
       await wxRegistered({
         user_name: "未知名",
         collect: [],
@@ -39,13 +37,11 @@ const useUserstore = common_vendor.defineStore("User", () => {
             token: token2
           },
           success: (res2) => {
-            console.log("212", res2);
             UserData.value = res2.result.Userdata.data[0];
           }
         });
       },
       fail: (err) => {
-        console.log("2", err);
       }
     });
   };
@@ -73,8 +69,6 @@ const useUserstore = common_vendor.defineStore("User", () => {
                 data: token2,
                 key: "token"
               });
-            } else {
-              console.log("失败", ok, msg);
             }
           }
         });

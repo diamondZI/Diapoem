@@ -1,0 +1,1 @@
+"use strict";const e=require("../../common/vendor.js"),t=require("../../store/theme.js"),r={__name:"index",props:["poem"],setup(r){const o=t.useThemeterStor();return(t,s)=>({a:e.t(r.poem.title),b:e.o((e=>t.clie())),c:e.t(r.poem.author),d:e.f(r.poem.paragraphs,((t,r,o)=>({a:e.t(t),b:t}))),e:e.s(e.unref(o).theme)})}};wx.createComponent(r);

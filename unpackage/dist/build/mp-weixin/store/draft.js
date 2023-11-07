@@ -1,0 +1,1 @@
+"use strict";const e=require("../common/vendor.js"),r=e.defineStore("DRAFT",(()=>{const r=e.ref(JSON.parse(e.index.getStorageSync("Darft")).key??[]);return{PUSHDARFT:t=>{r.value.push(t),e.index.setStorageSync("Darft",JSON.stringify({key:r.value}))},Darft:r}}));exports.useDarftStore=r;

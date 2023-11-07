@@ -3,7 +3,7 @@
 	<view class="userIorf" v-else>
         <view class="User">
 			<view class="avatar">
-				<image :src="U.UserData.avatar" mode=""></image>
+				<image @click="avatarView(U.UserData.avatar)" :src="U.UserData.avatar" mode="aspectFill"></image>
 			</view>
             <view class="name">
                <text>{{U.UserData.user_name}}</text>            	
@@ -11,7 +11,7 @@
                <text>{{U.UserData.slogan}}</text>            	
             </view>
 			<view  style="position: absolute;  right: 20rpx;" @click="GoNavigateTo('PersonalEdit')">
-				<uni-icons  type="info-filled" size="30"></uni-icons>
+				<uni-icons  type="person-filled" size="30"></uni-icons>
 			</view>
         </view>
 		<view class="UserButton">
@@ -26,9 +26,9 @@
 			<view id="a" @click='GoNavigateTo("theme",U.UserData.collect)'>主题 </view>
 		</view>
 		<view class="UserButton" >
-			<view >AI创作 </view>
-			<view>四方同好 </view>
-			<view id="a" @click='GoNavigateTo("Draft")'>我的草稿 </view>
+			<view style="background-color: black; color: white;">AI创作 </view>
+			<view @click='GoNavigateTo("neighborhood",)'>四方同好 </view>
+			<view id="a" @click='GoNavigateTo("Draft",)'>我的草稿 </view>
 			<view id="a"  @click='GoNavigateTo("Aboutme",)'>赞助我们 </view>
 		</view>
 	</view>
@@ -52,7 +52,11 @@
 		})
 	}
 
-    
+    const  avatarView=(url)=>{
+    	uni.previewImage({
+    		urls:[url]
+    	})
+    }
 	
 </script>
 
@@ -103,7 +107,9 @@
 			  border-radius: 10rpx;
 			  border: 1px black solid;
 			  display: flex;
-			
+			 justify-content: center;
+			 align-items: center;
+			 font-size: 38rpx;
 			  height: 200rpx;
 		  }
 		  view:hover:after{

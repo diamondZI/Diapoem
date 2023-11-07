@@ -32,11 +32,16 @@
   align-items: center;
   position: relative;
 }
-.img image.data-v-1b2c2814 {
-  width: 50vw;
-  height: 50vw;
+.img .avatar.data-v-1b2c2814 {
+  border: black 1px #8a979b;
+  width: 360rpx;
+  height: 360rpx;
   border-radius: 50%;
-  border: 2px #8a979b solid;
+}
+.img .avatar image.data-v-1b2c2814 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 .img text.data-v-1b2c2814 {
   position: absolute;
@@ -90,6 +95,6 @@
   transition: 0.3s linear;
   background-color: rgba(0, 0, 0, 0);
 }
-.MadeBox .Made .NOBox.data-v-1b2c2814:active {
+.MadeBox .Made .NOBox.data-v-1b2c2814:hover {
   box-shadow: inset 0 0 50px black;
 }

@@ -69,10 +69,10 @@
   border: 1px black solid;
 }
 .CollectBox .collect .collect_poem .author.data-v-cb2cf245 {
-  background-color: white;
+  text-shadow: 0 0 2px black;
   flex: 1;
   text-orientation: sideways;
-  color: #8a979b;
+  color: #ffd764;
 }
 .CollectBox .collect .collect_poem.data-v-cb2cf245:hover {
   border-radius: 40rpx;

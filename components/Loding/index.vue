@@ -1,8 +1,7 @@
 <template>
 	<view class="Loding">
-     <image src="../../static/loading.gif" mode=""></image>
-		 {{title}}
-		 
+     <image class="image" src="../../static/loading.gif" mode=""></image>
+		 {{title}} 
 	</view>
 </template>
 
@@ -19,7 +18,7 @@ import { ref } from "vue";
    justify-content: center;
 align-items: center;
    flex-direction: column;
-image{
+.image{
 	margin: 10px;
 	 width: 100px;
 	 height: 100px;

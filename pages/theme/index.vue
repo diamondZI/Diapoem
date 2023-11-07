@@ -14,9 +14,11 @@
    <view class="A">
 	   字体大小 {{duration}}
  	<slider @change="(e)=>changeSize(e)" style="width: 90vw;" activeColor="rgb(27,59,100)" :value="duration" min="13" max="46" />
- 	<slider
+ 	字体间距 {{duration2}}
+	<slider
 	 class="letter"
 	 @change="(e)=>changeletter(e)" style="width: 90vw;" activeColor="rgb(27,59,100)" :value="duration2" min="0" max="15" />
+	 行 间据 {{duration3}}
  	<slider @change="(e)=>changeheight(e)" style="width: 90vw;" activeColor="rgb(27,59,100)" :value="duration3" min="32" max="48" />
   </view>
 	</view>
@@ -27,9 +29,9 @@
 	import { useThemeterStor } from "@/store/theme.js"
 import { computed, ref,onMounted } from "vue";
     const Theme=useThemeterStor()	
-	const duration=ref(20)
+	const duration=ref(24)
 	const duration2=ref(0)
-	const duration3=ref(0)
+	const duration3=ref(32)
 	const content={
 		title:"大海",
 		author:"博尔赫斯",		

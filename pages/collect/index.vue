@@ -2,11 +2,13 @@
 	<!-- <uni-easyinput  prefix-icon="search" placeholder="请输入" :input-border="false"></uni-easyinput> -->
 <view class="CollectBox">
 	<view class="header">
-			<text>您的收藏</text>
+			<text>
+				{{title}}
+			</text>
 			<view @click="sort=!sort" :class="{'Icon':true,'Iconsort':sort}" ></view>
 	</view>
 		<view class="collect" >
-	     <view  :class="{'collect_poem':true,'collect_poem_active':sort}" v-for="(item,index) in User.UserData.collect" :key="index"
+	     <view  :class="{'collect_poem':true,'collect_poem_active':sort}" v-for="(item,index) in list" :key="index"
 		 @touchend="GoRead(index)"
 		 >
 			   {{item.title}}
@@ -21,25 +23,20 @@ import { onMounted,reactive,ref } from "vue";
 import { onLoad} from "@dcloudio/uni-app"
 import {useUserstore} from "@/store/user.js"
 const User=useUserstore()
+const title =ref()
  const sort=ref(false)
  const list=ref() 
- onLoad((Option)=>{
-	 list.value= JSON.parse(Option.data).map(el=>{
-		 return {
-			 id:el.id,
-			 title:el.title,
-			 author:el.author
-		 }
-	 })
- })
+onLoad((Option)=>{
+	 list.value= JSON.parse(Option.data)
+	 console.log(list.value);
+  	 title.value=Option.title?Option.title:"我的收藏"
+})
  const GoRead=(id)=>{
 	 uni.navigateTo({
 	 	url:`/pages/Readpoem/index?data=${JSON.stringify(list.value)}&key=${JSON.stringify(id)}`
 	 })
  }
- onLoad(()=>{
-	 
- })
+
 </script>
 
 <style scoped lang="scss">
@@ -92,11 +89,10 @@ const User=useUserstore()
 				  border: 1px  black solid;
 				 
 		     .author{
-			   background-color: white;
-			  
+				 text-shadow: 0 0 2px black;
 			   flex: 1;
                 text-orientation:sideways;
-			   color: $uni-text-color-one;
+			   color:rgb(255,215,100);
 		        }
 			  }
 		

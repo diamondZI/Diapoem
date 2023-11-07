@@ -3,14 +3,26 @@
 	"bsonType": "object",
 	"required": [],
 	"permission": {
-		"read": false,
-		"create": false,
-		"update": false,
-		"delete": false
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
 	},
 	"properties": {
 		"_id": {
 			"description": "ID，系统自动生成"
-		}
-	}
+		},
+		"author":{
+			 "bsonType": "string",
+		     "description": "作者名称"
+		},
+		"title":{
+			"bsonType": "string",
+		    "description": "作品名称"
+		},
+		"paragraphs":{
+			"bsonType": "array",
+		    "description": "诗词段落"
+		},
+	}  	
 }

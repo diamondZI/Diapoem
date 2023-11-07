@@ -1,0 +1,1 @@
+"use strict";const e=require("../../common/vendor.js"),t={__name:"index",setup(t){const n=e.ref("后社会主义的田野");return(t,o)=>({a:e.t(n.value)})}},n=e._export_sfc(t,[["__scopeId","data-v-148caf93"]]);wx.createComponent(n);

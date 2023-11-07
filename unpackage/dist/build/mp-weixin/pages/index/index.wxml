@@ -1,0 +1,1 @@
+<loding wx:if="{{a}}" class="data-v-35226053" u-i="35226053-0" bind:__l="__l"></loding><view wx:else class="content data-v-35226053" style="{{d}}"><poem wx:if="{{b}}" class="data-v-35226053" u-i="35226053-1" bind:__l="__l" u-p="{{b}}"></poem><fun-button wx:if="{{c}}" class="data-v-35226053" u-i="35226053-2" bind:__l="__l" u-p="{{c}}"></fun-button></view>

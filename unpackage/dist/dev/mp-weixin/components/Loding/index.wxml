@@ -1,1 +1,1 @@
-<view class="Loding data-v-ee71c6fb"><image class="data-v-ee71c6fb" src="/static/loading.gif" mode=""></image> {{a}}</view>
+<view class="Loding data-v-ee71c6fb"><image class="image data-v-ee71c6fb" src="/static/loading.gif" mode=""></image> {{a}}</view>

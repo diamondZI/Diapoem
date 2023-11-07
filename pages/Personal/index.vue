@@ -1,45 +1,43 @@
 <template>
-	<view >
+	<Loding v-if="!User"></Loding>
+	<view v-else>
 		<view class="img">
-        <image :src="User.avatar" mode="aspectFit"></image>
+        <view class="avatar">
+        	<image :src="User.avatar" mode="aspectFill" @click="avatarView(User.avatar)"></image>
+        </view>
 		 <text class="name" >{{User.user_name}}</text>
 		 <text  class="solng">{{User.slogan}}</text>
 		</view>
 		<view class="fans">
-			<view class="">
-				粉丝,关注
-				
-			</view>
-			<view class="">
-				粉丝,关注
-			</view>
+			
 		</view>
 		<view class="MadeBox">
 			<view class="header">
 				 <text>作品展示</text>
-				 <text>更多></text>
+				 <text @click="GoCreate()">更多></text>
 			</view>
 			<view class="Made">
 			  
-			  <view @click="GoRead(item)" class="Box" v-for="item in User.create">
+			  <view    hover-stay-time="200" hover-start-time="600" @click="GoRead(item)" class="Box" v-for="(item,index) in User.create" :key="index">
 			  	<text>{{item.title}}</text>
 			  	<text>{{time(item.data)}}</text>
 			  </view> 
-			   <view  class="Box NOBox" v-for="item in 4-User.create.length">
-			<text @click="GoWrite">要继续创作吗</text>
+			   <view    class="Box NOBox" v-for="(item,index) in 4-User.create.length" :key="index">
+			<text> 还未创作</text>
 			  </view>
 			</view>
 		</view>
-			<view style="padding: 40px;">
+			<text user-select  style="padding: 40px;">
 				&COPY; {{User.self_introduction}}
-			</view>
+			</text>
 	</view>
 </template>
 
 <script setup>
 import { ref } from "vue"
 import {onLoad} from "@dcloudio/uni-app"
- const User=ref()
+import Loding from "@/components/Loding/index.vue"
+const User=ref()
 const time=(datetime)=>{
 		const date = new Date(datetime);  
 		let Y = date.getFullYear() + '-';
@@ -47,17 +45,23 @@ const time=(datetime)=>{
 		let D = date.getDate() + ' ';
 	  return Y+M+D
 }
+const  avatarView=(url)=>{
+	uni.previewImage({
+		urls:[url]
+	})
+}
  const GoRead=(item)=>{
 	 uni.navigateTo({
 	 	url:`/pages/Readpoem/index?poem=${JSON.stringify(item)}`
 	}
 	)
  }
-const GoWrite=()=>{
-	 uni.navigateTo({
-	 	url:'/pages/Write/index'
-	 })
- }
+
+const GoCreate=()=>{
+	uni.navigateTo({
+		url:`/pages/collect/index?title=更多作品&data=${JSON.stringify(User.value.create)}`
+	})
+}
  onLoad((options)=>{
 	 User.value=JSON.parse(options.data)
  })
@@ -73,11 +77,16 @@ const GoWrite=()=>{
 	 align-items: center;
 	
 	 position: relative;
-	 image{
-		 width: 50vw;
-		 height: 50vw;
-		 border-radius: 50%;
-		 border: 2px $uni-text-color-one solid;
+	 .avatar{
+	 	border: black 1px $uni-text-color-one	;
+	 	width: 360rpx;
+	 	height: 360rpx;
+	 	border-radius: 50%;
+	 	image{
+	 		width: 100%;
+	 		height: 100%;
+	 		border-radius: 50%;
+	 	}
 	 }
 	 text{
 	  position: absolute;
@@ -133,7 +142,7 @@ const GoWrite=()=>{
 			transition: .3s linear ;
 	 		background-color: rgb(0, 0, 0,0);
 	 	}
-		.NOBox:active{
+		.NOBox:hover{
 			box-shadow: inset 0 0  50px black;
 		}
 	 }

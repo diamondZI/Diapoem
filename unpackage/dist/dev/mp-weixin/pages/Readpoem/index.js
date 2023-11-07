@@ -3,12 +3,11 @@ const common_vendor = require("../../common/vendor.js");
 const store_theme = require("../../store/theme.js");
 const store_user = require("../../store/user.js");
 if (!Array) {
-  const _easycom_uni_card2 = common_vendor.resolveComponent("uni-card");
-  _easycom_uni_card2();
+  const _component_uni_card = common_vendor.resolveComponent("uni-card");
+  _component_uni_card();
 }
-const _easycom_uni_card = () => "../../uni_modules/uni-card/components/uni-card/uni-card.js";
 if (!Math) {
-  (Poem + _easycom_uni_card)();
+  Poem();
 }
 const Poem = () => "../../components/Poem/index.js";
 const _sfc_main = {
@@ -61,7 +60,6 @@ const _sfc_main = {
         d: common_vendor.p({
           title: "内容已被删除",
           thumbnail: "",
-          extra: "作者删除",
           note: "Tips"
         })
       }, {

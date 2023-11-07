@@ -28,7 +28,7 @@ const _sfc_main = {
     const poem = common_vendor.computed(() => {
       return {
         title: TextTitle.value,
-        author: "西川",
+        author: User.UserData.user_name,
         paragraphs: paragraphs.value
       };
     });
@@ -66,7 +66,7 @@ const _sfc_main = {
     const AddPoem = async () => {
       const data = (/* @__PURE__ */ new Date()).getTime();
       let res = await Poemtodo.Set({ ...poem.value, data });
-      if (res.ok) {
+      if (res.ok === 200) {
         await User.setcreate({ ...poem.value, data });
       }
       messageToggle(res.ok === 200 ? "success" : "error", res.msg);

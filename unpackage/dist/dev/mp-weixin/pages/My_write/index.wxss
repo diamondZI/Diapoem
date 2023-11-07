@@ -50,7 +50,6 @@
   height: 100vh;
   background-color: floralwhite;
   display: flex;
-  justify-content: end;
   flex-direction: column;
   gap: 10px;
 }
@@ -75,17 +74,18 @@
 .My_write .lists .listbox .title.data-v-aad8b7e9 {
   flex: 1 0;
   padding: 10rpx;
-  background-color: seagreen;
+  background-color: #2578b5;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 .My_write .lists .listbox .title .text.data-v-aad8b7e9 {
-  float: right;
   color: white;
 }
 .My_write .lists .listbox .author.data-v-aad8b7e9 {
+  color: white;
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: space-around;
 }

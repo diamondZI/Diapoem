@@ -1,4 +1,7 @@
 'use strict';
+
+const { log } = require("util");
+
 // 云对象教程: https://uniapp.dcloud.net.cn/uniCloud/cloud-obj
 // jsdoc语法提示教程：https://ask.dcloud.net.cn/docs/#//ask.dcloud.net.cn/article/129
 module.exports = {
@@ -30,9 +33,13 @@ module.exports = {
 				   }).get()  
 				  if(res.affectedDocs!==0){
 				   return {ok:400,msg:"请不要重复提交或该作品已经发表过",res}
-				  }	  	
-				 await db.collection('poem').add(data)
-				 return {ok:200,msg:"恭喜您发表新作"}
+				  }else{
+					  console.log(data);
+					  await db.collection('poem').add(data)
+					  	 return {ok:200,msg:"恭喜您发表新作"}
+				  }
+				 
+				  
 			}	
 		}catch(err){
 			return {ok:400,msg:err}

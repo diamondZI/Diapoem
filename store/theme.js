@@ -6,8 +6,8 @@ export const  useThemeterStor=defineStore('Theme',()=>{
 	const theme=ref({
 		  "--backroundcolor":'rgb(255,250,240)',
 		  "--size":'24px',
-		  "--letter_spacing":'10px',
-		  "--line_height":"26px",
+		  "--letter_spacing":'0px',
+		  "--line_height":"32px",
 	})
 	    const   onChangeBackroundcolor=(value)=>{
 	

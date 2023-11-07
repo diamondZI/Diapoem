@@ -22,12 +22,8 @@ const _sfc_main = {
       let Y = date.getFullYear() + "-";
       let M = (date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1) + "-";
       let D = date.getDate() + " ";
-      let h = date.getHours() + ":";
-      return Y + M + D + h;
+      return Y + M + D;
     };
-    common_vendor.computed(() => {
-      return;
-    });
     const GoWrite = () => {
       common_vendor.index.navigateTo({
         url: "/pages/Write/index"
@@ -40,8 +36,6 @@ const _sfc_main = {
         }
       );
     };
-    common_vendor.onLoad((Option) => {
-    });
     return (_ctx, _cache) => {
       return {
         a: common_vendor.o(($event) => value.value = $event),
@@ -54,15 +48,12 @@ const _sfc_main = {
         c: common_vendor.f(common_vendor.unref(User).UserData.create, (item, index, i0) => {
           return {
             a: common_vendor.t(item.title),
-            b: common_vendor.t(item.title.includes(value.value)),
-            c: common_vendor.t(time(item.data)),
-            d: "aad8b7e9-1-" + i0,
-            e: common_vendor.t(item.author),
-            f: common_vendor.t(item.author),
-            g: common_vendor.t(item.author),
-            h: index,
-            i: item.title.includes(value.value) | value.value === null,
-            j: common_vendor.o(($event) => GoRead(item), index)
+            b: common_vendor.t(time(item.data)),
+            c: "aad8b7e9-1-" + i0,
+            d: common_vendor.t(item.author),
+            e: index,
+            f: item.title.includes(value.value) | value.value === null,
+            g: common_vendor.o(($event) => GoRead(item), index)
           };
         }),
         d: common_vendor.p({

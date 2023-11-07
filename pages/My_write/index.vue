@@ -10,10 +10,10 @@
 		   >
 		   <view class="listbox">
 		   	<view class="title">
-		   	<text>	{{item.title}}
-		   	{{item.title.includes(value)}}
+		   	<text style="font-size: 24px;">	{{item.title}}
+		 
 		   	</text>
-		   	 <text class="text">	{{time(item.data)}}</text>
+		   	 <text class="text" >{{time(item.data)}}</text>
 		   	</view>	  
 		   	<view class="author">
 		   		<view class="ICONBOX">
@@ -21,8 +21,7 @@
 		   		</view>
 		   				<view style="writing-mode: vertical-lr;">
 		   					{{item.author}}
-		   					{{item.author}}
-		   					{{item.author}}
+
 		   				</view>
 		   			
 		   	</view>
@@ -54,15 +53,8 @@ const time=(datetime)=>{
 		let Y = date.getFullYear() + '-';
 	 	let M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
 		let D = date.getDate() + ' ';
-		let h = date.getHours() + ':';
-		// let l = date.getHours();
-	  return Y+M+D+h
+	     return Y+M+D
 	}
-const show=computed(()=>{
-	 return 
-})
-
-
  const GoWrite=()=>{
 	 uni.navigateTo({
 	 	url:'/pages/Write/index'
@@ -74,15 +66,7 @@ const show=computed(()=>{
 	}
 	)
  }
- 
- onLoad((Option)=>{
-	 // list.value= JSON.parse(Option.data).map(el=>{
-		//  return {
-		// 	 title:el.title,
-		// 	 author:el.author
-		//  }
-	 // })
- })
+
 </script>
 
 <style scoped lang="scss">
@@ -113,7 +97,7 @@ const show=computed(()=>{
 		height: 100vh;
 		background-color: rgb(255,250,240);
 		display: flex;
-		justify-content: end;
+	
 		flex-direction: column;
 		gap: 10px;
 		.os{
@@ -136,17 +120,19 @@ const show=computed(()=>{
 			 .title{
 				 flex:  1 0;
                  padding: 10rpx;
-				 background-color:seagreen;
+				 background-color:#2578b5;
 				 display: flex;
 				 flex-direction: column;
 				 justify-content: space-between;
 				 .text{
-					 float: right;
 					 color: white;
 				 }
 			 }
 			 .author{
+				 
+				 color: white;
 				 display: flex;
+				 align-items: center;
 				 flex-direction: column;
 				 justify-content: space-around;
 			 }

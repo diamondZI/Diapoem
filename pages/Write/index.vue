@@ -42,7 +42,7 @@
 	const poem=computed(()=>{
 		return {
 			title:TextTitle.value,
-			author:'西川',
+			author:User.UserData.user_name,
 			paragraphs:paragraphs.value
 		}
 	})
@@ -82,7 +82,7 @@
 	const AddPoem=async ()=>{
 		const data=new Date().getTime()
 	   let res=await Poemtodo.Set({...poem.value,data:data})
-        if (res.ok) {
+        if (res.ok===200) {
         await User.setcreate({...poem.value,data:data})
         }
 	 messageToggle(res.ok===200?"success":'error',res.msg)

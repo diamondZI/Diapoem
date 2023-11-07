@@ -16,7 +16,9 @@ exports.main = async (event, context) => {
 	   const {session_key,openid}=res.data
 	   const tokensession=getToken(openid)
 	   const db=uniCloud.database()
-	   let data = await db.collection("users").where({
+	   let data = await db.collection("users").field({
+		   openid:false
+	   }).where({
 	   			 		openid:openid
 	   }).get()
 	   try{
@@ -25,7 +27,9 @@ exports.main = async (event, context) => {
 		 }
 		  else{
 		 	 await db.collection("users").add({...UserData,"openid":openid})
-			let User = await db.collection("users").where({
+			let User = await db.collection("users").field({
+				openid:false
+			}).where({
 						 		openid:openid
 			}).get()
 			console.log("击");

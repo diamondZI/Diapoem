@@ -46,5 +46,5 @@
 }
 .FUNBUTTON.data-v-ab3ed6fc:hover {
   background-color: #646464;
-  Box-shadow: 0 0 3px 0 black;
+  box-shadow: 0 0 3px 0 black;
 }

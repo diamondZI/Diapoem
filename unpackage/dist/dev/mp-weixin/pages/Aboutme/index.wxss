@@ -1,0 +1,10 @@
+
+.content.data-v-e7ac45b4{
+		width: 100vw;
+		height: 100vh;
+		align-items: center;
+		display: flex;
+		justify-content: space-around;
+		font-size: 17px;
+		flex-direction: column;
+}

@@ -22,6 +22,13 @@ const _sfc_main = {
         return res.data[0];
       }).catch((err) => {
       });
+      if (User.UserData) {
+        start.value = await (User.UserData.collect.filter(
+          (el) => {
+            return el.id === poem.value._id;
+          }
+        ).length > 0);
+      }
     }
     async function collect() {
       User.SetCollect({
