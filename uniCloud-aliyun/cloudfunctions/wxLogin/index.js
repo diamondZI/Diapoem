@@ -15,7 +15,9 @@ exports.main = async (event, context) => {
 			openid:false
 		}).where({
 				openid:openid
-		}).get()
+		}).updateAndReturn({
+			  LoginTime:new Date().getTime()
+		  })
 		console.log(openid);
 		return {ok:200,token:token,Userdata:res}
 	}
@@ -27,7 +29,6 @@ exports.main = async (event, context) => {
 			}
     )
 	const {session_key,openid}=res.data
-	
 	console.log("执行这一步",res);
 	   try{
 		   const db=uniCloud.database()
@@ -36,8 +37,11 @@ exports.main = async (event, context) => {
 			  openid:false
 		  }).where({
 	 		openid:openid
-	      }).get()
-		  // console.log(res);
+	      }).updateAndReturn({
+			  LoginTime:new Date().getTime()
+		  })
+		  // Dayjs.$y+"-"+Dayjs.$M+1+'-'+Dayjs.$D+"_"+Dayjs.$H+":"+Dayjs.$m
+		
 		 return {ok:200,token:tokensession,Userdata:resdata}
 	   }catch(e){
 		   	return {ok:404}

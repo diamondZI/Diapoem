@@ -27,7 +27,7 @@
 <script setup>
 	import Poem from "@/components/Poem/index.vue";
 	import { useThemeterStor } from "@/store/theme.js"
-import { computed, ref,onMounted } from "vue";
+    import { computed, ref,onMounted } from "vue";
     const Theme=useThemeterStor()	
 	const duration=ref(24)
 	const duration2=ref(0)

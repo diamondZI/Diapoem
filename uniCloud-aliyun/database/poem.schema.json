@@ -24,5 +24,13 @@
 			"bsonType": "array",
 		    "description": "诗词段落"
 		},
+		"CreateTime":{
+			"description": "创作时间",
+			"bsonType": "date"
+		},
+		"LikeNumber":{
+			"description": "收藏/点赞数量",
+			"bsonType": "date"          
+		}
 	}  	
 }

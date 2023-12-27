@@ -23,6 +23,22 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.TOPTAP.data-v-da70f5fc {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.TOPTAP .text.data-v-da70f5fc {
+  margin: 0;
+  border-bottom: 2px rgba(1, 1, 1, 0) solid;
+}
+.TOPTAP .text.data-v-da70f5fc:first-child {
+  border-bottom: 2px #1b3b64 solid;
+}
+.TOPTAP .text.data-v-da70f5fc:hover {
+  border-bottom: 2px #1b3b64 solid;
+}
 .neighborhood.data-v-da70f5fc {
   padding: 20px;
   display: flex;

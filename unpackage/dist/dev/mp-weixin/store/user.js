@@ -2,6 +2,7 @@
 const common_vendor = require("../common/vendor.js");
 const useUserstore = common_vendor.defineStore("User", () => {
   const UserData = common_vendor.ref();
+  new common_vendor.dayjs();
   const token = common_vendor.ref(null);
   const GetUser = async () => {
     token.value = await Gettoken();
@@ -12,13 +13,13 @@ const useUserstore = common_vendor.defineStore("User", () => {
         user_name: "未知名",
         collect: [],
         integral: 1,
-        create: [],
         theme: {
           dark: true,
           color: 0,
           size: "16px"
         },
-        PoemNumber: 1,
+        RegisteredTime: (/* @__PURE__ */ new Date()).getTime(),
+        PoemNumber: 0,
         avatar: "",
         region: "中国",
         self_introduction: "自东向西",
@@ -37,7 +38,8 @@ const useUserstore = common_vendor.defineStore("User", () => {
             token: token2
           },
           success: (res2) => {
-            UserData.value = res2.result.Userdata.data[0];
+            console.log(res2);
+            UserData.value = res2.result.Userdata.doc;
           }
         });
       },
@@ -135,12 +137,12 @@ const useUserstore = common_vendor.defineStore("User", () => {
       return { msg: "删除失败" };
     }
   };
-  const setcreate = async (item) => {
-    const { create } = UserData.value;
-    create.push({ ...item, _id: create.lenght });
+  const SetPoemNumber = async (item) => {
+    const { PoemNumber } = UserData.value;
+    let Num = PoemNumber + 1;
     const db = await common_vendor.$s.database();
     await db.collection("users").doc(UserData.value._id).update({
-      create
+      PoemNumber: Num
     });
   };
   return {
@@ -151,7 +153,7 @@ const useUserstore = common_vendor.defineStore("User", () => {
     SetText,
     SetCollect,
     removeCollect,
-    setcreate
+    SetPoemNumber
   };
 });
 exports.useUserstore = useUserstore;

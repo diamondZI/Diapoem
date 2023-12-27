@@ -1,0 +1,42 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"user_id":{
+			"description": "作者id",
+			"bsonType": "string"
+		},
+		"author":{
+			 "bsonType": "string",
+		     "description": "作者名称"
+		},
+		"title":{
+			"bsonType": "string",
+		    "description": "作品名称"
+		},
+		"paragraphs":{
+			"bsonType": "array",
+		    "description": "诗词段落"
+		},
+		"CreateTime":{
+			"description": "创作时间",
+			"bsonType": "timestamp",
+			"forceDefaultValue":{
+				"$env": "now"
+			}
+		},
+		"LikeNumber":{
+			"description": "收藏/点赞数量",
+			"bsonType": "int"          
+		}
+	}
+}

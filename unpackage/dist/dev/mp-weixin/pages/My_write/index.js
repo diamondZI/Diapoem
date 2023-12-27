@@ -17,6 +17,7 @@ const _sfc_main = {
     common_vendor.ref(false);
     const User = store_user.useUserstore();
     const value = common_vendor.ref(null);
+    const Poem = common_vendor.ref();
     const time = (datetime) => {
       const date = new Date(datetime);
       let Y = date.getFullYear() + "-";
@@ -24,20 +25,28 @@ const _sfc_main = {
       let D = date.getDate() + " ";
       return Y + M + D;
     };
+    common_vendor.onMounted(() => {
+      Getpoem();
+    });
+    const Getpoem = async () => {
+      const db = common_vendor.$s.database();
+      const res = await db.collection("user_poem").where({
+        user_id: User.UserData._id
+      }).limit(User.UserData.PoemNumber).get();
+      Poem.value = res;
+    };
     const GoWrite = () => {
       common_vendor.index.navigateTo({
         url: "/pages/Write/index"
       });
     };
     const GoRead = (item) => {
-      common_vendor.index.navigateTo(
-        {
-          url: `/pages/Readpoem/index?poem=${JSON.stringify(item)}`
-        }
-      );
+      common_vendor.index.navigateTo({
+        url: `/pages/Readpoem/index?poem=${JSON.stringify(item)}`
+      });
     };
     return (_ctx, _cache) => {
-      return {
+      return common_vendor.e({
         a: common_vendor.o(($event) => value.value = $event),
         b: common_vendor.p({
           ["prefix-icon"]: "search",
@@ -45,7 +54,9 @@ const _sfc_main = {
           ["input-border"]: true,
           modelValue: value.value
         }),
-        c: common_vendor.f(common_vendor.unref(User).UserData.create, (item, index, i0) => {
+        c: Poem.value
+      }, Poem.value ? {} : {
+        d: common_vendor.f(Poem.value, (item, index, i0) => {
           return {
             a: common_vendor.t(item.title),
             b: common_vendor.t(time(item.data)),
@@ -56,17 +67,18 @@ const _sfc_main = {
             g: common_vendor.o(($event) => GoRead(item), index)
           };
         }),
-        d: common_vendor.p({
+        e: common_vendor.p({
           type: "arrow-up",
           size: "33",
           color: "rgb(138,151,155)"
-        }),
-        e: common_vendor.p({
+        })
+      }, {
+        f: common_vendor.p({
           type: "plusempty",
           size: "40"
         }),
-        f: common_vendor.o(($event) => GoWrite())
-      };
+        g: common_vendor.o(($event) => GoWrite())
+      });
     };
   }
 };

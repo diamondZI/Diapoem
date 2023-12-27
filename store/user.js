@@ -6,27 +6,27 @@ import {
 	reactive,
 	ref
 } from 'vue'
-export const useUserstore = defineStore('User', () => {
+import dayjs from "dayjs"
+ export const useUserstore = defineStore('User', () => {
 const UserData = ref()
+const Dayjs=new dayjs()
 const token = ref(null)
 const GetUser = async () => {
 	token.value = await Gettoken()
 	if (token.value) {
-		
 		await wxLogin(token.value)
 	} else {
-		
 		await wxRegistered({
 			user_name: '未知名',
 			collect: [],
 			integral: 1,
-			create: [],
 			theme: {
 				dark: true,
 				color: 0,
 				size: '16px'
 			},
-			PoemNumber: 1,
+			RegisteredTime:new Date().getTime(),
+			PoemNumber: 0,
 			avatar: '',
 			region: '中国',
 			self_introduction: '自东向西',
@@ -46,10 +46,9 @@ const wxLogin = (token) => {
 					token: token,
 				},
 				success: (res) => {
-					UserData.value = res.result.Userdata.data[0]
+					console.log(res);
+					UserData.value = res.result.Userdata.doc
 				},
-			
-				
 			})
 		},
 		fail: (err) => {
@@ -151,12 +150,12 @@ const removeCollect=(id)=>{
 	     
 	}
 }
-const setcreate=async (item)=>{
-	const {create}=UserData.value
-	create.push({...item,_id:create.lenght})
+const SetPoemNumber=async (item)=>{
+	const {PoemNumber}=UserData.value
+    let Num= PoemNumber+1
 	const db=await uniCloud.database()
 	await  db.collection('users').doc(UserData.value._id).update({
-		create
+		PoemNumber:Num
 	})
 }
 return {
@@ -167,6 +166,6 @@ return {
 	SetText,
 	SetCollect,
 	removeCollect,
-	setcreate
+    SetPoemNumber
 	}
 })

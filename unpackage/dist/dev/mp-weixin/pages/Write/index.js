@@ -64,10 +64,15 @@ const _sfc_main = {
       Show.value = false;
     };
     const AddPoem = async () => {
-      const data = (/* @__PURE__ */ new Date()).getTime();
-      let res = await Poemtodo.Set({ ...poem.value, data });
+      const date = (/* @__PURE__ */ new Date()).getTime();
+      let res = await Poemtodo.Set({
+        ...poem.value,
+        CreateTime: date,
+        user_id: User.UserData._id,
+        LikeNumber: 0
+      });
       if (res.ok === 200) {
-        await User.setcreate({ ...poem.value, data });
+        await User.SetPoemNumber();
       }
       messageToggle(res.ok === 200 ? "success" : "error", res.msg);
     };

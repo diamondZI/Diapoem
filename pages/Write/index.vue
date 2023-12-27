@@ -51,7 +51,6 @@
 	const socketOpen=false;
 	const Auto=ref(false)
 	const msgType=ref('')
-	
 	const msg=reactive({
 		msgType:'',
 		messageText:''
@@ -80,10 +79,14 @@
        Show.value=false
 	}
 	const AddPoem=async ()=>{
-		const data=new Date().getTime()
-	   let res=await Poemtodo.Set({...poem.value,data:data})
+		const date=new Date().getTime()
+	   let res=await Poemtodo.Set({...poem.value,CreateTime:date,
+	   user_id:User.UserData._id,
+	   LikeNumber:0
+	   })
+	   
         if (res.ok===200) {
-        await User.setcreate({...poem.value,data:data})
+        await User.SetPoemNumber()
         }
 	 messageToggle(res.ok===200?"success":'error',res.msg)
 	}

@@ -8,6 +8,12 @@ const _sfc_main = {
     common_vendor.ref(null);
     const User = store_user.useUserstore();
     const userlist = common_vendor.ref([]);
+    new common_vendor.dayjs();
+    common_vendor.onReachBottom(() => {
+    });
+    const Getday = () => {
+      console.log("你");
+    };
     const GetUser = async () => {
       const db = common_vendor.$s.database();
       let { result } = await db.collection("users").where(`_id!='${User.UserData._id}'`).field(
@@ -35,7 +41,8 @@ const _sfc_main = {
     });
     return (_ctx, _cache) => {
       return {
-        a: common_vendor.f(userlist.value, (item, index, i0) => {
+        a: common_vendor.o(($event) => Getday()),
+        b: common_vendor.f(userlist.value, (item, index, i0) => {
           return {
             a: item.avatar,
             b: common_vendor.t(item.user_name),

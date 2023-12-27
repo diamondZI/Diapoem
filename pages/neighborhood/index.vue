@@ -1,27 +1,52 @@
 <template>
   <view class="neighborhood">
-	
-	  <view class="card" @click='GoNavigateTo("Personal",item)' v-for="(item,index) in userlist" :key="index">
-		  <view class="avatar">
-		  	<image  :src="item.avatar" mode="aspectFill"></image>
+	 <view class="TOPTAP">
+	 	<span class="text">其他用户</span>
+	 	<span class="text" @click="Getday()">随机 </span>
+	 	<span class="text">排序</span>
+	 </view>
+		 <view class="card" @click='GoNavigateTo("Personal",item)' v-for="(item,index) in userlist" :key="index">
+		  		  <view class="avatar">
+		  		  	<image  :src="item.avatar" mode="aspectFill"></image>
+		  		  </view>
+		  	  <view class="text">
+		  			  <text>{{item.user_name}}</text>
+		  			   <text>{{item.slogan}}</text>
+		  			  <text>{{item.self_introduction}}</text>
+		  			 
+		  		  </view>	 
 		  </view>
-	  	  <view class="text">
-			  <text>{{item.user_name}}</text>
-			   <text>{{item.slogan}}</text>
-			  <text>{{item.self_introduction}}</text>
-			 
-		  </view>	 
-	  </view> 
+
   </view>
 </template>
 
 <script setup>
 import { onMounted, reactive, ref } from 'vue';
+import {onReachBottom} from "@dcloudio/uni-app"
+import dayjs  from "dayjs"
 const list=reactive([1,2,3,4,5,6,7,8,9])
 const card=ref(null)
 import {useUserstore} from "@/store/user.js"
 const User=useUserstore()
 const userlist=ref([])
+const Dayjs=new dayjs()
+
+onReachBottom(()=>{
+	// let {result}=  await db.collection('users').where(`_id!='${User.UserData._id}'`).field(
+	// 	  {
+	// 		  "user_name":true,
+	// 		  "create":true,
+	// 		  "self_introduction":true,
+	// 		  "slogan":true,
+	// 		  "avatar":true
+	// 	  }
+	// ).limit(10).get() 
+	
+})
+const Getday=()=>{
+	console.log('你',);
+}
+
 
 const  GetUser=async ()=>{
    const db =uniCloud.database()
@@ -34,7 +59,6 @@ const  GetUser=async ()=>{
 		  "avatar":true
 	  }
   ).limit(10).get() 
-  // console.log(result);
   userlist.value=result.data
   console.log(userlist.value);
   
@@ -54,6 +78,25 @@ onMounted(()=>{
 </script>
 
 <style lang="scss" scoped>
+	.TOPTAP{
+
+		margin-bottom: 10px;
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		.text{
+			margin: 0;
+			border-bottom: 2px rgb(1, 1, 1,0) solid;
+		}
+		.text:first-child{
+			border-bottom: 2px $uni-bg-color-one solid;
+			
+		}
+		.text:hover{
+			border-bottom: 2px $uni-bg-color-one solid;
+			
+		}
+	}
 	.neighborhood{
 		padding: 20px;
         display: flex;
@@ -66,7 +109,6 @@ onMounted(()=>{
 		box-shadow: 0 0  2px  black;
 		padding: 20rpx;
 		width: 80vw;
-		
 		display: flex;
 	}
 	.text{
