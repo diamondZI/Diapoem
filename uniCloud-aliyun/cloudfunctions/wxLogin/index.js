@@ -6,7 +6,9 @@ exports.main = async (event, context) => {
 		appid:'wx9d7e495d6b07dc6c',
 		secret:'4f3208b2ec5e4cf99515b57e88bd68c6'
 	}
+	
 	if(token&&Timesetup(token)){
+		console.log({"a":verifyToken(token)});
 		const {openid}=verifyToken(token)
 		const db=uniCloud.database()
 		let res = await db.collection("users").field({
@@ -19,20 +21,24 @@ exports.main = async (event, context) => {
 	}
 	else{
    const res = await uniCloud.httpclient.request(
-			`https://api.weixin.qq.com/sns/jscode2session?appid=${wxid.appid}&secret=${wxid.secret}&js_   code=${code}&grant_type=authorization_code`,
+			`https://api.weixin.qq.com/sns/jscode2session?appid=${wxid.appid}&secret=${wxid.secret}&js_code=${code}&grant_type=authorization_code`,
 			{
 				dataType:'json',
 			}
     )
 	const {session_key,openid}=res.data
+	
+	console.log("执行这一步",res);
 	   try{
+		   const db=uniCloud.database()
          const tokensession=getToken(openid)		   
-	      let res = await db.collection("users").field({
+	      let resdata = await db.collection("users").field({
 			  openid:false
 		  }).where({
 	 		openid:openid
 	      }).get()
-		 return {ok:200,token:tokensession,Userdata:res}
+		  // console.log(res);
+		 return {ok:200,token:tokensession,Userdata:resdata}
 	   }catch(e){
 		   	return {ok:404}
 	   }

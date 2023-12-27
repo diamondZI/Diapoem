@@ -25,7 +25,7 @@ const {poem}=defineProps(['poem'])
 <style lang="less" >
 
 .POEM{
-	padding: 10rpx;
+	padding: 20rpx;
 	background-color: var(--backroundcolor);
 	display: flex;
 	min-height: 100%;

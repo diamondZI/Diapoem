@@ -30,7 +30,7 @@ exports.main = async (event, context) => {
 			let User = await db.collection("users").field({
 				openid:false
 			}).where({
-						 		openid:openid
+				openid:openid
 			}).get()
 			console.log("击");
 		 	return {ok:200,token:tokensession,Userdata:User,msg:"注册成功"}

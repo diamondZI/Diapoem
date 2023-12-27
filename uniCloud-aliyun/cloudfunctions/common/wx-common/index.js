@@ -18,14 +18,20 @@ function verifyToken(token) {
 function Timesetup(token){
 	const currentTimestamp = Math.floor(Date.now() / 1000);
 	const decode=verifyToken(token)
-	if(decode){
+	console.log({"A":decode,"B":currentTimestamp});
+	if(decode&&decode.exp){
 		if (currentTimestamp > decode.exp) {
+				console.log("不存在");
 			return false
 		  } else {
-		  
+		    console.log("存在");
 			return true
 		}
+	}else{
+		console.log("不存在");
+		return false
 	}
+	
 }
 
 module.exports = {

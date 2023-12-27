@@ -46,7 +46,6 @@ const wxLogin = (token) => {
 					token: token,
 				},
 				success: (res) => {
-				
 					UserData.value = res.result.Userdata.data[0]
 				},
 			

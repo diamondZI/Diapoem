@@ -26,7 +26,7 @@
 			<view id="a" @click='GoNavigateTo("theme",U.UserData.collect)'>主题 </view>
 		</view>
 		<view class="UserButton" >
-			<view style="background-color: black; color: white;">AI创作 </view>
+			<view style="background-color: black; color: white;">待开发 </view>
 			<view @click='GoNavigateTo("neighborhood",)'>四方同好 </view>
 			<view id="a" @click='GoNavigateTo("Draft",)'>我的草稿 </view>
 			<view id="a"  @click='GoNavigateTo("Aboutme",)'>赞助我们 </view>
