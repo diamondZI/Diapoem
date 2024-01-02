@@ -15,20 +15,21 @@ const _sfc_main = {
     });
     const GoRead = (id) => {
       common_vendor.index.navigateTo({
-        url: `/pages/Readpoem/index?data=${JSON.stringify(list.value)}&key=${JSON.stringify(id)}`
+        url: `/pages/Readpoem/index?data=${JSON.stringify(list.value)}&key=${JSON.stringify(id)}&User=${list.value[id].isanuthor}`
       });
     };
     return (_ctx, _cache) => {
       return {
-        a: common_vendor.t(title.value),
+        a: common_vendor.t(title.value.substr(0, 5)),
         b: common_vendor.o(($event) => sort.value = !sort.value),
         c: sort.value ? 1 : "",
         d: common_vendor.f(list.value, (item, index, i0) => {
           return {
-            a: common_vendor.t(item.title),
-            b: common_vendor.t(item.author),
-            c: index,
-            d: common_vendor.o(($event) => GoRead(index), index)
+            a: common_vendor.t(item.title.substr(0, 6)),
+            b: common_vendor.t(item.title.length > 6 ? "……" : ""),
+            c: common_vendor.t(item.author),
+            d: index,
+            e: common_vendor.o(($event) => GoRead(index), index)
           };
         }),
         e: sort.value ? 1 : ""

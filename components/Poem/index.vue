@@ -25,6 +25,7 @@ const {poem}=defineProps(['poem'])
 <style lang="less" >
 
 .POEM{
+	overflow: auto;
 	padding: 20rpx;
 	background-color: var(--backroundcolor);
 	display: flex;

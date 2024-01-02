@@ -21,15 +21,25 @@ const _sfc_main = {
     const key = common_vendor.ref(0);
     async function GetPoem(keyid) {
       poem.value = {};
+      console.log("poem");
       try {
         await GetPoemtodo.getone(list.value[keyid].id).then((res) => {
           poem.value = res.data[0];
         }).catch((err) => {
-          console.log(err);
         });
       } catch (e) {
         console.log("起飞");
       }
+    }
+    async function GetUserPoem(keyid) {
+      console.log("121撒");
+      poem.value = {};
+      const id = list.value[keyid]._id ?? list.value[keyid].id;
+      await GetPoemtodo.getUserone(id).then((res) => {
+        poem.value = res.data[0];
+      }).catch((err) => {
+        console.log(err);
+      });
     }
     async function remove() {
       const { msg } = await User.removeCollect(key);
@@ -39,14 +49,9 @@ const _sfc_main = {
       });
     }
     common_vendor.onLoad((Options) => {
-      if (Options.poem) {
-        poem.value = JSON.parse(Options.poem);
-        console.log(poem);
-      } else {
-        list.value = JSON.parse(Options.data);
-        key.value = JSON.parse(Options.key);
-        GetPoem(key.value);
-      }
+      list.value = JSON.parse(Options.data);
+      key.value = JSON.parse(Options.key);
+      Options.User === "true" ? GetUserPoem(key.value) : GetPoem(key.value);
     });
     return (_ctx, _cache) => {
       return common_vendor.e({

@@ -1,5 +1,4 @@
 <template>
-
 	 <view :class="{'content':poem, 'REMOVE':!poem}"   :style="[Theme.theme]" >
 	<poem :poem='poem' v-if="poem" ></poem>
 	<view v-else>
@@ -8,7 +7,6 @@
  		</uni-card>
 	</view>
 	</view>
-
 </template>
 <script setup>
 import { onMounted, ref,computed,watch } from "vue";
@@ -25,15 +23,29 @@ const list=ref([])
 const key=ref(0)
 async function  GetPoem(keyid){
 	poem.value={}
+	console.log('poem');
     try{
     	 await  GetPoemtodo.getone(list.value[keyid].id).then(res=>{
     					poem.value=res.data[0]
 				}).catch(err=>{
-					console.log(err);
-    	})	
+					
+    	 })	
     }catch(e){
         console.log("起飞");
     }
+}
+
+async function  GetUserPoem(keyid){
+	console.log("121撒");
+	poem.value={}
+	// console.log(list.value[keyid]._id);
+	 const id=list.value[keyid]._id??list.value[keyid].id
+    	 await  GetPoemtodo.getUserone(id).then(res=>{
+    					poem.value=res.data[0]
+				}).catch(err=>{
+					console.log(err);
+    	})	
+
 }
 async function remove(){
     const {msg}=await User.removeCollect(key)
@@ -43,15 +55,10 @@ async function remove(){
     })
 }
 onLoad((Options)=>{
-	if(Options.poem){
-		poem.value=JSON.parse(Options.poem)
-		console.log(poem);
-	}else{
 		list.value=JSON.parse(Options.data)
 		key.value=JSON.parse(Options.key)   
-		GetPoem(key.value) 
-	}
-   
+		
+		 Options.User==="true"?GetUserPoem(key.value):GetPoem(key.value) 
 })
 </script>
 
@@ -61,7 +68,7 @@ onLoad((Options)=>{
 		width: 100vw;
 		position: absolute;
 		min-height: 100vh;
-	 padding: 20px;
+	
 		background-color: var(--backroundcolor);
 	}
 	.REMOVE{

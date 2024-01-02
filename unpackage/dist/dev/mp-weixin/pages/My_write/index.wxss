@@ -44,6 +44,47 @@
     border: 1px solid red;
 }
 }
+.collect.data-v-aad8b7e9 {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.collect .collect_poem.data-v-aad8b7e9 {
+  margin: 10px;
+  text-align: center;
+  gap: 40rpx;
+  width: 20vw;
+  display: flex;
+  border-radius: 10rpx;
+  flex-direction: row;
+  align-items: center;
+  height: 25vw;
+  padding: 15px;
+  transition: 0.3s all linear;
+  color: #FFFFFF;
+  background-color: #1b3b64;
+  position: relative;
+  border: 1px black solid;
+}
+.collect .collect_poem .author.data-v-aad8b7e9 {
+  text-shadow: 0 0 2px black;
+  flex: 1;
+  text-orientation: sideways;
+  color: #ffd764;
+}
+.collect .collect_poem.data-v-aad8b7e9:hover {
+  border-radius: 40rpx;
+  box-shadow: 0 0 10rpx 0 black;
+}
+.collect .collect_poem_active.data-v-aad8b7e9 {
+  width: 100vw;
+  height: 10px;
+  font-size: 24px;
+  border: none;
+  color: black;
+  background-color: rgba(100, 100, 100, 0);
+  border-bottom: 2px solid #1b3b64;
+}
 .My_write.data-v-aad8b7e9 {
   transition: 1.3s linear all;
   padding: 20px;

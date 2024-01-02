@@ -27,5 +27,13 @@
   width: 100vw;
   position: absolute;
   min-height: 100vh;
+  overflow-x: hidden;
+  transform: translateX();
+  position: absolute;
   background-color: var(--backroundcolor);
+}
+.content .contentX.data-v-1cf27b2a {
+  width: 300vw;
+  display: flex;
+  transition: 0.3s linear all;
 }

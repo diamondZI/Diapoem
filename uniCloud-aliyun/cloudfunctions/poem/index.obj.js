@@ -15,6 +15,13 @@ module.exports = {
 		}).end()
 	return res
 	},
+	async getUserR(){
+		const db=uniCloud.database()
+			let res =await db.collection('user_poem').aggregate().sample({
+				size:1
+			}).end()
+		return res
+	},
 	async getUser(id){
 		const db=uniCloud.database()
 			let res =await db.collection('user_poem').where({
@@ -28,6 +35,13 @@ module.exports = {
 				_id:id
 			}).get()
 		return res	
+	},
+	async getUserone(id){
+			const db=uniCloud.database()
+				let res =await db.collection('user_poem').where({
+					_id:id
+				}).get()
+			return res	
 	},
 	async Set(data){
         try{

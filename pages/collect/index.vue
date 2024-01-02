@@ -2,8 +2,8 @@
 	<!-- <uni-easyinput  prefix-icon="search" placeholder="请输入" :input-border="false"></uni-easyinput> -->
 <view class="CollectBox">
 	<view class="header">
-			<text>
-				{{title}}
+			<text >
+				{{title.substr(0,5)}}
 			</text>
 			<view @click="sort=!sort" :class="{'Icon':true,'Iconsort':sort}" ></view>
 	</view>
@@ -11,7 +11,8 @@
 	     <view  :class="{'collect_poem':true,'collect_poem_active':sort}" v-for="(item,index) in list" :key="index"
 		 @touchend="GoRead(index)"
 		 >
-			   {{item.title}}
+			   {{item.title.substr(0,6)}} 
+			   {{item.title.length>6?"……":""}}
 			 <text class="author" > {{item.author}}</text>
 		</view>
 		</view>
@@ -33,9 +34,10 @@ onLoad((Option)=>{
 })
  const GoRead=(id)=>{
 	 uni.navigateTo({
-	 	url:`/pages/Readpoem/index?data=${JSON.stringify(list.value)}&key=${JSON.stringify(id)}`
+	 	url:`/pages/Readpoem/index?data=${JSON.stringify(list.value)}&key=${JSON.stringify(id)}&User=${list.value[id].isanuthor}`
 	 })
  }
+
 
 </script>
 
