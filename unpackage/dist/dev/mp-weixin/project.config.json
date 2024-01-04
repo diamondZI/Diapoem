@@ -15,11 +15,10 @@
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    },
-    "ignoreUploadUnusedFiles": false
+    }
   },
   "compileType": "miniprogram",
-  "libVersion": "3.1.5",
+  "libVersion": "3.3.1",
   "appid": "wx9d7e495d6b07dc6c",
   "projectname": "DiaPoem",
   "condition": {

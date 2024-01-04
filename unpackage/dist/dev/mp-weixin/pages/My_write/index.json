@@ -2,8 +2,7 @@
   "navigationBarTitleText": "我的创作",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "uni-easyinput": "../../uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput",
     "uni-icons": "../../uni_modules/uni-icons/components/uni-icons/uni-icons",
-    "data-loading": "../../components/Loding/Data_Loading"
+    "b-o-x-b-o-x": "../../components/boxbox/boxbox"
   }
 }

@@ -11,18 +11,22 @@
 		<view class="fans">
 			
 		</view>
-		<view class="MadeBox">
+		<view class="MadeBox" >
 			<view class="header">
 				 <text>作品展示</text>
-				 <text @click="GoCreate()">更多></text>
+				 <text @click="GoCreate(User._id)">更多></text>
 			</view>
-			<view class="Made">
-			  
-			  <view    hover-stay-time="200" hover-start-time="600" @click="GoRead(item)" class="Box" v-for="(item,index) in User.create" :key="index">
+			<view v-if="!createBox" >
+				<DataLoading></DataLoading>
+			</view>
+			<view class="Made" v-else>
+			  <view    hover-stay-time="200" hover-start-time="600" class="Box" v-for="(item,index) in createBox" :key="index"
+			   @click="GoRead(index)"
+			  >
 			  	<text>{{item.title}}</text>
-			  	<text>{{time(item.data)}}</text>
+			  	<text>{{time(item.CreateTime)}}</text>
 			  </view> 
-			   <view    class="Box NOBox" v-for="(item,index) in 4-User.create.length" :key="index">
+			   <view    class="Box NOBox" v-for="(item,index) in 4-createBox.length" :key="index">
 			<text> 还未创作</text>
 			  </view>
 			</view>
@@ -34,16 +38,20 @@
 </template>
 
 <script setup>
-import { ref } from "vue"
+import { onMounted, ref } from "vue"
 import {onLoad} from "@dcloudio/uni-app"
 import Loding from "@/components/Loding/index.vue"
+import DataLoading from "@/components/Loding/Data_Loading.vue"
+
+import {  Getpoem  } from "@/hook/GetPoem.js"
 const User=ref()
+const createBox=ref()
 const time=(datetime)=>{
 		const date = new Date(datetime);  
 		let Y = date.getFullYear() + '-';
 	 	let M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
 		let D = date.getDate() + ' ';
-	  return Y+M+D
+	    return Y+M+D
 }
 const  avatarView=(url)=>{
 	uni.previewImage({
@@ -51,19 +59,22 @@ const  avatarView=(url)=>{
 	})
 }
  const GoRead=(item)=>{
-	 uni.navigateTo({
-	 	url:`/pages/Readpoem/index?poem=${JSON.stringify(item)}`
-	}
-	)
+uni.navigateTo({
+			url: `/pages/Readpoem/index?data=${JSON.stringify(createBox.value)}&key=${JSON.stringify(item)}&User=${true}`
+		})
  }
 
-const GoCreate=()=>{
+const GoCreate=(id)=>{
 	uni.navigateTo({
-		url:`/pages/collect/index?title=更多作品&data=${JSON.stringify(User.value.create)}`
+		url:`/pages/My_write/index?id=${id}`
 	})
 }
+onMounted(()=>{
+	 Getpoem(createBox,User.value._id)
+})
  onLoad((options)=>{
 	 User.value=JSON.parse(options.data)
+	
  })
 </script>
 
@@ -75,7 +86,6 @@ const GoCreate=()=>{
      justify-content: center; 
 	 background-color: $uni-bg-color-one;
 	 align-items: center;
-	
 	 position: relative;
 	 .avatar{
 	 	border: black 1px $uni-text-color-one	;

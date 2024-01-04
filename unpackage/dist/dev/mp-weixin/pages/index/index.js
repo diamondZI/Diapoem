@@ -23,7 +23,7 @@ const _sfc_main = {
     const PageSize = common_vendor.ref();
     let stop = true;
     const Touch = new hook_Touch_Longtime.Touch({}, {});
-    async function reload() {
+    async function reload(A) {
       if (stop) {
         poem.value = {};
         poem.value = await todo.get().then((res) => {
@@ -51,6 +51,20 @@ const _sfc_main = {
           ).length > 0);
         }
         console.log(UserPoem.value);
+      }
+      if (A) {
+        UserPoem.value = {};
+        UserPoem.value = await todo.getUserR().then((res) => {
+          return res.data[0];
+        }).catch((err) => {
+        });
+        if (User.UserData) {
+          UserStart.value = await (User.UserData.collect.filter(
+            (el) => {
+              return el.id === UserPoem.value._id;
+            }
+          ).length > 0);
+        }
       }
     }
     async function collect() {
@@ -118,7 +132,7 @@ const _sfc_main = {
       };
     });
     common_vendor.onMounted(() => {
-      reload();
+      reload(true);
       GETPagesize();
     });
     async function GETPagesize() {

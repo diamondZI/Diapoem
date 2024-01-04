@@ -36,8 +36,11 @@ const _sfc_main = {
       Key.value = key;
       KeyNumber.value = num;
     };
-    const close = () => {
-      User.SetText(Key.value, Value.value);
+    const close = (A) => {
+      if (A) {
+        console.log("改名");
+        User.SetText(Key.value, Value.value);
+      }
       popupCoupon.value.close();
     };
     common_vendor.onBeforeUnmount(() => {
@@ -57,11 +60,12 @@ const _sfc_main = {
         j: Value.value,
         k: common_vendor.o(($event) => Value.value = $event.detail.value),
         l: common_vendor.t(common_vendor.unref(keyWord)),
-        m: common_vendor.o(close),
-        n: common_vendor.sr(popupCoupon, "1b420d36-0", {
+        m: common_vendor.o(($event) => close(true)),
+        n: common_vendor.o(($event) => close(false)),
+        o: common_vendor.sr(popupCoupon, "1b420d36-0", {
           "k": "popupCoupon"
         }),
-        o: common_vendor.p({
+        p: common_vendor.p({
           type: "bottom"
         })
       };

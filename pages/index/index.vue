@@ -10,8 +10,6 @@
 			 <Poem  style="width: 100vw; " :poem='UserPoem'></Poem>
 		 </div>
      <FunButton :reload='reload' :remove='remove' :collect='collect' :start='stop?start:UserStart'></FunButton>
-     
-
 	</view>
 
 </template>
@@ -36,7 +34,7 @@ const size=ref(0)
 const PageSize=ref()
 let stop=true
 const Touch=new TouchLong({},{})
-async function  reload(){
+async function  reload(A){
 	if(stop){
 		poem.value={}
 		poem.value = await todo.get().then(res=>{
@@ -63,7 +61,19 @@ async function  reload(){
 		}
 		console.log(UserPoem.value);
 	}
-	
+	if(A){
+		UserPoem.value={}
+		UserPoem.value = await todo.getUserR().then(res=>{
+						return res.data[0]
+				}).catch(err=>{
+		})
+		if(User.UserData){
+			UserStart.value=await (User.UserData.collect.filter((el)=>{
+			  	 return el.id===UserPoem.value._id
+			   }
+			 ).length>0)
+		}
+	}
 }
 
 async function collect(){
@@ -132,8 +142,9 @@ onShareAppMessage((res)=>{
 	
 })	
 onMounted(()=>{
-		reload()
-  GETPagesize();
+		reload(true)
+		
+       GETPagesize();
 })
 async function GETPagesize(){
 	const Wsize=await uni.getSystemInfo()
@@ -142,14 +153,12 @@ async function GETPagesize(){
 
 function Touchmove(e){
 	console.log(Math.abs(size.value/PageSize.value));
-	
      const Rfn=(Size)=>{
 	   size.value=stop?Size:Size-PageSize.value
     }
-	
 	Touch.TouchMove(e,Rfn)
 }
- function TouchmEnd(e){
+function TouchmEnd(e){
 	const isSizeA=(Size)=>{
 			if(Math.abs(size.value/PageSize.value)*100>30){
 				size.value=-PageSize.value
@@ -176,7 +185,6 @@ function Touchmove(e){
 </script>
 
 <style lang="scss" scoped>
-	
 	.content{
 		width: 100vw;
 		position: absolute;
@@ -191,6 +199,11 @@ function Touchmove(e){
 	    display: flex;	
 		transition: .3s linear all;
 	}
-	
+	}
+	@media (prefers-color-scheme:dark) {
+		.content{
+			background-color: #282c34;
+			color:whitesmoke;
+		}
 	}
 </style>

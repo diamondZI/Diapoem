@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "data-loading": "../Loding/Data_Loading"
+  }
+}

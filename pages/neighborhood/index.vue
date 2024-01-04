@@ -4,7 +4,7 @@
 	 	<span class="text">其他用户</span>
 	 	<span class="text" @click="Getday()">随机 </span>
 	 	<span class="text">排序</span>
-	 </view>
+	 </view> 
 		 <view class="card" @click='GoNavigateTo("Personal",item)' v-for="(item,index) in userlist" :key="index">
 		  		  <view class="avatar">
 		  		  	<image  :src="item.avatar" mode="aspectFill"></image>
@@ -13,9 +13,9 @@
 		  			  <text>{{item.user_name}}</text>
 		  			   <text>{{item.slogan}}</text>
 		  			  <text>{{item.self_introduction}}</text>
-		  			 
 		  		  </view>	 
 		  </view>
+         <view v-if="LO">加载中----</view>
 
   </view>
 </template>
@@ -26,21 +26,15 @@ import {onReachBottom} from "@dcloudio/uni-app"
 import dayjs  from "dayjs"
 const list=reactive([1,2,3,4,5,6,7,8,9])
 const card=ref(null)
+const LO=ref(false)
 import {useUserstore} from "@/store/user.js"
 const User=useUserstore()
 const userlist=ref([])
 const Dayjs=new dayjs()
 
 onReachBottom(()=>{
-	// let {result}=  await db.collection('users').where(`_id!='${User.UserData._id}'`).field(
-	// 	  {
-	// 		  "user_name":true,
-	// 		  "create":true,
-	// 		  "self_introduction":true,
-	// 		  "slogan":true,
-	// 		  "avatar":true
-	// 	  }
-	// ).limit(10).get() 
+	GetUser()
+	console.log("!");
 	
 })
 const Getday=()=>{
@@ -49,8 +43,9 @@ const Getday=()=>{
 
 
 const  GetUser=async ()=>{
+    LO.value=true	
    const db =uniCloud.database()
-  let {result}=  await db.collection('users').where(`_id!='${User.UserData._id}'`).field(
+  let {result}=   await db.collection('users').where(`_id!='${User.UserData._id}'`).field(
 	  {
 		  "user_name":true,
 		  "create":true,
@@ -58,9 +53,17 @@ const  GetUser=async ()=>{
 		  "slogan":true,
 		  "avatar":true
 	  }
-  ).limit(10).get() 
-  userlist.value=result.data
-  console.log(userlist.value);
+  ).limit(7).skip(userlist.value.length).get()
+   
+   
+  userlist.value=[...userlist.value,...result.data]
+   if (result.data.length) {
+   	LO.value=false
+   } else{
+	   
+   	// console.log("没有更多了");
+   }   
+  console.log(result.value);
   
 }
 const GoNavigateTo=(Url,value)=>{

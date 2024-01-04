@@ -50,7 +50,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: #1b3b64;
+  background-color: white;
 }
 .popupCoupon .input.data-v-1b420d36 {
   width: 100vw;
@@ -58,19 +58,29 @@
   align-items: center;
   position: relative;
   margin: 10px;
+  justify-content: space-around;
 }
 .popupCoupon .input input.data-v-1b420d36 {
-  flex: 5;
-  border-bottom: 2px solid beige;
+  flex: 1;
+  max-width: 80vw;
+  border: 1px solid black;
   padding: 10px;
   background-color: white;
-  margin: 10px;
   font-family: "得意黑";
   font-size: 17px;
   background-color: var(--backround-color);
 }
 .popupCoupon .input .text.data-v-1b420d36 {
   padding: 4px;
-  border: 1px solid blueviolet;
   font-size: 24px;
+}
+.popupCoupon .img.data-v-1b420d36 {
+  width: 100px;
+  height: 100px;
+  background-image: src("../sta");
+}
+.popupCoupon .ButtonBox.data-v-1b420d36 {
+  width: 80vw;
+  margin: 10px;
+  display: flex;
 }

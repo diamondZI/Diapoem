@@ -34,21 +34,24 @@ const {poem}=defineProps(['poem'])
 	// justify-content: center;
 	font-size: var(--size);
 	.h1{
-	
 		font-size: calc(var(--size)*1.5) !important;
 		font-style: unset;
 	}
 	.paragraphs{
 		letter-spacing: var(--letter_spacing);
-		
-			line-height: var(--line_height);
+		line-height: var(--line_height);
 		// line-height: var(--);
 		display: flex;
-		
 		gap: 12rpx;
 		flex-direction: column;
 	}
 }
+@media (prefers-color-scheme:dark) {
+		.POEM{
+			background-color: #282c34;
+			color:whitesmoke;
+		}
+	}
 
 
 </style>

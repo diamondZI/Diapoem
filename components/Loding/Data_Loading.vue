@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="loding">
 		<view class="loader"></view>
 		<view class="shadow"></view>
 	</view>
@@ -15,7 +15,7 @@
 	}
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @keyframes mainAnimation {
 	0% {
 		width: 50px;
@@ -100,8 +100,9 @@
 		top: 50%;
 	}
 }
+
 .loader {
-	position: absolute;
+	position: relative;
 	width: 50px;
 	height: 50px;
 	top: 50%;

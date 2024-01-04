@@ -1,13 +1,16 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const hook_GetPoem = require("../../hook/GetPoem.js");
 if (!Math) {
-  Loding();
+  (Loding + DataLoading)();
 }
 const Loding = () => "../../components/Loding/index.js";
+const DataLoading = () => "../../components/Loding/Data_Loading.js";
 const _sfc_main = {
   __name: "index",
   setup(__props) {
     const User = common_vendor.ref();
+    const createBox = common_vendor.ref();
     const time = (datetime) => {
       const date = new Date(datetime);
       let Y = date.getFullYear() + "-";
@@ -21,44 +24,48 @@ const _sfc_main = {
       });
     };
     const GoRead = (item) => {
-      common_vendor.index.navigateTo(
-        {
-          url: `/pages/Readpoem/index?poem=${JSON.stringify(item)}`
-        }
-      );
-    };
-    const GoCreate = () => {
       common_vendor.index.navigateTo({
-        url: `/pages/collect/index?title=更多作品&data=${JSON.stringify(User.value.create)}`
+        url: `/pages/Readpoem/index?data=${JSON.stringify(createBox.value)}&key=${JSON.stringify(item)}&User=${true}`
       });
     };
+    const GoCreate = (id) => {
+      common_vendor.index.navigateTo({
+        url: `/pages/My_write/index?id=${id}`
+      });
+    };
+    common_vendor.onMounted(() => {
+      hook_GetPoem.Getpoem(createBox, User.value._id);
+    });
     common_vendor.onLoad((options) => {
       User.value = JSON.parse(options.data);
     });
     return (_ctx, _cache) => {
       return common_vendor.e({
         a: !User.value
-      }, !User.value ? {} : {
+      }, !User.value ? {} : common_vendor.e({
         b: User.value.avatar,
         c: common_vendor.o(($event) => avatarView(User.value.avatar)),
         d: common_vendor.t(User.value.user_name),
         e: common_vendor.t(User.value.slogan),
-        f: common_vendor.o(($event) => GoCreate()),
-        g: common_vendor.f(User.value.create, (item, index, i0) => {
+        f: common_vendor.o(($event) => GoCreate(User.value._id)),
+        g: !createBox.value
+      }, !createBox.value ? {} : {
+        h: common_vendor.f(createBox.value, (item, index, i0) => {
           return {
             a: common_vendor.t(item.title),
-            b: common_vendor.t(time(item.data)),
-            c: common_vendor.o(($event) => GoRead(item), index),
-            d: index
+            b: common_vendor.t(time(item.CreateTime)),
+            c: index,
+            d: common_vendor.o(($event) => GoRead(index), index)
           };
         }),
-        h: common_vendor.f(4 - User.value.create.length, (item, index, i0) => {
+        i: common_vendor.f(4 - createBox.value.length, (item, index, i0) => {
           return {
             a: index
           };
-        }),
-        i: common_vendor.t(User.value.self_introduction)
-      });
+        })
+      }, {
+        j: common_vendor.t(User.value.self_introduction)
+      }));
     };
   }
 };

@@ -100,24 +100,21 @@
 	
 		
     ],
+	"app-plus" : {
+			"darkmode" : true
+	 },
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"enablePullDownRefresh": true,
+		"navigationBarBackgroundColor": "@navBgColor",
 		"backgroundColor": "#F8F8F8"
-		
 	},
 	"tabBar": {
-			"color": "#7A7E83",
-				"selectedColor": "#13227a",
-				"borderStyle": "black",
-				"backgroundColor": "#ffffff",
-				"height": "50px",
-				"fontSize": "10px",
-				"iconWidth": "24px",
-				"spacing": "3px",
-		    	// "iconfontSrc":"static/iconfont.ttf", 
+		     	"color": "@tabFontColor",
+		     	        "selectedColor": "@tabSelectedColor",
+		     	        "backgroundColor": "@tabBgColor",
+		     	        "borderStyle": "@tabBorderStyle",
+	
 		    "list": [
 			{
 				"pagePath": "pages/index/index",

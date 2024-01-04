@@ -19,22 +19,28 @@
         </text>   
 		</view>	
 		<view @click="open(User.UserData.self_introduction,'self_introduction',20)"  class="Edit">
-          <text>签名</text>
+          <text>座右铭</text>
           <text style="width: 70%; text-align: end;">
                 {{User.UserData.self_introduction}}
             </text> 	
 		</view>
 	</view>
+	
+	
+	
 	<uni-popup ref="popupCoupon" type="bottom">
 			<view title="基础卡片" sub-title="副标题" extra="额外信息" class="popupCoupon">
-               <view class="input">
-               	 <input  type="text" :maxlength="KeyNumber"   v-model="Value"/>
-                 <!-- {{限定字数减去已有字数}} -->
+			   <view class="input">
+			   	 <input  type="text" :maxlength="KeyNumber"   v-model="Value"/>
+			     <!-- {{限定字数减去已有字数}} -->
 				  <view class="text">
 				  	{{keyWord}}
 				  </view> 
 			   </view>
-				<button @click="close">关闭</button>
+				<view class="ButtonBox">
+					<button @click="close(true)">确认</button>
+					<button @click="close(false)">关闭</button>
+				</view>
 			</view>
 	</uni-popup>
 </template>
@@ -67,8 +73,11 @@ const open=(value,key,num)=>{
 	Key.value=key
 	KeyNumber.value=num
 }
-const close=()=>{
-	User.SetText(Key.value,Value.value)
+const close=(A)=>{
+if (A) {
+	console.log("改名");
+	User.SetText(Key.value,Value.value)	
+} 
 	popupCoupon.value.close()
 }
 onBeforeUnmount(()=>{
@@ -81,7 +90,6 @@ onBeforeUnmount(()=>{
 	.Edit{
 		display: flex;
 		padding: 20px;
-		
 		align-items: center;
 		justify-content: space-between;
 		border-bottom: 1px solid black;
@@ -108,29 +116,39 @@ onBeforeUnmount(()=>{
 		flex-direction: column;
 		justify-content: space-between;
 		align-items: center;
-		 background-color: $uni-bg-color-one;
+		 background-color:white;
 		.input{
 			width: 100vw;
 			display: flex;
 			align-items: center;
 			position: relative;
 			margin: 10px;
+			justify-content: space-around;
 			input{
-				flex: 5;
-				border-bottom: 2px solid beige;
+				flex: 1;
+				max-width: 80vw;
+			    border: 1px solid black;
 				padding: 10px;
 				background-color: white;
-				margin: 10px;
+				// margin: 10px;
 				font-family: "得意黑";
 				font-size:17px;
 				background-color: $uni-bg-color;
 			}
 			.text{
 				padding: 4px;
-				border: 1px solid blueviolet;
 				font-size: 24px;
 			}
-			
+		}
+		.img{
+			width: 100px;
+			height: 100px;
+			background-image: src('../sta');
+		}
+		.ButtonBox{
+			width: 80vw;
+			margin: 10px;
+			display: flex;
 		}
 		
 	}

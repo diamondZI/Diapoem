@@ -6966,19 +6966,14 @@ const pages = [
 const globalStyle = {
   navigationBarTextStyle: "black",
   navigationBarTitleText: "uni-app",
-  navigationBarBackgroundColor: "#F8F8F8",
-  enablePullDownRefresh: true,
+  navigationBarBackgroundColor: "@navBgColor",
   backgroundColor: "#F8F8F8"
 };
 const tabBar = {
-  color: "#7A7E83",
-  selectedColor: "#13227a",
-  borderStyle: "black",
-  backgroundColor: "#ffffff",
-  height: "50px",
-  fontSize: "10px",
-  iconWidth: "24px",
-  spacing: "3px",
+  color: "@tabFontColor",
+  selectedColor: "@tabSelectedColor",
+  backgroundColor: "@tabBgColor",
+  borderStyle: "@tabBorderStyle",
   list: [
     {
       pagePath: "pages/index/index",
@@ -6996,6 +6991,9 @@ const tabBar = {
 };
 const e = {
   pages,
+  "app-plus": {
+    darkmode: true
+  },
   globalStyle,
   tabBar
 };
@@ -7287,7 +7285,7 @@ class v {
 function I(e2) {
   return e2 && "string" == typeof e2 ? JSON.parse(e2) : e2;
 }
-const S = true, b = "mp-weixin", A = I([]), P = b, T = I('{\n    "address": [\n        "127.0.0.1",\n        "192.168.1.28",\n        "172.21.80.1"\n    ],\n    "debugPort": 9000,\n    "initialLaunchType": "local",\n    "servePort": 7000,\n    "skipFiles": [\n        "<node_internals>/**",\n        "D:/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), C = I('[{"provider":"aliyun","spaceName":"poem","spaceId":"mp-e233ef62-9c0e-4622-a1aa-7115f4048c07","clientSecret":"BTuQBJeDn2aTX/XTVWVu5w==","endpoint":"https://api.next.bspapp.com"}]') || [];
+const S = true, b = "mp-weixin", A = I([]), P = b, T = I('{\n    "address": [\n        "127.0.0.1",\n        "192.168.1.28",\n        "172.20.176.1"\n    ],\n    "debugPort": 9000,\n    "initialLaunchType": "local",\n    "servePort": 7000,\n    "skipFiles": [\n        "<node_internals>/**",\n        "D:/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), C = I('[{"provider":"aliyun","spaceName":"poem","spaceId":"mp-e233ef62-9c0e-4622-a1aa-7115f4048c07","clientSecret":"BTuQBJeDn2aTX/XTVWVu5w==","endpoint":"https://api.next.bspapp.com"}]') || [];
 let O = "";
 try {
   O = "__UNI__D060515";
