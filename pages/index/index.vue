@@ -23,6 +23,7 @@ import FunButton from "@/components/FunButton/index.vue"
 import { useThemeterStor } from "@/store/theme.js"
 import { useUserstore } from "@/store/user.js"
 import TouchLong from "@/hook/Touch_Longtime.js"
+import { HmacSHA224 } from "crypto-js";
 const Theme=useThemeterStor()
 const User=useUserstore()
 const poem=ref()
@@ -59,7 +60,7 @@ async function  reload(A){
 			   }
 			 ).length>0)
 		}
-		console.log(UserPoem.value);
+		
 	}
 	if(A){
 		UserPoem.value={}
@@ -75,7 +76,6 @@ async function  reload(A){
 		}
 	}
 }
-
 async function collect(){
 	if (stop) {
 		User.SetCollect({
@@ -143,7 +143,7 @@ onShareAppMessage((res)=>{
 })	
 onMounted(()=>{
 		reload(true)
-		
+		Theme.GetTheme()
        GETPagesize();
 })
 async function GETPagesize(){
@@ -152,7 +152,7 @@ async function GETPagesize(){
 }
 
 function Touchmove(e){
-	console.log(Math.abs(size.value/PageSize.value));
+	
      const Rfn=(Size)=>{
 	   size.value=stop?Size:Size-PageSize.value
     }
@@ -160,9 +160,13 @@ function Touchmove(e){
 }
 function TouchmEnd(e){
 	const isSizeA=(Size)=>{
+	console.log("111");
 			if(Math.abs(size.value/PageSize.value)*100>30){
 				size.value=-PageSize.value
 				stop=false
+				uni.pageScrollTo({
+					scrollTop:-10,
+				})
 				console.log(Math.abs(size.value/PageSize.value)*100);
 			}else if(Math.abs(size.value/PageSize.value)*100<30){
 				size.value=0
@@ -170,18 +174,23 @@ function TouchmEnd(e){
 			}	
 	}
 	const isSizeB=(Size)=>{
+		console.log("222");
 		if(Math.abs(size.value/PageSize.value)*100<72){
 			size.value=0
 			stop=true
+			uni.pageScrollTo({
+				scrollTop:-10,
+			})
 			console.log(Math.abs(size.value/PageSize.value)*100);
 		}else if(Math.abs(size.value/PageSize.value)*100>72){
 			size.value=-PageSize.value
+			
+			
 			stop=false
 		}
 	}
 	Touch.TouchEnd(e,stop?isSizeA:isSizeB)
 }
-
 </script>
 
 <style lang="scss" scoped>
@@ -200,10 +209,5 @@ function TouchmEnd(e){
 		transition: .3s linear all;
 	}
 	}
-	@media (prefers-color-scheme:dark) {
-		.content{
-			background-color: #282c34;
-			color:whitesmoke;
-		}
-	}
+	
 </style>

@@ -102,7 +102,7 @@
 }
 
 .loader {
-	position: relative;
+position: absolute;
 	width: 50px;
 	height: 50px;
 	top: 50%;

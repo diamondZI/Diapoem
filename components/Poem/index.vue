@@ -46,12 +46,5 @@ const {poem}=defineProps(['poem'])
 		flex-direction: column;
 	}
 }
-@media (prefers-color-scheme:dark) {
-		.POEM{
-			background-color: #282c34;
-			color:whitesmoke;
-		}
-	}
-
 
 </style>

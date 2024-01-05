@@ -1,1 +1,1 @@
-<view class=""><box-box wx:if="{{a}}" u-i="544ef422-0" bind:__l="__l" u-p="{{a}}"></box-box></view>
+<view class="My_write data-v-cb2cf245"><box-box wx:if="{{a}}" class="data-v-cb2cf245" u-i="cb2cf245-0" bind:__l="__l" u-p="{{a}}"></box-box></view>

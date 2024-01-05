@@ -2,6 +2,7 @@
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 const common_vendor = require("./common/vendor.js");
 const store_user = require("./store/user.js");
+const store_theme = require("./store/theme.js");
 if (!Math) {
   "./pages/index/index.js";
   "./pages/home/index.js";
@@ -26,11 +27,16 @@ const _sfc_main = {
           "key": []
         }));
       }
+    },
+    A() {
+      const Theme = store_theme.useThemeterStor();
+      Theme.GetTheme();
     }
   },
   onLaunch: function() {
     try {
       this.p();
+      this.A();
     } catch (e) {
       console.log("失败");
     }

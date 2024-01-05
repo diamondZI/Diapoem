@@ -1,39 +1,41 @@
 <template>
-	<Loding v-if="!User"></Loding>
-	<view v-else>
-		<view class="img">
-        <view class="avatar">
-        	<image :src="User.avatar" mode="aspectFill" @click="avatarView(User.avatar)"></image>
-        </view>
-		 <text class="name" >{{User.user_name}}</text>
-		 <text  class="solng">{{User.slogan}}</text>
-		</view>
-		<view class="fans">
-			
-		</view>
-		<view class="MadeBox" >
-			<view class="header">
-				 <text>作品展示</text>
-				 <text @click="GoCreate(User._id)">更多></text>
+	<view class="VI">
+		<Loding v-if="!User"></Loding>
+		<view v-else>
+			<view class="img">
+		    <view class="avatar">
+		    	<image :src="User.avatar" mode="aspectFill" @click="avatarView(User.avatar)"></image>
+		    </view>
+			 <text class="name" >{{User.user_name}}</text>
+			 <text  class="solng">{{User.slogan}}</text>
 			</view>
-			<view v-if="!createBox" >
-				<DataLoading></DataLoading>
+			<view class="fans">
+				
 			</view>
-			<view class="Made" v-else>
-			  <view    hover-stay-time="200" hover-start-time="600" class="Box" v-for="(item,index) in createBox" :key="index"
-			   @click="GoRead(index)"
-			  >
-			  	<text>{{item.title}}</text>
-			  	<text>{{time(item.CreateTime)}}</text>
-			  </view> 
-			   <view    class="Box NOBox" v-for="(item,index) in 4-createBox.length" :key="index">
-			<text> 还未创作</text>
-			  </view>
+			<view class="MadeBox" >
+				<view class="header">
+					 <text>作品展示</text>
+					 <text @click="GoCreate(User._id)">更多></text>
+				</view>
+				<view v-if="!createBox" >
+					<DataLoading></DataLoading>
+				</view>
+				<view class="Made" v-else>
+				  <view    hover-stay-time="200" hover-start-time="600" class="Box" v-for="(item,index) in createBox" :key="index"
+				   @click="GoRead(index)"
+				  >
+				  	<text>{{item.title}}</text>
+				  	<text>{{time(item.CreateTime)}}</text>
+				  </view> 
+				   <view    class="Box NOBox" v-for="(item,index) in 4-createBox.length" :key="index">
+				<text> 还未创作</text>
+				  </view>
+				</view>
 			</view>
+				<text user-select  style="padding: 40px;">
+					&COPY; {{User.self_introduction}}
+				</text>
 		</view>
-			<text user-select  style="padding: 40px;">
-				&COPY; {{User.self_introduction}}
-			</text>
 	</view>
 </template>
 
@@ -157,5 +159,11 @@ onMounted(()=>{
 		}
 	 }
  }
+ @media (prefers-color-scheme:dark) {
+ 	.VI{
+ 		background-color: #282c34;
+ 	}
+ 
+ 	}
  
 </style>

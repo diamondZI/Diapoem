@@ -37,9 +37,3 @@
   display: flex;
   transition: 0.3s linear all;
 }
-@media (prefers-color-scheme: dark) {
-.content.data-v-1cf27b2a {
-    background-color: #282c34;
-    color: whitesmoke;
-}
-}

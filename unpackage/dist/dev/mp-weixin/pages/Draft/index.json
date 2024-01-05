@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "草稿",
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "box-box": "../../components/boxbox/boxbox"
+  }
 }

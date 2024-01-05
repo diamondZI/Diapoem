@@ -11,17 +11,24 @@ const useThemeterStor = common_vendor.defineStore("Theme", () => {
     theme.value["--backroundcolor"] = value;
   };
   const onChangesize = (value) => {
-    console.log(value);
     theme.value["--size"] = value + "px";
   };
   const onChangeletter = (value) => {
-    console.log(value);
     theme.value["--letter_spacing"] = value + "px";
   };
   const onChangeheight = (value) => {
-    console.log(value);
     theme.value["--line_height"] = value + "px";
   };
-  return { theme, onChangeBackroundcolor, onChangesize, onChangeheight, onChangeletter };
+  const onChangtheme = (id) => {
+    common_vendor.index.setStorage({
+      data: theme.value,
+      key: "Theme"
+    });
+  };
+  const GetTheme = () => {
+    const a = common_vendor.index.getStorageSync("Theme");
+    theme.value = a;
+  };
+  return { theme, onChangeBackroundcolor, onChangesize, onChangeheight, onChangeletter, onChangtheme, GetTheme };
 });
 exports.useThemeterStor = useThemeterStor;

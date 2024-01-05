@@ -23,6 +23,9 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.neighborhoodBox.data-v-da70f5fc {
+  min-height: 100vh;
+}
 .TOPTAP.data-v-da70f5fc {
   margin-bottom: 10px;
   display: flex;
@@ -39,6 +42,22 @@
 .TOPTAP .text.data-v-da70f5fc:hover {
   border-bottom: 2px #1b3b64 solid;
 }
+.font.data-v-da70f5fc {
+  font-weight: bold;
+  color: #1b3b64;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+.button.data-v-da70f5fc {
+  border: 1px solid black;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
 .neighborhood.data-v-da70f5fc {
   padding: 20px;
   display: flex;
@@ -47,10 +66,19 @@
   gap: 20rpx;
 }
 .card.data-v-da70f5fc {
-  box-shadow: 0 0 2px black;
+  box-shadow: 10px 10px 10px indigo;
+  flex-wrap: wrap;
   padding: 20rpx;
   width: 80vw;
   display: flex;
+}
+.card .Create_time.data-v-da70f5fc {
+  margin: 15px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
 }
 .text.data-v-da70f5fc {
   display: flex;
@@ -68,4 +96,25 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
+}
+.PoemNumber.data-v-da70f5fc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 140rpx;
+  height: 140rpx;
+  font-size: 40px;
+  box-shadow: inset 3px 6px 13px black;
+}
+@media (prefers-color-scheme: dark) {
+.neighborhoodBox.data-v-da70f5fc {
+    background-color: #282c34;
+}
+.card.data-v-da70f5fc {
+    color: #bababa;
+    background-color: black;
+}
+.card .PoemNumber.data-v-da70f5fc {
+    box-shadow: inset 3px 6px 13px white;
+}
 }

@@ -84,3 +84,12 @@
   margin: 10px;
   display: flex;
 }
+@media (prefers-color-scheme: dark) {
+.PersonalEdit.data-v-1b420d36 {
+    min-height: 100vh;
+    background-color: #282c34;
+}
+.popupCoupon.data-v-1b420d36 {
+    background-color: #282c34;
+}
+}

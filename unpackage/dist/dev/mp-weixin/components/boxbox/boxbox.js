@@ -12,13 +12,17 @@ const _sfc_main = {
     const sort = common_vendor.ref(false);
     console.log(poem);
     const GoRead = (id, poem2) => {
-      if (mode) {
+      if (mode === "true") {
         common_vendor.index.navigateTo({
           url: `/pages/Readpoem/index?data=${JSON.stringify(poem2)}&key=${JSON.stringify(id)}&User=${true}`
         });
-      } else {
+      } else if (mode === "false") {
         common_vendor.index.navigateTo({
           url: `/pages/Readpoem/index?data=${JSON.stringify(poem2)}&key=${JSON.stringify(id)}&User=${poem2[id].isanuthor}`
+        });
+      } else {
+        common_vendor.index.navigateTo({
+          url: `/pages/Write/index?value=${JSON.stringify(id)}&list=${JSON.stringify(poem2)}`
         });
       }
     };

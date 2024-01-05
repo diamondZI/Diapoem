@@ -16,11 +16,11 @@ const _sfc_main = {
         a: common_vendor.p({
           title: "我的收藏",
           poem: list.value,
-          mode: false
+          mode: "false"
         })
       };
     };
   }
 };
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/koajs/DiaPoem/pages/collect/index.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-cb2cf245"], ["__file", "D:/koajs/DiaPoem/pages/collect/index.vue"]]);
 wx.createPage(MiniProgramPage);

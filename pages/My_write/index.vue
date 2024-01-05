@@ -1,6 +1,6 @@
 <template>    
 	<view class="My_write">
-		<BOXBOX :title="title" :poem='Poem' :mode="true"></BOXBOX>
+		<BOXBOX :title="title" :poem='Poem' :mode="'true'"></BOXBOX>
 		<view class="CollectBox">
 			<view class="Box" @click="GoWrite()">
 				<uni-icons class="ICONBOX" type='plusempty' size='40'></uni-icons>
@@ -49,5 +49,13 @@
 			box-shadow: inset 0 0 5px 0 black;
 		}
 
+  @media (prefers-color-scheme:dark) {
+  	.My_write{
+		min-height: 100vh;
+  		background-color: #282c34;
+  	}
+  
+ 
+  }
 	
 </style>

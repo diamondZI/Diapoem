@@ -98,3 +98,8 @@
 .MadeBox .Made .NOBox.data-v-1b2c2814:hover {
   box-shadow: inset 0 0 50px black;
 }
+@media (prefers-color-scheme: dark) {
+.VI.data-v-1b2c2814 {
+    background-color: #282c34;
+}
+}

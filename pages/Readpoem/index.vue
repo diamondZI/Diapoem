@@ -55,9 +55,9 @@ async function remove(){
     })
 }
 onLoad((Options)=>{
+	
 		list.value=JSON.parse(Options.data)
 		key.value=JSON.parse(Options.key)   
-		
 		 Options.User==="true"?GetUserPoem(key.value):GetPoem(key.value) 
 })
 </script>
@@ -84,5 +84,6 @@ onLoad((Options)=>{
 	   }
 	   
 	}
+	
 	
 </style>

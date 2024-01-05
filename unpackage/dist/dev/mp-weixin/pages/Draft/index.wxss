@@ -23,67 +23,9 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.Iconsort.data-v-58e8536a {
-  transform: rotateX(320deg);
-  border: 2px solid black;
-  border-left: none !important;
-  border-right: none !important;
-}
+@media (prefers-color-scheme: dark) {
 .CollectBox.data-v-58e8536a {
-  padding: 20px;
+    min-height: 100vh;
+    background-color: #282c34;
 }
-.CollectBox .header.data-v-58e8536a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.CollectBox .header text.data-v-58e8536a {
-  font-size: 50rpx;
-}
-.CollectBox .header .Icon.data-v-58e8536a {
-  width: 40rpx;
-  height: 40rpx;
-  border: 1px solid black;
-  transition: 0.6s linear all;
-}
-.CollectBox .collect.data-v-58e8536a {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-.CollectBox .collect .collect_poem.data-v-58e8536a {
-  margin: 10px;
-  text-align: center;
-  gap: 40rpx;
-  width: 20vw;
-  display: flex;
-  border-radius: 10rpx;
-  flex-direction: row;
-  align-items: center;
-  height: 25vw;
-  padding: 15px;
-  transition: 0.3s all linear;
-  color: #FFFFFF;
-  background-color: #1b3b64;
-  position: relative;
-  border: 1px black solid;
-}
-.CollectBox .collect .collect_poem .author.data-v-58e8536a {
-  background-color: white;
-  flex: 1;
-  text-orientation: sideways;
-  color: #8a979b;
-}
-.CollectBox .collect .collect_poem.data-v-58e8536a:hover {
-  border-radius: 40rpx;
-  box-shadow: 0 0 10rpx 0 black;
-}
-.CollectBox .collect .collect_poem_active.data-v-58e8536a {
-  width: 100vw;
-  height: 10px;
-  font-size: 24px;
-  border: none;
-  color: black;
-  background-color: rgba(100, 100, 100, 0);
-  border-bottom: 2px solid #1b3b64;
 }

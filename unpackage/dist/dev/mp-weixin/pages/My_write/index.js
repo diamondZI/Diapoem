@@ -31,7 +31,7 @@ const _sfc_main = {
         a: common_vendor.p({
           title: title.value,
           poem: Poem.value,
-          mode: true
+          mode: "true"
         }),
         b: common_vendor.p({
           type: "plusempty",

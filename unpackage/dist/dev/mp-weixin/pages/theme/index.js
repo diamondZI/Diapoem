@@ -1,8 +1,15 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 const store_theme = require("../../store/theme.js");
+if (!Array) {
+  const _easycom_uni_popup_message2 = common_vendor.resolveComponent("uni-popup-message");
+  const _easycom_uni_popup2 = common_vendor.resolveComponent("uni-popup");
+  (_easycom_uni_popup_message2 + _easycom_uni_popup2)();
+}
+const _easycom_uni_popup_message = () => "../../uni_modules/uni-popup/components/uni-popup-message/uni-popup-message.js";
+const _easycom_uni_popup = () => "../../uni_modules/uni-popup/components/uni-popup/uni-popup.js";
 if (!Math) {
-  Poem();
+  (_easycom_uni_popup_message + _easycom_uni_popup + Poem)();
 }
 const Poem = () => "../../components/Poem/index.js";
 const _sfc_main = {
@@ -10,7 +17,13 @@ const _sfc_main = {
   setup(__props) {
     const Theme = store_theme.useThemeterStor();
     const duration = common_vendor.ref(24);
-    const duration2 = common_vendor.ref(0);
+    common_vendor.ref("");
+    const msg = common_vendor.reactive({
+      msgType: "",
+      messageText: ""
+    });
+    const message = common_vendor.ref();
+    const duration2 = common_vendor.ref(10);
     const duration3 = common_vendor.ref(32);
     const content = {
       title: "大海",
@@ -33,7 +46,12 @@ const _sfc_main = {
       ]
     };
     const BG = common_vendor.ref("rgb(255,250,240)");
-    const bgroundColor = ["rgb(27,59,100)", "rgb(255,250,240)", "rgb(226,203,173)", "rgb(199, 237, 204)", "rgb(220, 226, 241)"];
+    const bgroundColor = ["rgb(27,59,100)", "rgb(255,250,240)", "#282c34", "rgb(199, 237, 204)", "rgb(220, 226, 241)"];
+    function messageToggle(type, TEXT) {
+      msg.msgType = type;
+      msg.messageText = TEXT;
+      message.value.open();
+    }
     function changeColor(color) {
       Theme.onChangeBackroundcolor(color);
       BG.value = color;
@@ -47,27 +65,43 @@ const _sfc_main = {
     const changeheight = (e) => {
       Theme.onChangeheight(e.detail.value);
     };
+    const onChangtheme = (e) => {
+      try {
+        Theme.onChangtheme();
+        messageToggle("success", "保存成功");
+      } catch (e2) {
+      }
+    };
     return (_ctx, _cache) => {
       return {
         a: common_vendor.p({
+          type: msg.msgType,
+          message: msg.messageText,
+          duration: 2e3
+        }),
+        b: common_vendor.sr(message, "783cfd7e-0", {
+          "k": "message"
+        }),
+        c: common_vendor.p({
+          type: "message"
+        }),
+        d: common_vendor.p({
           poem: content
         }),
-        b: common_vendor.f(bgroundColor, (item, index, i0) => {
+        e: common_vendor.f(bgroundColor, (item, index, i0) => {
           return {
             a: common_vendor.o(($event) => changeColor(item), index),
             b: item,
             c: index
           };
         }),
-        c: common_vendor.t(duration.value),
-        d: common_vendor.o((e) => changeSize(e)),
-        e: duration.value,
-        f: common_vendor.t(duration2.value),
-        g: common_vendor.o((e) => changeletter(e)),
-        h: duration2.value,
-        i: common_vendor.t(duration3.value),
+        f: common_vendor.o((e) => changeSize(e)),
+        g: duration.value,
+        h: common_vendor.o((e) => changeletter(e)),
+        i: duration2.value,
         j: common_vendor.o((e) => changeheight(e)),
-        k: duration3.value
+        k: duration3.value,
+        l: common_vendor.o(($event) => onChangtheme())
       };
     };
   }

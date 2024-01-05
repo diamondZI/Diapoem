@@ -5,10 +5,9 @@
 	import {
 		onLoad
 	} from "@dcloudio/uni-app"
-
+  import { useThemeterStor } from "@/store/theme.js"
 	export default {
 		methods: {
-
 			p() {
 				const A = useUserstore()
 				A.GetUser()
@@ -17,11 +16,16 @@
 						"key": []
 					}))
 				}
+			},
+			A(){
+				const Theme=useThemeterStor()
+				Theme.GetTheme()
 			}
 		},
 		onLaunch: function() {
 			try {
-				this.p()			
+				this.p()
+							this.A()
 			} catch (e) {
 				console.log("失败");
 			}

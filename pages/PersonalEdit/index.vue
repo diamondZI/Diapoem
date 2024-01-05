@@ -1,28 +1,29 @@
 <template>
-	<view>
+
+	<view class="PersonalEdit">
 		<view class="Edit">
-          <text>头像</text>
+	      <text>头像</text>
 		  <button class="wrapper"  @click="onChooseAvatar">
 		    <image class="avatar" mode="aspectFill" :src="User.UserData.avatar"></image>
 		  </button> 
 		</view>	
 		<view @click="open(User.UserData.user_name,'user_name',7)"  class="Edit">
-          <text>笔名</text>
+	      <text>笔名</text>
 	     <text >
-           {{User.UserData.user_name}}
+	       {{User.UserData.user_name}}
 		 </text> 
 		</view>	
 		<view @click="open(User.UserData.slogan,'slogan',12)"  class="Edit">
-          <text>个签</text>
-        <text style="width: 70%; text-align: end;">
-        			  {{User.UserData.slogan}}
-        </text>   
+	      <text>个签</text>
+	    <text style="width: 70%; text-align: end;">
+	    			  {{User.UserData.slogan}}
+	    </text>   
 		</view>	
 		<view @click="open(User.UserData.self_introduction,'self_introduction',20)"  class="Edit">
-          <text>座右铭</text>
-          <text style="width: 70%; text-align: end;">
-                {{User.UserData.self_introduction}}
-            </text> 	
+	      <text>座右铭</text>
+	      <text style="width: 70%; text-align: end;">
+	            {{User.UserData.self_introduction}}
+	        </text> 	
 		</view>
 	</view>
 	
@@ -43,6 +44,8 @@
 				</view>
 			</view>
 	</uni-popup>
+	
+
 </template>
 
 <script setup>
@@ -152,5 +155,14 @@ onBeforeUnmount(()=>{
 		}
 		
 	}
+	@media (prefers-color-scheme:dark) {
+		.PersonalEdit{
+			min-height: 100vh;
+			background-color: #282c34;
+		}
+		.popupCoupon{
+			background-color: #282c34;
+		}
 	
+		}
 </style>

@@ -29,13 +29,19 @@ const sort=ref(false)
 console.log(poem);
 const GoRead=(id,poem)=>{
 	
-	if (mode) {
+	if (mode==="true") {
 			uni.navigateTo({
 				url: `/pages/Readpoem/index?data=${JSON.stringify(poem)}&key=${JSON.stringify(id)}&User=${true}`
 			})
-	} else{
+	} else if(mode==="false"){
 		uni.navigateTo({
 			url:`/pages/Readpoem/index?data=${JSON.stringify(poem)}&key=${JSON.stringify(id)}&User=${poem[id].isanuthor}`
+		})
+	} else {
+		uni.navigateTo({
+			url:`/pages/Write/index?value=${JSON.stringify(id)}&list=${
+					JSON.stringify(poem)
+				}`
 		})
 	}
  }

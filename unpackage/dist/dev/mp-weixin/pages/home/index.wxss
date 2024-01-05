@@ -27,11 +27,14 @@
   padding: 20rpx;
   display: flex;
   gap: 60rpx;
+  min-height: 100vh;
   flex-direction: column;
 }
 .userIorf .User.data-v-4978fed5 {
+  padding-left: 30rpx;
+  padding-right: 20rpx;
   display: flex;
-  gap: 40rpx;
+  gap: 60rpx;
 }
 .userIorf .User .avatar.data-v-4978fed5 {
   border: black 1px solid;
@@ -84,4 +87,16 @@
   position: absolute;
   background-color: rgba(0, 0, 0, 0.4);
   height: 100%;
+}
+@media (prefers-color-scheme: dark) {
+.userIorf.data-v-4978fed5 {
+    background-color: #282c34;
+}
+.card.data-v-4978fed5 {
+    color: #bababa;
+    background-color: black;
+}
+.card .PoemNumber.data-v-4978fed5 {
+    box-shadow: inset 3px 6px 13px white;
+}
 }

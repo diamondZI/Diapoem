@@ -67,10 +67,13 @@
 	  padding: 20rpx;
 	  display: flex;
 	  gap: 60rpx;
+	  min-height: 100vh;
 	  flex-direction: column;
 	  .User{
+		  padding-left: 30rpx;
+		  padding-right: 20rpx;
 		  display: flex;
-		  gap: 40rpx;
+		  gap:60rpx;
 		.avatar{
 			border: black 1px solid;
 			width: 160rpx;
@@ -131,6 +134,19 @@
 			 height: 100%;
 		 }
 	  }
+  }
+  @media (prefers-color-scheme:dark) {
+  	.userIorf{
+  		background-color: #282c34;
+  	}
+  	.card{
+  		color: #bababa;
+  		background-color: black;
+        .PoemNumber{
+  		  box-shadow:inset 3px 6px 13px white;
+  		  
+  	  }
+  	}
   }
   
 </style>

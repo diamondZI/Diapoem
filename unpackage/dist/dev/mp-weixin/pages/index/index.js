@@ -50,7 +50,6 @@ const _sfc_main = {
             }
           ).length > 0);
         }
-        console.log(UserPoem.value);
       }
       if (A) {
         UserPoem.value = {};
@@ -133,6 +132,7 @@ const _sfc_main = {
     });
     common_vendor.onMounted(() => {
       reload(true);
+      Theme.GetTheme();
       GETPagesize();
     });
     async function GETPagesize() {
@@ -140,7 +140,6 @@ const _sfc_main = {
       PageSize.value = Wsize.safeArea.width;
     }
     function Touchmove(e) {
-      console.log(Math.abs(size.value / PageSize.value));
       const Rfn = (Size) => {
         size.value = stop ? Size : Size - PageSize.value;
       };
@@ -148,9 +147,13 @@ const _sfc_main = {
     }
     function TouchmEnd(e) {
       const isSizeA = (Size) => {
+        console.log("111");
         if (Math.abs(size.value / PageSize.value) * 100 > 30) {
           size.value = -PageSize.value;
           stop = false;
+          common_vendor.index.pageScrollTo({
+            scrollTop: -10
+          });
           console.log(Math.abs(size.value / PageSize.value) * 100);
         } else if (Math.abs(size.value / PageSize.value) * 100 < 30) {
           size.value = 0;
@@ -158,9 +161,13 @@ const _sfc_main = {
         }
       };
       const isSizeB = (Size) => {
+        console.log("222");
         if (Math.abs(size.value / PageSize.value) * 100 < 72) {
           size.value = 0;
           stop = true;
+          common_vendor.index.pageScrollTo({
+            scrollTop: -10
+          });
           console.log(Math.abs(size.value / PageSize.value) * 100);
         } else if (Math.abs(size.value / PageSize.value) * 100 > 72) {
           size.value = -PageSize.value;
