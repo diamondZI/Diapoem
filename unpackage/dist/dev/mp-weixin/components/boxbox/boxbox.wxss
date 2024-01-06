@@ -30,8 +30,8 @@
   border-right: none !important;
 }
 .box.data-v-71bac138 {
-  width: 10px;
-  height: 20px;
+  width: 40rpx;
+  height: 40rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -1,1 +1,1 @@
-.content.data-v-35226053{width:100vw;position:absolute;min-height:100vh;padding:20px;background-color:var(--backroundcolor)}
+.content.data-v-a339a2fa{width:100vw;min-height:100vh;overflow-x:hidden;transform:translateX();position:absolute;background-color:var(--backroundcolor)}.content .contentX.data-v-a339a2fa{width:300vw;display:flex;transition:.3s linear all}

@@ -1,0 +1,1 @@
+"use strict";const e=require("../common/vendor.js");exports.Getpoem=async(t,o)=>{const s=e.$s.database(),r=await s.collection("user_poem").where({user_id:o}).get();t.value=r.result.data},exports.time=e=>{const t=new Date(e);return t.getFullYear()+"-"+((t.getMonth()+1<10?"0"+(t.getMonth()+1):t.getMonth()+1)+"-")+(t.getDate()+" ")};

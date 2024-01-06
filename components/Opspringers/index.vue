@@ -41,6 +41,7 @@ const sure=()=>{
 
 <style lang="scss" scoped>
 .Opspringers{
+	-webkit-overflow-scrolling: touch;
 	overflow: hidden;
 	box-shadow: 0 0 10px 0 black;
 	transition: 1s linear;

@@ -24,6 +24,7 @@
 /* 透明度 */
 /* 文章场景相关 */
 .Opspringers.data-v-ced272ff {
+  -webkit-overflow-scrolling: touch;
   overflow: hidden;
   box-shadow: 0 0 10px 0 black;
   transition: 1s linear;

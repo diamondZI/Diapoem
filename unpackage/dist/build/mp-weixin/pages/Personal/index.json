@@ -2,6 +2,7 @@
   "navigationBarTitleText": "个人信息",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "loding": "../../components/Loding/index"
+    "loding": "../../components/Loding/index",
+    "data-loading": "../../components/Loding/Data_Loading"
   }
 }

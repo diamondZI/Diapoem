@@ -1,15 +1,19 @@
 <template>
-	<view class="POEM" id="POEM" :style="[theme.theme]">
-         <view>
-			 <text selectable class="h1" @click="clie()">{{poem.title}}</text>
-			 <text selectable='true' style="letter-spacing: normal;"> ___{{poem.author}}</text>
-		 </view>
-		 <view class="paragraphs">
-		 	 <text selectable='true' v-for="(el,index) in poem.paragraphs"  :key="el"  id="text">
-				  {{el}}
-			  </text>
-		 </view>
-	</view>
+
+		<view class="POEM" id="POEM" :style="[theme.theme]">
+				<scroll-view scroll-y="true">
+		     <view>
+				 <text selectable class="h1" @click="clie()">{{poem.title}}</text>
+				 <text selectable='true' style="letter-spacing: normal;"> ___{{poem.author}}</text>
+			 </view>
+			 <view class="paragraphs">
+			 	 <text selectable='true' v-for="(el,index) in poem.paragraphs"  :key="el"  id="text">
+					  {{el}}
+				  </text>
+			 </view>
+			 </scroll-view>
+		</view>
+	
 </template>
 
 <script setup>
@@ -25,6 +29,7 @@ const {poem}=defineProps(['poem'])
 <style lang="less" >
 
 .POEM{
+	-webkit-overflow-scrolling: touch;
 	overflow: auto;
 	padding: 20rpx;
 	background-color: var(--backroundcolor);

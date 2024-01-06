@@ -16,15 +16,14 @@
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "enablePullDownRefresh": true,
+    "navigationBarBackgroundColor": "@navBgColor",
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
-    "color": "#7A7E83",
-    "selectedColor": "#13227a",
-    "borderStyle": "black",
-    "backgroundColor": "#ffffff",
+    "color": "@tabFontColor",
+    "selectedColor": "@tabSelectedColor",
+    "backgroundColor": "@tabBgColor",
+    "borderStyle": "@tabBorderStyle",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -40,6 +39,7 @@
       }
     ]
   },
+  "themeLocation": "theme.json",
   "permission": {
     "scope.userLocation": {
       "desc": "附近的同好诗人.提供交流平台"

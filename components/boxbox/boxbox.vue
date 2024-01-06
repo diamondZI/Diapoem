@@ -5,10 +5,7 @@
 		<uni-popup-dialog :type="type" cancelText="关闭" confirmText="删除" title="提示" content="确定要删除吗?"
 			@confirm="dialogConfirm" @close="dialogClose"></uni-popup-dialog>
 	</uni-popup>
-	<!-- </view> -->
-	<!-- <uni-popup ref="message" type="message">
-							<uni-popup-message :type="msg.msgType" :message="msg.messageText" :duration="2000"></uni-popup-message>
-			</uni-popup> -->
+	
 	<view class="CollectBox">
 
 		<view class="header">
@@ -109,14 +106,13 @@
 	}
 
 	.box {
-		width: 10px;
-		height: 20px;
+		width: 40rpx;
+		height: 40rpx;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		transition: all .6s linear;
-
 		.header {
 			width: 7px;
 			height: 5px;
