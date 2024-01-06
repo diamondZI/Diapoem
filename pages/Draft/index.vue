@@ -1,7 +1,7 @@
 <template>
 <view class="CollectBox">
 	
-	<BoxBox  title="我的草稿"  :mode="'Draft'" :poem='Draft.Darft'></BoxBox>
+	<BoxBox  title="我的草稿"  :mode="'Draft'" :poem='Draft.Darft' :fun='fun'></BoxBox>
 </view>
 
 </template>
@@ -12,7 +12,10 @@ import { ref } from "vue";
 import BoxBox from "@/components/boxbox/boxbox.vue"
 import {useDarftStore} from "@/store/draft.js"
 const Draft=useDarftStore()
-console.log(Draft.Darft);
+const fun= (id)=>{
+	console.log(id,"删除");
+	Draft.DeleteDarft(id)
+}
 
 </script>
 

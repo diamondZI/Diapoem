@@ -27,7 +27,9 @@ const useThemeterStor = common_vendor.defineStore("Theme", () => {
   };
   const GetTheme = () => {
     const a = common_vendor.index.getStorageSync("Theme");
-    theme.value = a;
+    if (a) {
+      theme.value = a;
+    }
   };
   return { theme, onChangeBackroundcolor, onChangesize, onChangeheight, onChangeletter, onChangtheme, GetTheme };
 });

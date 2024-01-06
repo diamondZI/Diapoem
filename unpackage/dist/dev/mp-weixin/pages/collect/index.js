@@ -1,5 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const store_user = require("../../store/user.js");
 if (!Math) {
   BoxBox();
 }
@@ -8,6 +9,12 @@ const _sfc_main = {
   __name: "index",
   setup(__props) {
     const list = common_vendor.ref();
+    const fun = (id) => {
+      const User = store_user.useUserstore();
+      console.log(id);
+      list.value = User.UserData.collect;
+      User.removeCollect(id);
+    };
     common_vendor.onLoad((Option) => {
       list.value = JSON.parse(Option.data);
     });
@@ -16,7 +23,8 @@ const _sfc_main = {
         a: common_vendor.p({
           title: "我的收藏",
           poem: list.value,
-          mode: "false"
+          mode: "false",
+          fun
         })
       };
     };

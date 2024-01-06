@@ -14,7 +14,7 @@ const _sfc_main = {
   __name: "index",
   setup(__props) {
     const Theme = store_theme.useThemeterStor();
-    const User = store_user.useUserstore();
+    store_user.useUserstore();
     const GetPoemtodo = common_vendor.$s.importObject("poem");
     const poem = common_vendor.ref();
     const list = common_vendor.ref([]);
@@ -41,13 +41,6 @@ const _sfc_main = {
         console.log(err);
       });
     }
-    async function remove() {
-      const { msg } = await User.removeCollect(key);
-      console.log(msg);
-      common_vendor.index.showModal({
-        content: msg
-      });
-    }
     common_vendor.onLoad((Options) => {
       list.value = JSON.parse(Options.data);
       key.value = JSON.parse(Options.key);
@@ -61,16 +54,15 @@ const _sfc_main = {
           poem: poem.value
         })
       } : {
-        c: common_vendor.o(($event) => remove()),
-        d: common_vendor.p({
+        c: common_vendor.p({
           title: "内容已被删除",
           thumbnail: "",
           note: "Tips"
         })
       }, {
-        e: poem.value ? 1 : "",
-        f: !poem.value ? 1 : "",
-        g: common_vendor.s(common_vendor.unref(Theme).theme)
+        d: poem.value ? 1 : "",
+        e: !poem.value ? 1 : "",
+        f: common_vendor.s(common_vendor.unref(Theme).theme)
       });
     };
   }

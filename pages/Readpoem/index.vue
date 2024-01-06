@@ -3,7 +3,7 @@
 	<poem :poem='poem' v-if="poem" ></poem>
 	<view v-else>
 		<uni-card title="内容已被删除" thumbnail=""  note="Tips">
-            <button type="default" @click="remove()">确认</button>
+            <!-- <button type="default" @click="remove()">确认</button> -->
  		</uni-card>
 	</view>
 	</view>
@@ -58,7 +58,8 @@ onLoad((Options)=>{
 	
 		list.value=JSON.parse(Options.data)
 		key.value=JSON.parse(Options.key)   
-		 Options.User==="true"?GetUserPoem(key.value):GetPoem(key.value) 
+      	Options.User==="true"?GetUserPoem(key.value):GetPoem(key.value)
+   
 })
 </script>
 

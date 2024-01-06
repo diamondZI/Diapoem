@@ -10,7 +10,6 @@
 			<uni-icons  type="star" size="30" v-if="!props.start"></uni-icons>
 			<uni-icons  type="star-filled" size="30" v-else></uni-icons>
 		</view>
-		
 		<button  open-type="share" style="background-color: rgb(0, 0, 0,.0);"  :class="{'ICONBOX':true,'ICONBOX_Active':open}">
 				<uni-icons   type="redo" size="30"></uni-icons>
 		</button>
@@ -20,11 +19,11 @@
 <script setup>
 import { onMounted,reactive,ref ,provide} from "vue";
 import { onShareAppMessage} from "@dcloudio/uni-app"
-const open=ref(false)
+const open=ref(true)
 const aclick=()=>{
     open.value=!open.value
 }
-const props=defineProps(['reload','collect','start','remove'])
+const props=defineProps(['reload','collect','start','remove','id','stop'])
 const Reload=()=>{
 	props.reload()
 }
@@ -37,12 +36,14 @@ const Collect=()=>{
 }
 
 onShareAppMessage((res)=>{
+ 	let a=props
+	console.log(a.stop);
 	    if (res.from === 'button') {// 来自页面内分享按钮
 	      console.log(res.target)
 	    }
 	    return {
 	      title: '在这里分享你的诗',
-	      path: '/pages/index/index?id=123'
+	      path: `/pages/index/index?id=${a.id}&bol=${a.stop}`
 	    }
 	
 })

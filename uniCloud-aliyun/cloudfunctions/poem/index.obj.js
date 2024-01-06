@@ -24,9 +24,7 @@ module.exports = {
 	},
 	async getUser(id){
 		const db=uniCloud.database()
-			let res =await db.collection('user_poem').where({
-				_id:id
-			}).get()
+			let res =await db.collection('user_poem').doc(id).get()
 		return res	
 	},
 	async getone(id){

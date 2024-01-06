@@ -11,7 +11,7 @@
                <text>{{U.UserData.slogan}}</text>            	
             </view>
 			<view  style="position: absolute;  right: 20rpx;" @click="GoNavigateTo('PersonalEdit')">
-				<uni-icons  type="person-filled" size="30"></uni-icons>
+				<uni-icons  type="compose" size="30"></uni-icons>
 			</view>
         </view>
 		<view class="UserButton">
@@ -61,8 +61,6 @@
 </script>
 
 <style scoped lang="scss">
-
-
   .userIorf{
 	  padding: 20rpx;
 	  display: flex;

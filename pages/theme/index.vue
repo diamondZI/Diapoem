@@ -35,8 +35,9 @@
 	 </view>
  	<slider @change="(e)=>changeheight(e)" style="width: 90vw;" activeColor="rgb(27,59,100)" :value="duration3" min="32" max="48" />
   </view>
+  <button @click="onChangtheme()" class="back" style="width: 50vw; border: 1px solid black;">保存样式</button>
+  
 	</view>
-<button @click="onChangtheme()" style="width: 50vw; border: 1px solid black;">保存样式</button>	
 
 </template>
 
@@ -147,6 +148,8 @@
  	.popupCoupon{
  		background-color: #282c34;
  	}
- 
+  .back{
+	  // background-color: white;
+  }
  	}
 </style>

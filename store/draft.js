@@ -9,7 +9,13 @@ export const  useDarftStore=defineStore('DRAFT',()=>{
 		uni.setStorageSync('Darft',JSON.stringify({
 			"key":Darft.value
 		}))
-		
-	}	
-	return {PUSHDARFT,Darft}
+	}
+	const DeleteDarft=(id)=>{
+		Darft.value.splice(id,1)
+		uni.setStorageSync('Darft',JSON.stringify({
+			"key":Darft.value
+		}))
+	}
+	
+	return {PUSHDARFT,Darft,DeleteDarft}
 })

@@ -10,7 +10,6 @@ export const  useThemeterStor=defineStore('Theme',()=>{
 		  "--line_height":"32px",
 	})
 	    const   onChangeBackroundcolor=(value)=>{
-	
 		   theme.value['--backroundcolor']=value
 	   }
 	   const   onChangesize=(value)=>{
@@ -30,7 +29,9 @@ export const  useThemeterStor=defineStore('Theme',()=>{
 	   }
 	   const  GetTheme= ()=>{
 		   const a=uni.getStorageSync('Theme')
-		   theme.value=a
+		     if (a) {
+		     	  theme.value=a
+		     } 
 	   }
 	return {theme,onChangeBackroundcolor,onChangesize,onChangeheight,onChangeletter,onChangtheme,GetTheme}
 })

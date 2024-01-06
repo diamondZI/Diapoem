@@ -16,8 +16,10 @@ const _sfc_main = {
   setup(__props) {
     const User = store_user.useUserstore();
     const title = common_vendor.ref();
-    const Poem = common_vendor.ref([]);
+    const Poem = common_vendor.ref();
+    const Noption = common_vendor.ref();
     common_vendor.onLoad((option) => {
+      Noption.value = option;
       !option.id ? hook_GetPoem.Getpoem(Poem, User.UserData._id) : hook_GetPoem.Getpoem(Poem, option.id);
       title.value = !option.id ? "我的创作" : "他的创作";
     });
@@ -26,12 +28,19 @@ const _sfc_main = {
         url: "/pages/Write/index"
       });
     };
+    const fun = async (id) => {
+      console.log(Poem.value);
+      const db = common_vendor.$s.database();
+      await db.collection("user_poem").doc(Poem.value[id]._id).remove();
+      hook_GetPoem.Getpoem(Poem, User.UserData._id);
+    };
     return (_ctx, _cache) => {
       return {
         a: common_vendor.p({
           title: title.value,
           poem: Poem.value,
-          mode: "true"
+          mode: "true",
+          fun
         }),
         b: common_vendor.p({
           type: "plusempty",

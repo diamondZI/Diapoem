@@ -9,13 +9,17 @@ const _sfc_main = {
   __name: "index",
   setup(__props) {
     const Draft = store_draft.useDarftStore();
-    console.log(Draft.Darft);
+    const fun = (id) => {
+      console.log(id, "删除");
+      Draft.DeleteDarft(id);
+    };
     return (_ctx, _cache) => {
       return {
         a: common_vendor.p({
           title: "我的草稿",
           mode: "Draft",
-          poem: common_vendor.unref(Draft).Darft
+          poem: common_vendor.unref(Draft).Darft,
+          fun
         })
       };
     };

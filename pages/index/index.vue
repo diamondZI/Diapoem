@@ -1,17 +1,26 @@
 <template>
-	<Loding v-if="!poem"></Loding>
+	
 	 <view
 	  @touchstart="Touch.touchStart"
 	  @touchmove="Touchmove"
 	  @touchend="TouchmEnd"
-	  class="content" v-else  :style="[Theme.theme]" >
-		 <div class="contentX" :style="{'transform':`translateX(${size/PageSize*100}vw)`}">
+	  class="content"  :style="[Theme.theme]" >
+	  <Loding v-if="!poem"></Loding>
+		 <div v-else  class="contentX" :style="{'transform':`translateX(${size/PageSize*100}vw)`}">
 			 <Poem style="width: 100vw;" :poem='poem'></Poem>
 			 <Poem  style="width: 100vw; " :poem='UserPoem'></Poem>
 		 </div>
-     <FunButton :reload='reload' :remove='remove' :collect='collect' :start='stop?start:UserStart'></FunButton>
+     <FunButton :reload='reload' :remove='remove' :collect='collect' :start='stop?start:UserStart' 
+	  :stop='stop'
+	  :id='stop?poem._id:UserPoem._id'></FunButton>
 	</view>
-
+    <!-- <view style="position: fixed; width: 100vw; height: 100vh; background-color: rgb(100,100, 100,0); ">
+         <view class="">
+         	 <text>下一首</text>
+         	 <text>收  藏</text>
+         	 <text>分享</text>
+         </view>
+	</view>  -->  
 </template>
 <script setup>
 //写了大量重复代码	
@@ -35,46 +44,40 @@ const size=ref(0)
 const PageSize=ref()
 let stop=true
 const Touch=new TouchLong({},{})
+async function getpoem(id){
+	poem.value={}
+	poem.value = await todo.get().then(res=>{
+					return res.data[0]
+			}).catch(err=>{
+	})
+	if(User.UserData){
+		start.value=await (User.UserData.collect.filter((el)=>{
+		  	 return el.id===poem.value._id
+		   }
+		 ).length>0)
+	}
+}
+async function getUserpoem(id){
+	UserPoem.value={}
+	UserPoem.value = await todo.getUserR().then(res=>{
+					return res.data[0]
+			}).catch(err=>{
+	})
+	if(User.UserData){
+		UserStart.value=await (User.UserData.collect.filter((el)=>{
+		  	 return el.id===id??UserPoem.value._id
+		   }
+		 ).length>0)
+	}
+}
+
 async function  reload(A){
 	if(stop){
-		poem.value={}
-		poem.value = await todo.get().then(res=>{
-						return res.data[0]
-				}).catch(err=>{
-		})
-		if(User.UserData){
-			start.value=await (User.UserData.collect.filter((el)=>{
-			  	 return el.id===poem.value._id
-			   }
-			 ).length>0)
-		}
+		getpoem()
 	}else{
-		UserPoem.value={}
-		UserPoem.value = await todo.getUserR().then(res=>{
-						return res.data[0]
-				}).catch(err=>{
-		})
-		if(User.UserData){
-			UserStart.value=await (User.UserData.collect.filter((el)=>{
-			  	 return el.id===UserPoem.value._id
-			   }
-			 ).length>0)
-		}
-		
+		getUserpoem()
 	}
-	if(A){
-		UserPoem.value={}
-		UserPoem.value = await todo.getUserR().then(res=>{
-						return res.data[0]
-				}).catch(err=>{
-		})
-		if(User.UserData){
-			UserStart.value=await (User.UserData.collect.filter((el)=>{
-			  	 return el.id===UserPoem.value._id
-			   }
-			 ).length>0)
-		}
-	}
+	
 }
 async function collect(){
 	if (stop) {
@@ -128,21 +131,58 @@ async function remove(){
 		 ).length>0)
 	}
 }
-onLoad((Option)=>{
-	console.log(Option.value);
-})
-onShareAppMessage((res)=>{
-	    if (res.from === 'button') {// 来自页面内分享按钮
-	      console.log(res.target)
-	    }
-	    return {
-	      title: '在这里分享你的诗',
-	      path: '/pages/index/index'
-	    }
+
+async function  A(Option){
 	
-})	
+	     poem.value = await todo.getone(Option.id).then(res=>{
+					return res.data[0]
+			}).catch(err=>{
+	        	})
+	if(User.UserData){
+		start.value=await (User.UserData.collect.filter((el)=>{
+		  	 return el.id===poem.value._id
+		   }
+		 ).length>0)
+	}
+}
+async function  B(Option){
+	UserPoem.value={}
+	UserPoem.value = await todo.getUser(Option.id).then(res=>{
+		console.log(res);
+					return res.data[0]
+			}).catch(err=>{
+	})
+	if(User.UserData){
+		UserStart.value=await (User.UserData.collect.filter((el)=>{
+		  	 return el.id===UserPoem.value._id
+		   }
+		 ).length>0)
+	}
+}
+onLoad((Option)=>{
+	console.log(Option);
+	if (Option.id&&Option.bol==='true') {
+	
+	A(Option)
+	getUserpoem()
+	
+	}else if (Option.id&&Option.bol==='false'){
+	setTimeout(()=>{
+		size.value=-PageSize.value
+		stop=false
+	},300)
+	console.log("A");
+       B(Option)
+		getpoem()
+		
+	}else{
+		
+		getpoem()
+		getUserpoem()
+	} 
+})
+
 onMounted(()=>{
-		reload(true)
 		Theme.GetTheme()
        GETPagesize();
 })
@@ -184,8 +224,6 @@ function TouchmEnd(e){
 			console.log(Math.abs(size.value/PageSize.value)*100);
 		}else if(Math.abs(size.value/PageSize.value)*100>72){
 			size.value=-PageSize.value
-			
-			
 			stop=false
 		}
 	}

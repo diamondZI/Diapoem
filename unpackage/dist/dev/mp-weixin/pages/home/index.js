@@ -40,7 +40,7 @@ const _sfc_main = {
         e: common_vendor.t(common_vendor.unref(U).UserData.region),
         f: common_vendor.t(common_vendor.unref(U).UserData.slogan),
         g: common_vendor.p({
-          type: "person-filled",
+          type: "compose",
           size: "30"
         }),
         h: common_vendor.o(($event) => GoNavigateTo("PersonalEdit")),

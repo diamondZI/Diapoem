@@ -23,47 +23,39 @@ const _sfc_main = {
     const PageSize = common_vendor.ref();
     let stop = true;
     const Touch = new hook_Touch_Longtime.Touch({}, {});
-    async function reload(A) {
-      if (stop) {
-        poem.value = {};
-        poem.value = await todo.get().then((res) => {
-          return res.data[0];
-        }).catch((err) => {
-        });
-        if (User.UserData) {
-          start.value = await (User.UserData.collect.filter(
-            (el) => {
-              return el.id === poem.value._id;
-            }
-          ).length > 0);
-        }
-      } else {
-        UserPoem.value = {};
-        UserPoem.value = await todo.getUserR().then((res) => {
-          return res.data[0];
-        }).catch((err) => {
-        });
-        if (User.UserData) {
-          UserStart.value = await (User.UserData.collect.filter(
-            (el) => {
-              return el.id === UserPoem.value._id;
-            }
-          ).length > 0);
-        }
+    async function getpoem(id) {
+      poem.value = {};
+      poem.value = await todo.get().then((res) => {
+        return res.data[0];
+      }).catch((err) => {
+      });
+      if (User.UserData) {
+        start.value = await (User.UserData.collect.filter(
+          (el) => {
+            return el.id === poem.value._id;
+          }
+        ).length > 0);
       }
-      if (A) {
-        UserPoem.value = {};
-        UserPoem.value = await todo.getUserR().then((res) => {
-          return res.data[0];
-        }).catch((err) => {
-        });
-        if (User.UserData) {
-          UserStart.value = await (User.UserData.collect.filter(
-            (el) => {
-              return el.id === UserPoem.value._id;
-            }
-          ).length > 0);
-        }
+    }
+    async function getUserpoem(id) {
+      UserPoem.value = {};
+      UserPoem.value = await todo.getUserR().then((res) => {
+        return res.data[0];
+      }).catch((err) => {
+      });
+      if (User.UserData) {
+        UserStart.value = await (User.UserData.collect.filter(
+          (el) => {
+            return el.id === id;
+          }
+        ).length > 0);
+      }
+    }
+    async function reload(A2) {
+      if (stop) {
+        getpoem();
+      } else {
+        getUserpoem();
       }
     }
     async function collect() {
@@ -118,20 +110,53 @@ const _sfc_main = {
         ).length > 0);
       }
     }
-    common_vendor.onLoad((Option) => {
-      console.log(Option.value);
-    });
-    common_vendor.onShareAppMessage((res) => {
-      if (res.from === "button") {
-        console.log(res.target);
+    async function A(Option) {
+      poem.value = await todo.getone(Option.id).then((res) => {
+        return res.data[0];
+      }).catch((err) => {
+      });
+      if (User.UserData) {
+        start.value = await (User.UserData.collect.filter(
+          (el) => {
+            return el.id === poem.value._id;
+          }
+        ).length > 0);
       }
-      return {
-        title: "在这里分享你的诗",
-        path: "/pages/index/index"
-      };
+    }
+    async function B(Option) {
+      UserPoem.value = {};
+      UserPoem.value = await todo.getUser(Option.id).then((res) => {
+        console.log(res);
+        return res.data[0];
+      }).catch((err) => {
+      });
+      if (User.UserData) {
+        UserStart.value = await (User.UserData.collect.filter(
+          (el) => {
+            return el.id === UserPoem.value._id;
+          }
+        ).length > 0);
+      }
+    }
+    common_vendor.onLoad((Option) => {
+      console.log(Option);
+      if (Option.id && Option.bol === "true") {
+        A(Option);
+        getUserpoem();
+      } else if (Option.id && Option.bol === "false") {
+        setTimeout(() => {
+          size.value = -PageSize.value;
+          stop = false;
+        }, 300);
+        console.log("A");
+        B(Option);
+        getpoem();
+      } else {
+        getpoem();
+        getUserpoem();
+      }
     });
     common_vendor.onMounted(() => {
-      reload(true);
       Theme.GetTheme();
       GETPagesize();
     });
@@ -186,17 +211,21 @@ const _sfc_main = {
         c: common_vendor.p({
           poem: UserPoem.value
         }),
-        d: `translateX(${size.value / PageSize.value * 100}vw)`,
-        e: common_vendor.p({
+        d: `translateX(${size.value / PageSize.value * 100}vw)`
+      }, {
+        e: common_vendor.unref(stop) ? poem.value._id : UserPoem.value._id,
+        f: common_vendor.p({
           reload,
           remove,
           collect,
-          start: common_vendor.unref(stop) ? start.value : UserStart.value
+          start: common_vendor.unref(stop) ? start.value : UserStart.value,
+          stop: common_vendor.unref(stop),
+          id: common_vendor.unref(stop) ? poem.value._id : UserPoem.value._id
         }),
-        f: common_vendor.o((...args) => common_vendor.unref(Touch).touchStart && common_vendor.unref(Touch).touchStart(...args)),
-        g: common_vendor.o(Touchmove),
-        h: common_vendor.o(TouchmEnd),
-        i: common_vendor.s(common_vendor.unref(Theme).theme)
+        g: common_vendor.o((...args) => common_vendor.unref(Touch).touchStart && common_vendor.unref(Touch).touchStart(...args)),
+        h: common_vendor.o(Touchmove),
+        i: common_vendor.o(TouchmEnd),
+        j: common_vendor.s(common_vendor.unref(Theme).theme)
       });
     };
   }

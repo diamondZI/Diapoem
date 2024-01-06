@@ -3,8 +3,6 @@
  	<view class="neighborhood">
  		 <view class="TOPTAP">
  		 	<span class="text">其他用户</span>
- 		 	
- 			 
  		 </view> 
  		<view class="card" @click='GoNavigateTo("Personal",item)' v-for="(item,index) in userlist" :key="index">
  			  		  <view class="avatar">
@@ -27,7 +25,7 @@
  		</view>
  		<view v-if="LO&&LONOT" >加载中----</view>
  	 <view v-if="!LONOT" class="">
- 	 	非常抱歉我们没有更多用户了,我们需要您的帮助,点击分享,解锁我们的专属主题
+ 	 	非常抱歉我们没有更多用户了,我们需要您的帮助,点击分享
  		        <button class="button" open-type="share">分享 </button>
  	 	 长按复制我们拉您进入讨论群:<text user-select class="font">wx2580456922</text>;您有任何建议都可以联系我们
  	 	<!-- 如果您喜欢这个程序或者希望我们变得更好 可以选择对我们进行任意金额的赞助,感谢您的支持 -->'

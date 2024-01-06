@@ -8,6 +8,12 @@ const useDarftStore = common_vendor.defineStore("DRAFT", () => {
       "key": Darft.value
     }));
   };
-  return { PUSHDARFT, Darft };
+  const DeleteDarft = (id) => {
+    Darft.value.splice(id, 1);
+    common_vendor.index.setStorageSync("Darft", JSON.stringify({
+      "key": Darft.value
+    }));
+  };
+  return { PUSHDARFT, Darft, DeleteDarft };
 });
 exports.useDarftStore = useDarftStore;

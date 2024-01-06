@@ -1,6 +1,6 @@
 <template>    
 	<view class="My_write">
-		<BOXBOX :title="title" :poem='Poem' :mode="'true'"></BOXBOX>
+		<BOXBOX :title="title" :poem='Poem' :mode="'true'" :fun='fun'></BOXBOX>
 		<view class="CollectBox">
 			<view class="Box" @click="GoWrite()">
 				<uni-icons class="ICONBOX" type='plusempty' size='40'></uni-icons>
@@ -20,8 +20,10 @@
 	import { Getpoem } from "@/hook/GetPoem.js"
     const User=useUserstore()
 	const title=ref()
-	const Poem = ref([])
+	const Poem = ref()
+	const Noption=ref()
 	onLoad((option)=>{
+		Noption.value=option
             !option.id?Getpoem(Poem,User.UserData._id):Getpoem(Poem,option.id)
            title.value=!option.id?"我的创作":"他的创作"
 	})
@@ -30,7 +32,12 @@
 			url: '/pages/Write/index'
 		})
 	}
-	
+	const fun=async (id)=>{
+		console.log(Poem.value);
+		const db=uniCloud.database()
+		await db.collection("user_poem").doc(Poem.value[id]._id).remove()
+		Getpoem(Poem,User.UserData._id)
+	}
 	
 </script>
 

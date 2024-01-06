@@ -10,10 +10,10 @@ if (!Math) {
 }
 const _sfc_main = {
   __name: "index",
-  props: ["reload", "collect", "start", "remove"],
+  props: ["reload", "collect", "start", "remove", "id", "stop"],
   setup(__props) {
     const props = __props;
-    const open = common_vendor.ref(false);
+    const open = common_vendor.ref(true);
     const aclick = () => {
       open.value = !open.value;
     };
@@ -28,12 +28,14 @@ const _sfc_main = {
       }
     };
     common_vendor.onShareAppMessage((res) => {
+      let a = props;
+      console.log(a.stop);
       if (res.from === "button") {
         console.log(res.target);
       }
       return {
         title: "在这里分享你的诗",
-        path: "/pages/index/index?id=123"
+        path: `/pages/index/index?id=${a.id}&bol=${a.stop}`
       };
     });
     return (_ctx, _cache) => {
